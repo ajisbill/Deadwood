@@ -1,0 +1,433 @@
+<?xml version="1.0"?>
+<board name="default">
+  <set name="Train Station">
+    <neighbors>
+      <neighbor name="Jail" />
+      <neighbor name="General Store" />
+      <neighbor name="Office" />
+    </neighbors>
+    <area x="21" y="69" h="115" w="205" />
+    <takes>
+      <take number="3"><area x="36" y="11" h="47" w="47" /></take>
+      <take number="2"><area x="89" y="11" h="47" w="47" /></take>
+      <take number="1"><area x="141" y="11" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Crusty Prospector" level="1">
+        <area x="117" y="230" h="40" w="40" />
+        <line>Aww, peaches!</line>
+      </part>
+      <part name="Dragged by Train" level="1">
+        <area x="54" y="272" h="40" w="40" />
+        <line>Omgeezers!</line>
+      </part>
+      <part name="Preacher with Bag" level="2">
+        <area x="117" y="323" h="40" w="40" />
+        <line>The Lord will provide.</line>
+      </part>
+      <part name="Cyrus the Gunfighter" level="4">
+        <area x="52" y="359" h="40" w="40" />
+        <line>Git to fightin' or git away!</line>
+      </part>
+    </parts>
+    <blanks>
+        <blank number="1"><area x="2" y="193" h="40" w="40" /></blank>
+        <blank number="2"><area x="2" y="235" h="40" w="40" /></blank>
+        <blank number="3"><area x="2" y="277" h="40" w="40" /></blank>
+        <blank number="4"><area x="2" y="319" h="40" w="40" /></blank>
+        <blank number="5"><area x="2" y="361" h="40" w="40" /></blank>
+        <blank number="6"><area x="2" y="403" h="40" w="40" /></blank>
+        <blank number="7"><area x="104" y="403" h="40" w="40" /></blank>
+        <blank number="8"><area x="146" y="403" h="40" w="40" /></blank>
+    </blanks>
+  </set>
+  <set name="Secret Hideout">
+    <neighbors>
+      <neighbor name="Church" />
+      <neighbor name="Ranch" />
+      <neighbor name="Office" />
+    </neighbors>
+    <area x="27" y="732" h="115" w="205" />
+    <takes>
+      <take number="3"><area x="244" y="764" h="47" w="47" /></take>
+      <take number="2"><area x="299" y="764" h="47" w="47" /></take>
+      <take number="1"><area x="354" y="764" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Clumsy Pit Fighter" level="1">
+        <area x="438" y="722" h="40" w="40" />
+        <line>Hit me!</line>
+      </part>
+      <part name="Thug with Knife" level="2">
+        <area x="524" y="722" h="40" w="40" />
+        <line>Meet Suzy, my murderin' knife.</line>
+      </part>
+      <part name="Dangerous Tom" level="3">
+        <area x="438" y="811" h="40" w="40" />
+        <line>There's two ways we can do this....</line>
+      </part>
+      <part name="Penny, who is lost" level="4">
+        <area x="524" y="811" h="40" w="40" />
+        <line>Oh, wow! for I am lost!</line>
+      </part>
+    </parts>
+    <blanks>
+        <blank number="1"><area x="230" y="810" h="40" w="40" /></blank>
+        <blank number="2"><area x="280" y="810" h="40" w="40" /></blank>
+        <blank number="3"><area x="330" y="810" h="40" w="40" /></blank>
+        <blank number="4"><area x="380" y="810" h="40" w="40" /></blank>
+        <blank number="5"><area x="230" y="856" h="40" w="40" /></blank>
+        <blank number="6"><area x="280" y="856" h="40" w="40" /></blank>
+        <blank number="7"><area x="330" y="856" h="40" w="40" /></blank>
+        <blank number="8"><area x="380" y="856" h="40" w="40" /></blank>
+    </blanks>
+  </set>
+  <set name="Church">
+    <neighbors>
+      <neighbor name="Secret Hideout" />
+      <neighbor name="Bank" />
+      <neighbor name="Hotel" />
+    </neighbors>
+    <area x="623" y="734" h="115" w="205" />
+    <takes>
+      <take number="2"><area x="623" y="675" h="47" w="47" /></take>
+      <take number="1"><area x="682" y="675" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Dead Man" level="1">
+        <area x="860" y="733" h="40" w="40" />
+        <line>....</line>
+      </part>
+      <part name="Crying Woman" level="2">
+        <area x="861" y="812" h="40" w="40" />
+        <line>Oh, the humanity!</line>
+      </part>
+    </parts>
+    <blanks>
+        <blank number="1"><area x="740" y="645" h="40" w="40" /></blank>
+        <blank number="2"><area x="790" y="645" h="40" w="40" /></blank>
+        <blank number="3"><area x="840" y="645" h="40" w="40" /></blank>
+        <blank number="4"><area x="890" y="645" h="40" w="40" /></blank>
+        <blank number="5"><area x="740" y="688" h="40" w="40" /></blank>
+        <blank number="6"><area x="790" y="688" h="40" w="40" /></blank>
+        <blank number="7"><area x="840" y="688" h="40" w="40" /></blank>
+        <blank number="8"><area x="890" y="688" h="40" w="40" /></blank>
+    </blanks>
+  </set>
+  <set name="Hotel">
+    <neighbors>
+      <neighbor name="Trailer" />
+      <neighbor name="Bank" />
+      <neighbor name="Church" />
+    </neighbors>
+    <area x="969" y="740" h="115" w="205" />
+    <takes>
+      <take number="3"><area x="1005" y="683" h="47" w="47" /></take>
+      <take number="2"><area x="1058" y="683" h="47" w="47" /></take>
+      <take number="1"><area x="1111" y="683" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Sleeping Drunkard" level="1">
+        <area x="1114" y="472" h="40" w="40" />
+        <line>Zzzzzzz...Whiskey!</line>
+      </part>
+      <part name="Faro Player" level="1">
+        <area x="1047" y="512" h="40" w="40" />
+        <line>Hit me!</line>
+      </part>
+      <part name="Falls from Balcony" level="2">
+        <area x="1114" y="560" h="40" w="40" />
+        <line>Arrrgghh!</line>
+      </part>
+      <part name="Australian Bartender" level="3">
+        <area x="1049" y="599" h="40" w="40" />
+        <line>What'll it be, mate?</line>
+      </part>
+    </parts>
+    <blanks>
+        <blank number="1"><area x="1160" y="560" h="40" w="40" /></blank>
+        <blank number="2"><area x="1160" y="610" h="40" w="40" /></blank>
+        <blank number="3"><area x="1160" y="660" h="40" w="40" /></blank>
+        <blank number="4"><area x="1160" y="710" h="40" w="40" /></blank>
+        <blank number="5"><area x="940" y="750" h="40" w="40" /></blank>
+        <blank number="6"><area x="940" y="800" h="40" w="40" /></blank>
+        <blank number="7"><area x="940" y="850" h="40" w="40" /></blank>
+        <blank number="8"><area x="990" y="850" h="40" w="40" /></blank>
+    </blanks>
+  </set>
+  <set name="Main Street">
+    <neighbors>
+      <neighbor name="Trailer" />
+      <neighbor name="Jail" />
+      <neighbor name="Saloon" />
+    </neighbors>
+    <area x="969" y="28" h="115" w="205" />
+    <takes>
+      <take number="3"><area x="912" y="23" h="47" w="47" /></take>
+      <take number="2"><area x="858" y="23" h="47" w="47" /></take>
+      <take number="1"><area x="804" y="23" h="47" w="47" /></take>
+    </takes>
+   <blanks>
+        <blank number="1"><area x="1000" y="182" h="40" w="40" /></blank>
+        <blank number="2"><area x="1050" y="182" h="40" w="40" /></blank>
+        <blank number="3"><area x="1100" y="182" h="40" w="40" /></blank>
+        <blank number="4"><area x="1150" y="182" h="40" w="40" /></blank>
+        <blank number="5"><area x="1160" y="130" h="40" w="40" /></blank>
+        <blank number="6"><area x="1160" y="80" h="40" w="40" /></blank>
+        <blank number="7"><area x="900" y="156" h="40" w="40" /></blank>
+        <blank number="8"><area x="950" y="156" h="40" w="40" /></blank>
+    </blanks>
+    <parts>
+      <part name="Railroad Worker" level="1">
+        <area x="640" y="25" h="40" w="40" />
+        <line>I'm a steel-drivin' man!</line>
+      </part>
+      <part name="Falls off Roof" level="2">
+        <area x="723" y="25" h="40" w="40" />
+        <line>Aaaaiiiigggghh!</line>
+      </part>
+      <part name="Woman in Black Dress" level="2">
+        <area x="640" y="108" h="40" w="40" />
+        <line>Well, I'll be!</line>
+      </part>
+      <part name="Mayor McGinty" level="4">
+        <area x="723" y="108" h="40" w="40" />
+        <line>People of Deadwood!</line>
+      </part>
+    </parts>
+  </set>
+  <set name="Jail">
+    <neighbors>
+      <neighbor name="Main Street" />
+      <neighbor name="General Store" />
+      <neighbor name="Train Station" />
+    </neighbors>
+    <area x="281" y="27" h="115" w="205" />
+    <takes>
+      <take number="1"><area x="442" y="156" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Prisoner In Cell" level="2">
+        <area x="522" y="28" h="40" w="40" />
+        <line>Zzzzzzz...Whiskey!</line>
+      </part>
+      <part name="Feller in Irons" level="3">
+        <area x="522" y="108" h="40" w="40" />
+        <line>Ah kilt the wrong man!</line>
+      </part>
+    </parts>
+    <blanks>
+         <blank number="1"><area x="250" y="25" h="40" w="40" /></blank>
+         <blank number="2"><area x="250" y="75" h="40" w="40" /></blank>
+         <blank number="3"><area x="250" y="125" h="40" w="40" /></blank>
+         <blank number="4"><area x="295" y="0" h="40" w="40" /></blank>
+         <blank number="5"><area x="345" y="0" h="40" w="40" /></blank>
+         <blank number="6"><area x="300" y="130" h="40" w="40" /></blank>
+         <blank number="7"><area x="300" y="176" h="40" w="40" /></blank>
+         <blank number="8"><area x="350" y="176" h="40" w="40" /></blank>
+     </blanks>
+  </set>
+  <set name="General Store">
+    <neighbors>
+      <neighbor name="Ranch" />
+      <neighbor name="Train Station" />
+      <neighbor name="Jail" />
+      <neighbor name="Saloon" />
+    </neighbors>
+    <area x="370" y="282" h="115" w="205" />
+    <takes>
+      <take number="2"><area x="313" y="277" h="47" w="47" /></take>
+      <take number="1"><area x="313" y="330" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Man in Overalls" level="1">
+        <area x="239" y="279" h="40" w="40" />
+        <line>Looks like a storm's comin' in.</line>
+      </part>
+      <part name="Mister Keach" level="3">
+        <area x="239" y="361" h="40" w="40" />
+        <line>Howdy, stranger.</line>
+      </part>
+    </parts>
+    <blanks>
+         <blank number="1"><area x="195" y="250" h="40" w="40" /></blank>
+         <blank number="2"><area x="195" y="300" h="40" w="40" /></blank>
+         <blank number="3"><area x="195" y="350" h="40" w="40" /></blank>
+         <blank number="4"><area x="280" y="237" h="40" w="40" /></blank>
+         <blank number="5"><area x="385" y="245" h="40" w="40" /></blank>
+         <blank number="6"><area x="435" y="245" h="40" w="40" /></blank>
+         <blank number="7"><area x="290" y="388" h="40" w="40" /></blank>
+         <blank number="8"><area x="340" y="388" h="40" w="40" /></blank>
+     </blanks>
+  </set>
+  <set name="Ranch">
+    <neighbors>
+      <neighbor name="Office" />
+      <neighbor name="General Store" />
+      <neighbor name="Secret Hideout" />
+      <neighbor name="Bank" />
+    </neighbors>
+    <area x="252" y="478" h="115" w="205" />
+    <takes>
+      <take number="2"><area x="472" y="473" h="47" w="47" /></take>
+      <take number="1"><area x="525" y="473" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Shot in Leg" level="1">
+        <area x="415" y="611" h="40" w="40" />
+        <line>Ow! Me Leg!</line>
+      </part>
+      <part name="Saucy Fred" level="2">
+        <area x="491" y="611" h="40" w="40" />
+        <line>That's what she said.</line>
+      </part>
+      <part name="Man Under Horse" level="3">
+        <area x="491" y="528" h="40" w="40" />
+        <line>A little help here!</line>
+      </part>
+    </parts>
+    <blanks>
+         <blank number="1"><area x="218" y="485" h="40" w="40" /></blank>
+         <blank number="2"><area x="218" y="535" h="40" w="40" /></blank>
+         <blank number="3"><area x="218" y="585" h="40" w="40" /></blank>
+         <blank number="4"><area x="260" y="634" h="40" w="40" /></blank>
+         <blank number="5"><area x="310" y="634" h="40" w="40" /></blank>
+         <blank number="6"><area x="360" y="634" h="40" w="40" /></blank>
+         <blank number="7"><area x="260" y="450" h="40" w="40" /></blank>
+         <blank number="8"><area x="310" y="450" h="40" w="40" /></blank>
+     </blanks>
+  </set>
+  <set name="Bank">
+    <neighbors>
+      <neighbor name="Saloon" />
+      <neighbor name="Church" />
+      <neighbor name="Ranch" />
+      <neighbor name="Hotel" />
+    </neighbors>
+    <area x="623" y="475" h="115" w="205" />
+    <takes>
+      <take number="1"><area x="840" y="549" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Suspicious Gentleman" level="2">
+        <area x="914" y="557" h="40" w="40" />
+        <line>Can you be more specific?</line>
+      </part>
+      <part name="Flustered Teller" level="3">
+        <area x="914" y="473" h="40" w="40" />
+        <line>Would you like a large bill, sir?</line>
+      </part>
+    </parts>
+    <blanks>
+        <blank number="1"><area x="592" y="490" h="40" w="40" /></blank>
+        <blank number="2"><area x="592" y="540" h="40" w="40" /></blank>
+        <blank number="3"><area x="592" y="590" h="40" w="40" /></blank>
+        <blank number="4"><area x="642" y="604" h="40" w="40" /></blank>
+        <blank number="5"><area x="770" y="604" h="40" w="40" /></blank>
+        <blank number="6"><area x="820" y="604" h="40" w="40" /></blank>
+        <blank number="7"><area x="830" y="450" h="40" w="40" /></blank>
+        <blank number="8"><area x="830" y="500" h="40" w="40" /></blank>
+    </blanks>
+  </set>
+  <set name="Saloon">
+    <neighbors>
+      <neighbor name="Main Street" />
+      <neighbor name="General Store" />
+      <neighbor name="Bank" />
+      <neighbor name="Trailer" />
+    </neighbors>
+    <area x="632" y="280" h="115" w="205" />
+    <takes>
+      <take number="2"><area x="626" y="216" h="47" w="47" /></take>
+      <take number="1"><area x="679" y="216" h="47" w="47" /></take>
+    </takes>
+    <parts>
+      <part name="Reluctant Farmer" level="1">
+        <area x="880" y="355" h="40" w="40" />
+        <line>I ain't so sure about that!</line>
+      </part>
+      <part name="Woman in Red Dress" level="2">
+        <area x="880" y="279" h="40" w="40" />
+        <line>Come up and see me!</line>
+      </part>
+    </parts>
+    <blanks>
+         <blank number="1"><area x="730" y="225" h="40" w="40" /></blank>
+         <blank number="2"><area x="780" y="225" h="40" w="40" /></blank>
+         <blank number="3"><area x="830" y="225" h="40" w="40" /></blank>
+         <blank number="4"><area x="880" y="225" h="40" w="40" /></blank>
+         <blank number="5"><area x="930" y="225" h="40" w="40" /></blank>
+         <blank number="6"><area x="930" y="275" h="40" w="40" /></blank>
+         <blank number="7"><area x="930" y="325" h="40" w="40" /></blank>
+         <blank number="8"><area x="930" y="375" h="40" w="40" /></blank>
+     </blanks>
+  </set>
+  <trailer>
+    <neighbors>
+      <neighbor name="Main Street" />
+      <neighbor name="Saloon" />
+      <neighbor name="Hotel" />
+    </neighbors>
+    <area x="991" y="248" h="194" w="201" />
+    <blanks>
+         <blank number="1"><area x="1050" y="300" h="40" w="40" /></blank>
+         <blank number="2"><area x="1050" y="350" h="40" w="40" /></blank>
+         <blank number="3"><area x="1050" y="400" h="40" w="40" /></blank>
+         <blank number="4"><area x="1110" y="300" h="40" w="40" /></blank>
+         <blank number="5"><area x="1110" y="350" h="40" w="40" /></blank>
+         <blank number="6"><area x="1110" y="400" h="40" w="40" /></blank>
+         <blank number="7"><area x="1050" y="250" h="40" w="40" /></blank>
+         <blank number="8"><area x="1110" y="250" h="40" w="40" /></blank>
+     </blanks>
+  </trailer>
+  <office>
+    <neighbors>
+      <neighbor name="Train Station" />
+      <neighbor name="Ranch" />
+      <neighbor name="Secret Hideout" />
+    </neighbors>
+    <area x="9" y="459" h="208" w="209" />
+    <upgrades>
+      <upgrade level="2" currency="dollar" amt="4" >
+        <area x="98" y="542" h="19" w="19" />
+      </upgrade>
+      <upgrade level="3" currency="dollar" amt="10">
+        <area x="98" y="564" h="19" w="19" />
+      </upgrade>
+      <upgrade level="4" currency="dollar" amt="18">
+        <area x="98" y="587" h="19" w="19" />
+      </upgrade>
+      <upgrade level="5" currency="dollar" amt="28">
+        <area x="98" y="609" h="19" w="19" />
+      </upgrade>
+      <upgrade level="6" currency="dollar" amt="40">
+        <area x="98" y="631" h="19" w="19" />
+      </upgrade>
+      <upgrade level="2" currency="credit" amt="5" >
+        <area x="147" y="542" h="19" w="19" />
+      </upgrade>
+      <upgrade level="3" currency="credit" amt="10">
+        <area x="147" y="564" h="19" w="19" />
+      </upgrade>
+      <upgrade level="4" currency="credit" amt="15">
+        <area x="147" y="587" h="19" w="19" />
+      </upgrade>
+      <upgrade level="5" currency="credit" amt="20">
+        <area x="147" y="609" h="19" w="19" />
+      </upgrade>
+      <upgrade level="6" currency="credit" amt="25">
+        <area x="147" y="631" h="19" w="19" />
+      </upgrade>
+    </upgrades>
+   <blanks>
+        <blank number="1"><area x="2" y="470" h="40" w="40" /></blank>
+        <blank number="2"><area x="2" y="530" h="40" w="40" /></blank>
+        <blank number="3"><area x="2" y="570" h="40" w="40" /></blank>
+        <blank number="4"><area x="2" y="630" h="40" w="40" /></blank>
+        <blank number="5"><area x="162" y="470" h="40" w="40" /></blank>
+        <blank number="6"><area x="162" y="530" h="40" w="40" /></blank>
+        <blank number="7"><area x="162" y="570" h="40" w="40" /></blank>
+        <blank number="8"><area x="162" y="630" h="40" w="40" /></blank>
+    </blanks>
+  </office>
+</board>

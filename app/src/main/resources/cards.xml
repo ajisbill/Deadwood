@@ -1,0 +1,678 @@
+<?xml version="1.0"?>
+<cards>
+  <card name="Evil Wears a Hat" img="card_01.png" budget="4">
+    <scene number="21">
+      Calhoun is separated from the group during a white-knuckled chase near Desperation Bluff.
+    </scene>
+    <part name="Defrocked Priest" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Look out below!</line>
+    </part>
+    <part name="Marshal Canfield" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Hold fast!</line>
+    </part>
+    <part name="One-Eyed Man" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Balderdash!</line>
+    </part>
+  </card>
+  <card name="Law and the Old West" img="card_02.png" budget="3">
+    <scene number="9">
+      Charlie "Three Guns" Henderson cooperates with Johnny Law and reluctantly
+      enters the witless protection program.
+    </scene>
+    <part name="Rug Merchant" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Don't leave my store!</line>
+    </part>
+    <part name="Banker" level="2">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Trust me.</line>
+    </part>
+    <part name="Talking Mule" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Nice work, Johnny!</line>
+    </part>
+  </card>
+  <card name="The Life and Times of John Skywater" img="card_03.png" budget="5">
+    <scene number="29">
+      Disheartened by his lack of business acumen and his poor choice of
+      investment partners, John Skywater sets off into the Cree Nation to
+      convince them to kidnap his wife.
+    </scene>
+    <part name="Auctioneer" level="5">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Going once!</line>
+    </part>
+    <part name="General Custer" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Go West!</line>
+    </part>
+  </card>
+  <card name="My Years on the Prairie" img="card_04.png" budget="5">
+    <scene number="33">
+      Virgil and Stacy set out at midnight to track down the stray cows, unaware
+      that they are being pursued by inch-high aliens from outer space.
+    </scene>
+    <part name="Drunk" level="3">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Where's Willard?</line>
+    </part>
+    <part name="Librarian" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Shhhhh!</line>
+    </part>
+    <part name="Man with Hay" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Hey!</line>
+    </part>
+  </card>
+  <card name="Buffalo Bill: The Lost Years" img="card_05.png" budget="4">
+    <scene number="25">
+      Buffalo Bill's companion Marty disappears in a freak electrical storm.
+      Bill enlists the aid of the Sidekick Friends network.
+    </scene>
+    <part name="Hollering Boy" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Over here, mister!</line>
+    </part>
+    <part name="Drink Farmer" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Git outta me barn!</line>
+    </part>
+    <part name="Meek Little Sarah" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>He's so cute!</line>
+    </part>
+  </card>
+  <card name="Square Deal City" img="card_06.png" budget="6">
+    <scene number="16">
+      Douglas and Katherine confront Aunt Martha about her missing pies.  Devin
+    </scene>
+    <part name="Squaking Boy" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>I'll say!</line>
+    </part>
+    <part name="Pharaoh Imhotep" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Attack, soldiers!</line>
+    </part>
+    <part name="Aunt Martha" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>You got nothin'!</line>
+    </part>
+  </card>
+  <card name="Davy Crockett: A Drunkard's Tale" img="card_07.png" budget="4">
+    <scene number="28">
+      Robert enlists the aid of several farm animals in order to ascertain the
+      efficacy of his new hangover remedy.
+    </scene>
+    <part name="The Duck" level="4">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Waaaak!</line>
+    </part>
+    <part name="His Brother" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Waaaaaaaak!</line>
+    </part>
+  </card>
+  <card name="The Way the West Was Run" img="card_08.png" budget="4">
+    <scene number="6">
+      Jose explains patiently, but with thinly veiled contempt, the intricacies
+      of Arizona bureaucracy, as though speaking to a simple and distracted child.
+    </scene>
+    <part name="Town Drunk" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Even me!</line>
+    </part>
+    <part name="Squinting Miner" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Sure we can!</line>
+    </part>
+    <part name="Poltergeist" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Wooooo!</line>
+    </part>
+  </card>
+  <card name="Down in the Valley" img="card_09.png" budget="3">
+    <scene number="7">
+      A tripped waiter is the spark igniting a brawl of cataclysmic
+      proportions.  Walter is injured in the neck.
+    </scene>
+    <part name="Angry Barber" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Hold him still!</line>
+    </part>
+    <part name="Woman with Board" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Nonsense, Frank!</line>
+    </part>
+    <part name="Man in Fire" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>It burns!</line>
+    </part>
+  </card>
+  <card name="Ol' Shooter and Little Doll" img="card_10.png" budget="4">
+    <scene number="20">
+      Shooter discovers that he has been proceeding for days with no trousers.
+      This causes him no small embarrassment as he searches for them with Little
+      Doll.
+    </scene>
+    <part name="Sleeping Man" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Snnkkk snnkk snnkk.</line>
+    </part>
+    <part name="Man with Pig" level="2">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Tally-Hooo!</line>
+    </part>
+    <part name="Shooter" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Where's my britches?</line>
+    </part>
+  </card>
+  <card name="The Robbers of Trains" img="card_11.png" budget="4">
+    <scene number="32">
+      Coogan confronts the toughest thug in his gang, Big Jake, in an
+      abbreviated knife fight.  Coogan settles the dispute with fearless guile
+      and a kick in the family jewels.
+    </scene>
+    <part name="Buster" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>One two three go!</line>
+    </part>
+    <part name="Man Reading Paper" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Ouchie!</line>
+    </part>
+    <part name="Fat Pete" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Nick kick, boss!</line>
+    </part>
+  </card>
+  <card name="Beyond the Pail: Life without Lactose" img="card_12.png" budget="2">
+    <scene number="15">
+      Henry discovers for the first time that his ability to digest cream has
+      disappeared along with his hair.  Other cowboys attempt to console him.
+    </scene>
+    <part name="Martin" level="6">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Have you tried soy cheese?</line>
+    </part>
+  </card>
+  <card name="A Man Called 'Cow'" img="card_13.png" budget="3">
+    <scene number="19">
+      Nothing will settle the debates among the skeptical locals, short of a
+      demonstration of Hector's special talents.
+    </scene>
+    <part name="Preacher" level="3">
+      <area x="53" y="47" h="40" w="40" />
+      <line>My word!</line>
+    </part>
+    <part name="Amused Witness" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Tee hee hee!</line>
+    </part>
+  </card>
+  <card name="Taffy Commercial" img="card_14.png" budget="2">
+    <scene number="23">
+      Jackson encourages the children to eat only taffy, because gum can kill
+      them stone dead.
+    </scene>
+    <part name="Curious girl" level="3">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Are you sure?</line>
+    </part>
+    <part name="Ghost of Plato" level="4">
+      <area x="115" y="47" h="40" w="40" />
+      <line>It happened to me!</line>
+    </part>
+  </card>
+  <card name="Gum Commercial" img="card_15.png" budget="2">
+    <scene number="27">
+      Inspector Pete speaks to a riveted audience about the many hidden dangers
+      of taffy, not the least of which is that taffy can kill you stone dead.
+    </scene>
+    <part name="Surprised Bison" level="2">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Mmrrrrrph!</line>
+    </part>
+    <part name="Man with Horn" level="4">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Ta daaaa!</line>
+    </part>
+  </card>
+  <card name="Jesse James: Man of Action" img="card_16.png" budget="5">
+    <scene number="17">
+      Jesse's brothers Jed and Henry throw him a surprise birthday party.
+      Jesse's nerves get the better of him when the birthday cake explodes.
+    </scene>
+    <part name="Shot in Back" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Arrrggh!</line>
+    </part>
+    <part name="Shot in Leg (Featured)" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Ooh, lordy!</line>
+    </part>
+    <part name="Leaps into Cake" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Dangit, Jesse!</line>
+    </part>
+  </card>
+  <card name="Disaster at Flying J" img="card_17.png" budget="5">
+    <scene number="10">
+      After the mine explosion, the traveling circus takes time out to get drunk
+      and start a fight.
+    </scene>
+    <part name="Piano Player" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>It's a nocturne!</line>
+    </part>
+    <part name="Man in Turban" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>My stars!</line>
+    </part>
+    <part name="Falls on Hoe" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Ow!</line>
+    </part>
+  </card>
+  <card name="Shakespear in Lubbock" img="card_18.png" budget="3">
+    <scene number="31">
+      William decides that it is time to be movin' on.  Julia convinces him to
+      stick around just long enough to get into big trouble.
+    </scene>
+    <part name="Falls from Tree" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>What ho!</line>
+    </part>
+    <part name="Laughing Woman" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Tis to laugh!</line>
+    </part>
+    <part name="Man with Whistle" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Tweeeeet!</line>
+    </part>
+  </card>
+  <card name="Go West, You!" img="card_19.png" budget="3">
+    <scene number="30">
+      Susan and Peter encounter some of the perils of the Badlands: rutted mud
+      roads, torrential rain storms, and a bad case of "grumbly tummy."
+    </scene>
+    <part name="Ex-Convict" level="4">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Never again!</line>
+    </part>
+    <part name="Man with Onion" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Fresh Onions!</line>
+    </part>
+  </card>
+  <card name="The Life and Times of John Skywater" img="card_20.png" budget="5">
+    <scene number="2">
+      John discovers his long-lost sister Marcie, and instructs her in the ways
+      of gunfighting and whiskey distillation.
+    </scene>
+    <part name="Staggering Man" level="3">
+      <area x="20" y="47" h="40" w="40" />
+      <line>You never know!</line>
+    </part>
+    <part name="Woman with Beer" level="5">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Howdy, stranger!</line>
+    </part>
+    <part name="Marcie" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Welcome home!</line>
+    </part>
+  </card>
+  <card name="Gun! The Musical" img="card_21.png" budget="6">
+    <scene number="35">
+      A song and dance extravaganza, "Hunka Hunka Burnin' Lead."
+    </scene>
+    <part name="Looks like Elvis" level="4">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Thankyouverymuch.</line>
+    </part>
+    <part name="Singing Dead Man" level="5">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Yeah!</line>
+    </part>
+    <part name="Apothecary" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Such drugs I have.</line>
+    </part>
+  </card>
+  <card name="Humor at the Expense of Others" img="card_22.png" budget="5">
+    <scene number="36">
+      Phil and his cohort of unfeeling smart-mouths make fun of Sancho and his
+      great big hat.
+    </scene>
+    <part name="Jailer" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>You there!</line>
+    </part>
+    <part name="Mephistopheles" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Be not afraid!</line>
+    </part>
+    <part name="Breaks a Window" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Oops!</line>
+    </part>
+  </card>
+  <card name="The Search for Maggie White" img="card_23.png" budget="6">
+    <scene number="39">
+      Alone in the wilderness, Maggie makes the best of her situation. In what
+      seems like no time at all, she constructs a sturdy two-story house from
+      branches and mud.
+    </scene>
+    <part name="Film Critic" level="5">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Implausible!</line>
+    </part>
+    <part name="Hobo with Bat" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Nice house!</line>
+    </part>
+  </card>
+    <card name="Picante Sauce Commercial" img="card_24.png" budget="2">
+    <scene number="37">
+      A dozen grizzled cowboys surround a fire. Suddenly, they exclaim, "That's
+      not mayonnaise!"
+    </scene>
+    <part name="Bewhisker'd Cowpoke" level="3">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Oh, sweet Lord!</line>
+    </part>
+    <part name="Dog" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Wurf!</line>
+    </part>
+  </card>
+  <card name="Jesse James: Man of Action" img="card_25.png" budget="5">
+    <scene number="11">
+      A hail of gunfire results when Jesse's friend Barton marries Jesse's
+      childhood sweetheart.
+    </scene>
+    <part name="Shot in Head" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Arrrgh!</line>
+    </part>
+    <part name="Leaps Out of Cake" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Oh, for Pete's sake!</line>
+    </part>
+    <part name="Shot Three Times" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Ow! Ow! Ow!</line>
+    </part>
+  </card>
+  <card name="One False Step for Mankind" img="card_26.png" budget="6">
+    <scene number="5">
+      After a dozen failed attempts, one rocket carries Horatio and his six
+      children to the Moon, where they enjoy a picnic and a spirited game of
+      badminton.
+    </scene>
+    <part name="Flustered Man" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Well, I never!</line>
+    </part>
+    <part name="Space Monkey" level="2">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Ook!</line>
+    </part>
+    <part name="Cowbot Dan" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Bzzzzzt!"</line>
+    </part>
+  </card>
+  <card name="Thirteen the Hard Way" img="card_27.png" budget="5">
+    <scene number="12">
+      After some delay, the Pony Express arrives. Isaac, Gwen, Francis, Terry,
+      Conrad, Brooke, Jerry, Howard, MacNeill, Jones, Spike, Cornwall and
+      Crawford are all there.
+    </scene>
+    <part name="Man in Poncho" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Howdy, Jones!</line>
+    </part>
+    <part name="Ecstatic Housewife" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>This is fine!</line>
+    </part>
+    <part name="Isaac" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>The mail!</line>
+    </part>
+  </card>
+  <card name="How They Get Milk" img="card_28.png" budget="4">
+    <scene number="3">
+      Josie asks the Milkman how they get milk. After a thoughtful pause, he
+      begins. "Not like you'd expect!"
+    </scene>
+    <part name="Cow" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Moo.</line>
+    </part>
+    <part name="St. Clement of Alexandria" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Peace be with you, child!</line>
+    </part>
+    <part name="Josie" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Yikes!</line>
+    </part>
+  </card>
+    <card name="My Years on the Prairie" img="card_29.png" budget="5">
+    <scene number="8">
+      Louise takes instruction from Henry, the neighbor boy, in an absurdly
+      suggestive explanation of how to plow a field.
+    </scene>
+    <part name="Willard" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Ain't that a sight?</line>
+    </part>
+    <part name="Leprechaun" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Begorrah!</line>
+    </part>
+    <part name="Startled Ox" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Mrr?</line>
+    </part>
+  </card>
+  <card name="Davy Crockett: A Drunkard's Tale" img="card_30.png" budget="4">
+    <scene number="26">
+      In an absurd dream sequence, Crockett recalls an episode of fear and chaos
+      in which his childhood friend Timmy was trapped at the bottom of a well.
+    </scene>
+    <part name="Voice of God" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Grab hold, son!</line>
+    </part>
+    <part name="Hands of God" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>!</line>
+    </part>
+    <part name="Jack Kemp" level="4">
+      <area x="145" y="47" h="40" w="40" />
+      <line>America!</line>
+    </part>
+  </card>
+  <card name="Czechs in the Sonora" img="card_31.png" budget="4">
+    <scene number="4">
+      Bob reverts to his ancestral ways in a short fight
+      over a disembodied hand.
+    </scene>
+    <part name="Opice (Monkey)" level="5">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Ukk! (Ook)!</line>
+    </part>
+    <part name="Man with Gun" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>Hold it right there!</line>
+    </part>
+  </card>
+  <card name="Swing 'em Wide" img="card_32.png" budget="6">
+    <scene number="13">
+      Black Jack invites Dixon and The Captain to a late-night poker
+      game. Little do they know that Gertrude and Isabella await them at the
+      table.
+    </scene>
+    <part name="Thrifty Mike" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Call!</line>
+    </part>
+    <part name="Sober Physician" level="3">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Raise!</line>
+    </part>
+    <part name="Man on Floor" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Fold!</line>
+    </part>
+  </card>
+  <card name="Swing 'em Wide" img="card_33.png" budget="6">
+    <scene number="24">
+      Hector makes a surprising discovery behind the Chinese grocery store.
+    </scene>
+    <part name="Liberated Nun" level="3">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Let me have it!</line>
+    </part>
+    <part name="Witch Doctor" level="5">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Oogie Boogie!</line>
+    </part>
+    <part name="Voice of Reason" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Come on, now!</line>
+    </part>
+  </card>
+  <card name="Trials of the First Pioneers" img="card_34.png" budget="4">
+    <scene number="22">
+      A fire breaks out in the town livery. Before long, the surrounding
+      buildings are engulfed in flame. The world falls into chaos.
+    </scene>
+    <part name="Burning Man" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Make it stop!</line>
+    </part>
+    <part name="Cheese Vendor" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Opa!</line>
+    </part>
+    <part name="Hit with Table" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Ow! A table?</line>
+    </part>
+  </card>
+  <card name="How the Grinch Stole Texas" img="card_35.png" budget="5">
+    <scene number="14">
+      The doe-eyed citizens of El Paso gather together around a warm fire and
+      pray for the safety of those poor souls in Oklahoma. It almost works.
+    </scene>
+    <part name="Detective" level="3">
+      <area x="20" y="47" h="40" w="40" />
+      <line>I have a hunch.</line>
+    </part>
+    <part name="File Clerk" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>My stapler!</line>
+    </part>
+    <part name="Cindy Lou" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Dear Lord!</line>
+    </part>
+  </card>
+  <card name="J. Robert Lucky, Man of Substance" img="card_36.png" budget="4">
+    <scene number="1">
+      Horace and Mathilde discover that the mysterious orange powder filling
+      Doctor Lucky's air vents is neither Agent Orange nor weaponized Tang, but
+      a rare form of cheese mold.
+    </scene>
+    <part name="Man with Rope" level="1">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Look out below!</line>
+    </part>
+    <part name="Svetlana" level="2">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Says who?</line>
+    </part>
+    <part name="Accidental Victim" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Ow! My spine!</line>
+    </part>
+  </card>
+  <card name="Thirteen the Hard Way" img="card_37.png" budget="5">
+    <scene number="38">
+      After operating for only six minutes, the Pony Express disbands and gives
+      way to the international Telegraph and Railroad systems. Little boys cry.
+    </scene>
+    <part name="Very Wet Man" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Sheesh!</line>
+    </part>
+    <part name="Dejected Housewife" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Its time had come.</line>
+    </part>
+    <part name="Man with Box" level="5">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Progress!</line>
+    </part>
+  </card>
+  <card name="How They Get Milk" img="card_38.png" budget="4">
+    <scene number="40">
+      Josie is thoroughly off milk at this point. The Milkman shows her one more
+      way that she might not have heard of before.
+    </scene>
+    <part name="Marksman" level="4">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Pull!</line>
+    </part>
+    <part name="Postal Worker" level="5">
+      <area x="83" y="47" h="40" w="40" />
+      <line>It's about time!</line>
+    </part>
+    <part name="A Horse" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Yes Sir!</line>
+    </part>
+  </card>
+  <card name="Breakin' in Trick Ponies" img="card_39.png" budget="3">
+    <scene number="34">
+      Uncle Stewart reveals what to do when all else fails.
+    </scene>
+    <part name="Fraternity Pledge" level="2">
+      <area x="53" y="47" h="40" w="40" />
+      <line>Beer me!</line>
+    </part>
+    <part name="Man with Sword" level="6">
+      <area x="115" y="47" h="40" w="40" />
+      <line>None shall pass!</line>
+    </part>
+  </card>
+  <card name="Custer's Other Stands" img="card_40.png" budget="5">
+    <scene number="18">
+      General George Armstrong Custer clinches another victory at the battle of
+      Little Sands. His trusty steed Cairo is not so lucky.
+    </scene>
+    <part name="Farmer" level="2">
+      <area x="20" y="47" h="40" w="40" />
+      <line>Git off a that!</line>
+    </part>
+    <part name="Exploding Horse" level="4">
+      <area x="83" y="47" h="40" w="40" />
+      <line>Boom!</line>
+    </part>
+    <part name="Jack" level="6">
+      <area x="145" y="47" h="40" w="40" />
+      <line>Here we go again!"</line>
+    </part>
+  </card>
+</cards>
