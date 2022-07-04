@@ -34,15 +34,20 @@ public class SetParser extends GameDataParser {
             Area area = null;
             Area area1 = null;
             List<IArea> blankAreas= new ArrayList<>();
+
             for (int j = 0; j < setChildren.getLength(); j++) {
                 Node child = setChildren.item(j);
                 if ("area".equals(child.getNodeName())) {
-                    //System.out.println(child.getNodeValue());
-                    int x = Integer.parseInt(child.getAttributes().getNamedItem("x").getNodeValue());
-                    int y = Integer.parseInt(child.getAttributes().getNamedItem("y").getNodeValue());
-                    int h = Integer.parseInt(child.getAttributes().getNamedItem("h").getNodeValue());
-                    int w = Integer.parseInt(child.getAttributes().getNamedItem("w").getNodeValue());
-                    area = new Area(x, y, h, w);
+                    area = getArea(child);
+                } else if("blanks".equals(child.getNodeName())){
+                    NodeList blankSpaces = child.getChildNodes();
+                    for (int k = 0; k < blankSpaces.getLength(); k++) {
+                        Node aBlank = blankSpaces.item(k);
+                        if("blank".equals(aBlank.getNodeName())){
+                            area1 = getArea(aBlank.getFirstChild());
+                            blankAreas.add(area1);
+                        }
+                    }
                 }
             }
 
@@ -53,6 +58,15 @@ public class SetParser extends GameDataParser {
 
 
         return setsList;
+    }
+
+    public Area getArea(Node areaNode){
+        int x = Integer.parseInt(areaNode.getAttributes().getNamedItem("x").getNodeValue());
+        int y = Integer.parseInt(areaNode.getAttributes().getNamedItem("y").getNodeValue());
+        int h = Integer.parseInt(areaNode.getAttributes().getNamedItem("h").getNodeValue());
+        int w = Integer.parseInt(areaNode.getAttributes().getNamedItem("w").getNodeValue());
+        Area area = new Area(x,y,h,w);
+        return area;
     }
 
 }
