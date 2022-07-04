@@ -18,11 +18,11 @@ public class SetParser extends GameDataParser {
      *
      * @return List of Sets in board.xml
      */
-    public List<ISet> getSets() {
+    public List<ISetScene> getSets() {
 
         Element rootNode = getRootNode();
 
-        List<ISet> setsList = new ArrayList<>();
+        List<ISetScene> setsList = new ArrayList<>();
 
         NodeList sets = rootNode.getElementsByTagName("set");
         Area area = null;
@@ -36,6 +36,7 @@ public class SetParser extends GameDataParser {
             NodeList setChildren = set.getChildNodes();
 
             List<IArea> blankAreas= new ArrayList<>();
+            List<IArea> takeAreas= new ArrayList<>();
 
             for (int j = 0; j < setChildren.getLength(); j++) {
                 Node child = setChildren.item(j);
@@ -50,10 +51,19 @@ public class SetParser extends GameDataParser {
                             blankAreas.add(area1);
                         }
                     }
+                }else if("takes".equals(child.getNodeName())){
+                    NodeList blankSpaces1 = child.getChildNodes();
+                    for (int l = 0; l < blankSpaces1.getLength(); l++) {
+                        Node aBlank1 = blankSpaces1.item(l);
+                        if("take".equals(aBlank1.getNodeName())){
+                            area1 = getArea(aBlank1.getFirstChild());
+                            takeAreas.add(area1);
+                        }
+                    }
                 }
             }
 
-            Set aSet = new Set(setName, null, area, blankAreas);
+            Set aSet = new Set(setName, null, area, blankAreas, null, null, takeAreas);
             setsList.add(aSet);
         }
 
@@ -79,7 +89,7 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set aSet = new Set(setName1, null, area, blankAreas1);
+        Set aSet = new Set(setName1, null, area, blankAreas1, null, null, null);
         setsList.add(aSet);
 
         NodeList office = rootNode.getElementsByTagName("office");
@@ -103,7 +113,7 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set aSet2 = new Set(setName2, null, area, blankAreas2);
+        Set aSet2 = new Set(setName2, null, area, blankAreas2, null, null, null);
         setsList.add(aSet2);
 
 

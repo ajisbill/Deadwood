@@ -26,4 +26,6 @@ public interface ISet {
      * @return List of blank areas on this set.
      */
     List<IArea> getBlankAreas();
+
+
 }
