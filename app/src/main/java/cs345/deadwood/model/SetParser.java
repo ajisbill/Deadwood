@@ -25,14 +25,16 @@ public class SetParser extends GameDataParser {
         List<ISet> setsList = new ArrayList<>();
 
         NodeList sets = rootNode.getElementsByTagName("set");
+        Area area = null;
+        Area area1 = null;
+
 
         for (int i = 0; i < sets.getLength(); i++) {
             Node set = sets.item(i);
             String setName = set.getAttributes().getNamedItem("name").getNodeValue();
 
             NodeList setChildren = set.getChildNodes();
-            Area area = null;
-            Area area1 = null;
+
             List<IArea> blankAreas= new ArrayList<>();
 
             for (int j = 0; j < setChildren.getLength(); j++) {
@@ -55,10 +57,59 @@ public class SetParser extends GameDataParser {
             setsList.add(aSet);
         }
 
+        NodeList trailer = rootNode.getElementsByTagName("trailer");
+        String setName1 = "Trailer";
+        List<IArea> blankAreas1= new ArrayList<>();
+        System.out.println(trailer.getLength());
+        Node trailerNode = trailer.item(0);
+        NodeList trailerChildren = trailerNode.getChildNodes();
+        for (int i = 0; i < trailerChildren.getLength(); i++){
+            Node child = trailerChildren.item(i);
+            if ("area".equals(child.getNodeName())) {
+                area = getArea(child);
+            } else if ("blanks".equals(child.getNodeName())) {
+                NodeList blankSpaces = child.getChildNodes();
+                for (int k = 0; k < blankSpaces.getLength(); k++) {
+                    Node aBlank = blankSpaces.item(k);
+                    if ("blank".equals(aBlank.getNodeName())) {
+                        area1 = getArea(aBlank.getFirstChild());
+                        blankAreas1.add(area1);
+                    }
+                }
+            }
+        }
+
+        Set aSet = new Set(setName1, null, area, blankAreas1);
+        setsList.add(aSet);
+
+        NodeList office = rootNode.getElementsByTagName("office");
+        String setName2 = "Office";
+        List<IArea> blankAreas2= new ArrayList<>();
+        Node officeNode = office.item(0);
+        NodeList officeChildren = officeNode.getChildNodes();
+        for (int i = 0; i < officeChildren.getLength(); i++){
+            Node child = officeChildren.item(i);
+            if ("area".equals(child.getNodeName())) {
+                area = getArea(child);
+            } else if ("blanks".equals(child.getNodeName())) {
+                NodeList blankSpaces = child.getChildNodes();
+                for (int k = 0; k < blankSpaces.getLength(); k++) {
+                    Node aBlank = blankSpaces.item(k);
+                    if ("blank".equals(aBlank.getNodeName())) {
+                        area1 = getArea(aBlank.getFirstChild());
+                        blankAreas2.add(area1);
+                    }
+                }
+            }
+        }
+
+        Set aSet2 = new Set(setName2, null, area, blankAreas2);
+        setsList.add(aSet2);
 
 
         return setsList;
     }
+
 
     public Area getArea(Node areaNode){
         int x = Integer.parseInt(areaNode.getAttributes().getNamedItem("x").getNodeValue());
