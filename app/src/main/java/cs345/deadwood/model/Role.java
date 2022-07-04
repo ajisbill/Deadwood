@@ -15,21 +15,21 @@ public class Role implements IRole {
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public int getLevel() {
-        return 0;
+        return this.level;
     }
 
     @Override
     public String getLine() {
-        return null;
+        return this.line;
     }
 
     @Override
     public IArea getArea() {
-        return null;
+        return this.area;
     }
 }
