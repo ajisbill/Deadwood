@@ -17,20 +17,20 @@ public class Card implements ICard{
         this.roleList = roles;
 
     }
-    public static void main(String[] args){
-        CardParser parser = new CardParser();
-
-        List<ICard> test = parser.getCards();
-
-        for (int i = 0; i < test.size(); i++) {
-            System.out.println(test.get(i).getName());
-            System.out.println(test.get(i).getImageName());
-            System.out.println(test.get(i).getBudget());
-            System.out.println(test.get(i).getSceneNumber());
-            System.out.println(test.get(i).getRoles());
-        }
-
-    }
+//    public static void main(String[] args){
+//        CardParser parser = new CardParser();
+//
+//        List<ICard> test = parser.getCards();
+//
+//        for (int i = 0; i < test.size(); i++) {
+//            System.out.println(test.get(i).getName());
+//            System.out.println(test.get(i).getImageName());
+//            System.out.println(test.get(i).getBudget());
+//            System.out.println(test.get(i).getSceneNumber());
+//            System.out.println(test.get(i).getRoles());
+//        }
+//
+//    }
 
     /**
      * @return Name of the scene card
