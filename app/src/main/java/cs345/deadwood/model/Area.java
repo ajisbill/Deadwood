@@ -11,21 +11,21 @@ public class Area implements IArea{
     }
     @Override
     public int getX() {
-        return 0;
+        return this.x;
     }
 
     @Override
     public int getY() {
-        return 0;
+        return this.y;
     }
 
     @Override
     public int getH() {
-        return 0;
+        return this.h;
     }
 
     @Override
     public int getW() {
-        return 0;
+        return this.w;
     }
 }
