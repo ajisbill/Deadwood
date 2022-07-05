@@ -42,15 +42,15 @@ public class Set implements ISetScene{
                         + blanks.get(j).getH() + ", w: "
                         + blanks.get(j).getW());
             }
-//            if (i < test.size() -2) {
-//                List<IArea> takes = test.get(i).getTakes();
-//                for (int j = 0; j < takes.size(); j++) {
-//                    System.out.println("Take Area: x: " + takes.get(j).getX() + ", y: "
-//                            + takes.get(j).getY() + ", h: "
-//                            + takes.get(j).getH() + ", w: "
-//                            + takes.get(j).getW());
-//                }
-//            }
+            if (i < test.size() -2) {
+                List<IArea> takes = test.get(i).getTakes();
+                for (int j = 0; j < takes.size(); j++) {
+                    System.out.println("Take Area: x: " + takes.get(j).getX() + ", y: "
+                            + takes.get(j).getY() + ", h: "
+                            + takes.get(j).getH() + ", w: "
+                            + takes.get(j).getW());
+                }
+            }
         }
 
     }
