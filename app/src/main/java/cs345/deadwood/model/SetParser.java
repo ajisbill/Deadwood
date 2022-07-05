@@ -53,7 +53,7 @@ public class SetParser extends GameDataParser {
                     }
                 }else if("takes".equals(child.getNodeName())){
                     NodeList blankSpaces1 = child.getChildNodes();
-                    for (int l = 0; l < blankSpaces1.getLength(); l++) {
+                    for (int l = blankSpaces1.getLength() -1; l >= 0 ; l--) {
                         Node aBlank1 = blankSpaces1.item(l);
                         if("take".equals(aBlank1.getNodeName())){
                             area1 = getArea(aBlank1.getFirstChild());
