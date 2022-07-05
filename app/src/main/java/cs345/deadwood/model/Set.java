@@ -12,8 +12,10 @@ public class Set implements ISetScene{
     List<IRole> setRoles;
     List<IArea> takeAreas;
 
+    List<String> neighborStrings;
 
-    public Set(String name, List<ISet> neighbors, Area area, List<IArea> blankAreas, ICard sceneCard, List<IRole> setRoles, List<IArea> takeAreas){
+
+    public Set(String name, List<ISet> neighbors, Area area, List<IArea> blankAreas, ICard sceneCard, List<IRole> setRoles, List<IArea> takeAreas, List<String> neighborStrings){
         this.name = name;
         this.neighbors = neighbors;
         this.area = area;
@@ -21,6 +23,7 @@ public class Set implements ISetScene{
         this.sceneCard = sceneCard;
         this.setRoles = setRoles;
         this.takeAreas = takeAreas;
+        this.neighborStrings = neighborStrings;
     }
 
     public static void main(String[] args){
@@ -51,6 +54,12 @@ public class Set implements ISetScene{
                 }
             }
             System.out.println(test.get(i).getRoles());
+            List<String> nStrings = test.get(i).getNeighborStrings();
+
+            for (int j = 0; j < nStrings.size(); j++) {
+                System.out.println("Neighbor: " + nStrings.get(j));
+            }
+
         }
 
     }
@@ -90,6 +99,16 @@ public class Set implements ISetScene{
     @Override
     public List<IRole> getRoles() {
         return this.setRoles;
+    }
+
+    @Override
+    public List<String> getNeighborStrings() {
+        return this.neighborStrings;
+    }
+
+    @Override
+    public void setNeighbors(List<ISet> neighbors) {
+        this.neighbors = neighbors;
     }
 
     @Override

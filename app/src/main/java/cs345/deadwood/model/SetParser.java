@@ -1,5 +1,6 @@
 package cs345.deadwood.model;
 
+import org.checkerframework.checker.units.qual.A;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -38,6 +39,7 @@ public class SetParser extends GameDataParser {
 
             List<IArea> blankAreas= new ArrayList<>();
             List<IArea> takeAreas= new ArrayList<>();
+            List<String> neighborStrings = new ArrayList<>();
 
             for (int j = 0; j < setChildren.getLength(); j++) {
                 Node child = setChildren.item(j);
@@ -61,15 +63,23 @@ public class SetParser extends GameDataParser {
                             takeAreas.add(area1);
                         }
                     }
-                }else if ("parts".equals(child.getNodeName())) {
+                } else if("neighbors".equals(child.getNodeName())){
+                    NodeList neighborChildren = child.getChildNodes();
+                    for(int n = 0; n<neighborChildren.getLength(); n++){
+                        Node aNeighbor = neighborChildren.item(n);
+                        if("neighbor".equals(aNeighbor.getNodeName())){
+                            String neighborName = aNeighbor.getAttributes().getNamedItem("name").getNodeValue();
+                            neighborStrings.add(neighborName);
+                        }
+                    }
+
+                } else if ("parts".equals(child.getNodeName())) {
                     NodeList partChildren = child.getChildNodes();
                     for(int m = 0; m<partChildren.getLength(); m++){
                         Node aPart = partChildren.item(m);
                         if("part".equals(aPart.getNodeName())){
                             String roleName = aPart.getAttributes().getNamedItem("name").getNodeValue();
                             int roleLevel = Integer.parseInt(aPart.getAttributes().getNamedItem("level").getNodeValue());
-                            System.out.println("roleName: " + roleName);
-                            System.out.println("roleLevel: " + roleLevel);
 
                             NodeList partChildren1 = aPart.getChildNodes();
 
@@ -78,8 +88,6 @@ public class SetParser extends GameDataParser {
                             int h = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("h").getNodeValue());
                             int w = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("w").getNodeValue());
                             String line = partChildren1.item(3).getTextContent();
-                            System.out.println("x: "+ x +", y: "+ y+ ", h: "+ h+ ", w: "+ w);
-                            System.out.println("line: " + line);
 
                             Area area2 = new Area(x,y,h,w);
                             Role role = new Role(roleName, roleLevel, line, area2);
@@ -92,13 +100,15 @@ public class SetParser extends GameDataParser {
                 }
             }
 
-            Set aSet = new Set(setName, null, area, blankAreas, null, rolesList, takeAreas);
+            Set aSet = new Set(setName, null, area, blankAreas, null, rolesList, takeAreas, neighborStrings);
             setsList.add(aSet);
         }
 
         NodeList trailer = rootNode.getElementsByTagName("trailer");
         String setName1 = "Trailer";
         List<IArea> blankAreas1= new ArrayList<>();
+        List<String> neighborStrings1 = new ArrayList<>();
+
         System.out.println(trailer.getLength());
         Node trailerNode = trailer.item(0);
         NodeList trailerChildren = trailerNode.getChildNodes();
@@ -115,15 +125,25 @@ public class SetParser extends GameDataParser {
                         blankAreas1.add(area1);
                     }
                 }
+            }else if("neighbors".equals(child.getNodeName())){
+                NodeList neighborChildren = child.getChildNodes();
+                for(int n = 0; n<neighborChildren.getLength(); n++){
+                    Node aNeighbor = neighborChildren.item(n);
+                    if("neighbor".equals(aNeighbor.getNodeName())){
+                        String neighborName = aNeighbor.getAttributes().getNamedItem("name").getNodeValue();
+                        neighborStrings1.add(neighborName);
+                    }
+                }
             }
         }
 
-        Set aSet = new Set(setName1, null, area, blankAreas1, null, null, null);
+        Set aSet = new Set(setName1, null, area, blankAreas1, null, null, null, neighborStrings1);
         setsList.add(aSet);
 
         NodeList office = rootNode.getElementsByTagName("office");
         String setName2 = "Office";
         List<IArea> blankAreas2= new ArrayList<>();
+        List<String> neighborStrings2 = new ArrayList<>();
         Node officeNode = office.item(0);
         NodeList officeChildren = officeNode.getChildNodes();
         for (int i = 0; i < officeChildren.getLength(); i++){
@@ -139,17 +159,40 @@ public class SetParser extends GameDataParser {
                         blankAreas2.add(area1);
                     }
                 }
+            }else if("neighbors".equals(child.getNodeName())){
+                NodeList neighborChildren = child.getChildNodes();
+                for(int n = 0; n<neighborChildren.getLength(); n++){
+                    Node aNeighbor = neighborChildren.item(n);
+                    if("neighbor".equals(aNeighbor.getNodeName())){
+                        String neighborName = aNeighbor.getAttributes().getNamedItem("name").getNodeValue();
+                        neighborStrings2.add(neighborName);
+                    }
+                }
             }
         }
 
-        Set aSet2 = new Set(setName2, null, area, blankAreas2, null, null, null);
+        Set aSet2 = new Set(setName2, null, area, blankAreas2, null, null, null, neighborStrings2);
         setsList.add(aSet2);
 
-
+        for(int p = 0; p < setsList.size(); p++){
+            List<String> nStrings = setsList.get(p).getNeighborStrings();
+            List<ISet> neighbors = convertNeighbors(nStrings,setsList);
+            setsList.get(p).setNeighbors(neighbors);
+        }
         return setsList;
     }
 
-
+    public List<ISet> convertNeighbors(List<String> nStrings, List<ISet> sets){
+        List<ISet> neighbors = new ArrayList<>();
+        for (int i = 0; i < nStrings.size(); i++){
+            for (int j = 0; j < sets.size(); j++){
+                if(nStrings.get(i).equals(sets.get(j).getName())){
+                    neighbors.add(sets.get(j));
+                }
+            }
+        }
+        return neighbors;
+    }
     public Area getArea(Node areaNode){
         int x = Integer.parseInt(areaNode.getAttributes().getNamedItem("x").getNodeValue());
         int y = Integer.parseInt(areaNode.getAttributes().getNamedItem("y").getNodeValue());
