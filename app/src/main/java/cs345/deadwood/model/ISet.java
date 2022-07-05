@@ -29,4 +29,6 @@ public interface ISet {
 
 
     List<IArea> getTakes();
+
+    List<IRole> getRoles();
 }

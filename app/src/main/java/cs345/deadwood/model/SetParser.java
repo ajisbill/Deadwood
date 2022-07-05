@@ -61,25 +61,32 @@ public class SetParser extends GameDataParser {
                             takeAreas.add(area1);
                         }
                     }
-                }else if ("part".equals(child.getNodeName())) {
-                    String roleName = child.getAttributes().getNamedItem("name").getNodeValue();
-                    int roleLevel = Integer.parseInt(child.getAttributes().getNamedItem("level").getNodeValue());
-                    System.out.println("roleName: " + roleName);
-                    System.out.println("roleLevel: " + roleLevel);
-
+                }else if ("parts".equals(child.getNodeName())) {
                     NodeList partChildren = child.getChildNodes();
+                    for(int m = 0; m<partChildren.getLength(); m++){
+                        Node aPart = partChildren.item(m);
+                        if("part".equals(aPart.getNodeName())){
+                            String roleName = aPart.getAttributes().getNamedItem("name").getNodeValue();
+                            int roleLevel = Integer.parseInt(aPart.getAttributes().getNamedItem("level").getNodeValue());
+                            System.out.println("roleName: " + roleName);
+                            System.out.println("roleLevel: " + roleLevel);
 
-                    int x = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("x").getNodeValue());
-                    int y = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("y").getNodeValue());
-                    int h = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("h").getNodeValue());
-                    int w = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("w").getNodeValue());
-                    String line = partChildren.item(3).getTextContent();
-                    System.out.println("x: "+ x +", y: "+ y+ ", h: "+ h+ ", w: "+ w);
-                    System.out.println("line: " + line);
+                            NodeList partChildren1 = aPart.getChildNodes();
 
-                    Area area2 = new Area(x,y,h,w);
-                    Role role = new Role(roleName, roleLevel, line, area2);
-                    rolesList.add(role);
+                            int x = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("x").getNodeValue());
+                            int y = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("y").getNodeValue());
+                            int h = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("h").getNodeValue());
+                            int w = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("w").getNodeValue());
+                            String line = partChildren1.item(3).getTextContent();
+                            System.out.println("x: "+ x +", y: "+ y+ ", h: "+ h+ ", w: "+ w);
+                            System.out.println("line: " + line);
+
+                            Area area2 = new Area(x,y,h,w);
+                            Role role = new Role(roleName, roleLevel, line, area2);
+                            rolesList.add(role);
+                        }
+                    }
+
 
 
                 }

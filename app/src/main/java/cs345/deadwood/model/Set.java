@@ -1,6 +1,5 @@
 package cs345.deadwood.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Set implements ISetScene{
@@ -51,6 +50,7 @@ public class Set implements ISetScene{
                             + takes.get(j).getW());
                 }
             }
+            System.out.println(test.get(i).getRoles());
         }
 
     }
