@@ -30,6 +30,7 @@ public class SetParser extends GameDataParser {
 
 
         for (int i = 0; i < sets.getLength(); i++) {
+            List<IRole> rolesList = new ArrayList<>();
             Node set = sets.item(i);
             String setName = set.getAttributes().getNamedItem("name").getNodeValue();
 
@@ -60,10 +61,31 @@ public class SetParser extends GameDataParser {
                             takeAreas.add(area1);
                         }
                     }
+                }else if ("part".equals(child.getNodeName())) {
+                    String roleName = child.getAttributes().getNamedItem("name").getNodeValue();
+                    int roleLevel = Integer.parseInt(child.getAttributes().getNamedItem("level").getNodeValue());
+                    System.out.println("roleName: " + roleName);
+                    System.out.println("roleLevel: " + roleLevel);
+
+                    NodeList partChildren = child.getChildNodes();
+
+                    int x = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("x").getNodeValue());
+                    int y = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("y").getNodeValue());
+                    int h = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("h").getNodeValue());
+                    int w = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("w").getNodeValue());
+                    String line = partChildren.item(3).getTextContent();
+                    System.out.println("x: "+ x +", y: "+ y+ ", h: "+ h+ ", w: "+ w);
+                    System.out.println("line: " + line);
+
+                    Area area2 = new Area(x,y,h,w);
+                    Role role = new Role(roleName, roleLevel, line, area2);
+                    rolesList.add(role);
+
+
                 }
             }
 
-            Set aSet = new Set(setName, null, area, blankAreas, null, null, takeAreas);
+            Set aSet = new Set(setName, null, area, blankAreas, null, rolesList, takeAreas);
             setsList.add(aSet);
         }
 
