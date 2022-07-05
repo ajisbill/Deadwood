@@ -27,7 +27,7 @@ public class Set implements ISetScene{
     public static void main(String[] args){
         SetParser parser = new SetParser();
 
-        List<ISet> test = parser.getSets();
+        List<Set> test = parser.getSets();
 
         for (int i = 0; i < test.size(); i++) {
             System.out.println("Set Name: " + test.get(i).getName());

@@ -28,5 +28,4 @@ public interface ISet {
     List<IArea> getBlankAreas();
 
 
-    List<IArea> getTakes();
 }

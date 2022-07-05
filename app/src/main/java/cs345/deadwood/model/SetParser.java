@@ -18,11 +18,11 @@ public class SetParser extends GameDataParser {
      *
      * @return List of Sets in board.xml
      */
-    public List<ISet> getSets() {
+    public List<Set> getSets() {
 
         Element rootNode = getRootNode();
 
-        List<ISet> setsList = new ArrayList<>();
+        List<Set> setsList = new ArrayList<>();
 
         NodeList sets = rootNode.getElementsByTagName("set");
         Area area = null;
