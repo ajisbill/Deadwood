@@ -22,30 +22,37 @@ public class SetParser extends GameDataParser {
     public List<ISet> getSets() {
 
         Element rootNode = getRootNode();
-
         List<ISet> setsList = new ArrayList<>();
 
         NodeList sets = rootNode.getElementsByTagName("set");
         Area area = null;
         Area area1 = null;
 
-
+        // iterate through sets and parse necessary information to store into Set object
         for (int i = 0; i < sets.getLength(); i++) {
-            List<IRole> rolesList = new ArrayList<>();
+
+            //get name of set
             Node set = sets.item(i);
             String setName = set.getAttributes().getNamedItem("name").getNodeValue();
 
-            NodeList setChildren = set.getChildNodes();
-
+            //lists to store set attributes
             List<IArea> blankAreas= new ArrayList<>();
             List<IArea> takeAreas= new ArrayList<>();
             List<String> neighborStrings = new ArrayList<>();
+            List<IRole> rolesList = new ArrayList<>();
 
+            //iterate through child nodes of each set
+            NodeList setChildren = set.getChildNodes();
             for (int j = 0; j < setChildren.getLength(); j++) {
                 Node child = setChildren.item(j);
+
+                //get set area
                 if ("area".equals(child.getNodeName())) {
                     area = getArea(child);
-                } else if("blanks".equals(child.getNodeName())){
+                }
+
+                //get areas of blank spaces
+                else if("blanks".equals(child.getNodeName())){
                     NodeList blankSpaces = child.getChildNodes();
                     for (int k = 0; k < blankSpaces.getLength(); k++) {
                         Node aBlank = blankSpaces.item(k);
@@ -54,7 +61,10 @@ public class SetParser extends GameDataParser {
                             blankAreas.add(area1);
                         }
                     }
-                }else if("takes".equals(child.getNodeName())){
+                }
+
+                //get areas of takes
+                else if("takes".equals(child.getNodeName())){
                     NodeList blankSpaces1 = child.getChildNodes();
                     for (int l = blankSpaces1.getLength() -1; l >= 0 ; l--) {
                         Node aBlank1 = blankSpaces1.item(l);
@@ -63,7 +73,10 @@ public class SetParser extends GameDataParser {
                             takeAreas.add(area1);
                         }
                     }
-                } else if("neighbors".equals(child.getNodeName())){
+                }
+
+                //get strings of neighbors which will be translated to their respective sets
+                else if("neighbors".equals(child.getNodeName())){
                     NodeList neighborChildren = child.getChildNodes();
                     for(int n = 0; n<neighborChildren.getLength(); n++){
                         Node aNeighbor = neighborChildren.item(n);
@@ -72,24 +85,19 @@ public class SetParser extends GameDataParser {
                             neighborStrings.add(neighborName);
                         }
                     }
+                }
 
-                } else if ("parts".equals(child.getNodeName())) {
+                //get roles for a set
+                else if ("parts".equals(child.getNodeName())) {
                     NodeList partChildren = child.getChildNodes();
                     for(int m = 0; m<partChildren.getLength(); m++){
                         Node aPart = partChildren.item(m);
                         if("part".equals(aPart.getNodeName())){
                             String roleName = aPart.getAttributes().getNamedItem("name").getNodeValue();
                             int roleLevel = Integer.parseInt(aPart.getAttributes().getNamedItem("level").getNodeValue());
-
                             NodeList partChildren1 = aPart.getChildNodes();
-
-                            int x = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("x").getNodeValue());
-                            int y = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("y").getNodeValue());
-                            int h = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("h").getNodeValue());
-                            int w = Integer.parseInt(partChildren1.item(1).getAttributes().getNamedItem("w").getNodeValue());
                             String line = partChildren1.item(3).getTextContent();
-
-                            Area area2 = new Area(x,y,h,w);
+                            Area area2 = getArea(partChildren1.item(1));
                             Role role = new Role(roleName, roleLevel, line, area2);
                             rolesList.add(role);
                         }
