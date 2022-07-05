@@ -17,6 +17,7 @@ public class Card implements ICard{
         this.roleList = roles;
 
     }
+    //view parsed info from cards.xml
 //    public static void main(String[] args){
 //        CardParser parser = new CardParser();
 //

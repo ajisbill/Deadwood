@@ -22,30 +22,24 @@ public class CardParser extends GameDataParser {
          * @return List of cards in cards.xml
          */
 
-
     public List<ICard> getCards() {
 
         List<ICard> cardsList = new ArrayList<>();
         Element rootNode = getRootNode();
-
         NodeList cards = rootNode.getElementsByTagName("card");
 
+        //iterate through cards to parse attributes and add to ICard object
         for (int i = 0; i < cards.getLength(); i++) {
-            System.out.println("Printing information for card " + (i + 1));
             Node card = cards.item(i);
 
             String sceneName = card.getAttributes().getNamedItem("name").getNodeValue();
-            System.out.println("Scene: " + sceneName);
-
             String imageName = card.getAttributes().getNamedItem("img").getNodeValue();
-            System.out.println("img: " + imageName);
-
             int budget = Integer.parseInt(card.getAttributes().getNamedItem("budget").getNodeValue());
-            System.out.println("budget: " + budget);
 
             NodeList children = card.getChildNodes();
             int sceneNumber = 0;
             List<IRole> rolesList = new ArrayList<>();
+
             for (int j = 0; j < children.getLength(); j++) {
                 Node sub = children.item(j);
 
@@ -60,7 +54,6 @@ public class CardParser extends GameDataParser {
                     System.out.println("roleLevel: " + roleLevel);
 
                     NodeList partChildren = sub.getChildNodes();
-
                     int x = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("x").getNodeValue());
                     int y = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("y").getNodeValue());
                     int h = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("h").getNodeValue());
@@ -72,18 +65,12 @@ public class CardParser extends GameDataParser {
                     Area area = new Area(x,y,h,w);
                     Role role = new Role(roleName, roleLevel, line, area);
                     rolesList.add(role);
-
-
                 }
             }
-
-
             Card aCard = new Card(sceneName, imageName, budget, sceneNumber, rolesList);
             cardsList.add(aCard);
             System.out.println("\n");
-
         }
-
         return cardsList;
     }
 

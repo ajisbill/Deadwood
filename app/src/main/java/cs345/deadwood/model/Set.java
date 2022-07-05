@@ -26,43 +26,44 @@ public class Set implements ISetScene{
         this.neighborStrings = neighborStrings;
     }
 
-    public static void main(String[] args){
-        SetParser parser = new SetParser();
-
-        List<ISet> test = parser.getSets();
-
-        for (int i = 0; i < test.size(); i++) {
-            System.out.println("Set Name: " + test.get(i).getName());
-            System.out.println("Area: x: " + test.get(i).getArea().getX() + ", y: "
-                                + test.get(i).getArea().getY() + ", h: "
-                                + test.get(i).getArea().getH() + ", w: "
-                                + test.get(i).getArea().getW());
-            List<IArea> blanks = test.get(i).getBlankAreas();
-            for(int j =0; j < blanks.size(); j++){
-                System.out.println("Blank Area: x: " + blanks.get(j).getX() + ", y: "
-                        + blanks.get(j).getY() + ", h: "
-                        + blanks.get(j).getH() + ", w: "
-                        + blanks.get(j).getW());
-            }
-            if (i < test.size() -2) {
-                List<IArea> takes = test.get(i).getTakes();
-                for (int j = 0; j < takes.size(); j++) {
-                    System.out.println("Take Area: x: " + takes.get(j).getX() + ", y: "
-                            + takes.get(j).getY() + ", h: "
-                            + takes.get(j).getH() + ", w: "
-                            + takes.get(j).getW());
-                }
-            }
-            System.out.println(test.get(i).getRoles());
-            List<String> nStrings = test.get(i).getNeighborStrings();
-
-            for (int j = 0; j < nStrings.size(); j++) {
-                System.out.println("Neighbor: " + nStrings.get(j));
-            }
-
-        }
-
-    }
+    // function to view parsed info from board.xml
+//    public static void main(String[] args){
+//        SetParser parser = new SetParser();
+//
+//        List<ISet> test = parser.getSets();
+//
+//        for (int i = 0; i < test.size(); i++) {
+//            System.out.println("Set Name: " + test.get(i).getName());
+//            System.out.println("Area: x: " + test.get(i).getArea().getX() + ", y: "
+//                                + test.get(i).getArea().getY() + ", h: "
+//                                + test.get(i).getArea().getH() + ", w: "
+//                                + test.get(i).getArea().getW());
+//            List<IArea> blanks = test.get(i).getBlankAreas();
+//            for(int j =0; j < blanks.size(); j++){
+//                System.out.println("Blank Area: x: " + blanks.get(j).getX() + ", y: "
+//                        + blanks.get(j).getY() + ", h: "
+//                        + blanks.get(j).getH() + ", w: "
+//                        + blanks.get(j).getW());
+//            }
+//            if (i < test.size() -2) {
+//                List<IArea> takes = test.get(i).getTakes();
+//                for (int j = 0; j < takes.size(); j++) {
+//                    System.out.println("Take Area: x: " + takes.get(j).getX() + ", y: "
+//                            + takes.get(j).getY() + ", h: "
+//                            + takes.get(j).getH() + ", w: "
+//                            + takes.get(j).getW());
+//                }
+//            }
+//            System.out.println(test.get(i).getRoles());
+//            List<String> nStrings = test.get(i).getNeighborStrings();
+//
+//            for (int j = 0; j < nStrings.size(); j++) {
+//                System.out.println("Neighbor: " + nStrings.get(j));
+//            }
+//
+//        }
+//
+//    }
     /**
      * @return Name of the set
      */

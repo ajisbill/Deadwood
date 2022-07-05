@@ -102,9 +102,6 @@ public class SetParser extends GameDataParser {
                             rolesList.add(role);
                         }
                     }
-
-
-
                 }
             }
 
@@ -112,12 +109,11 @@ public class SetParser extends GameDataParser {
             setsList.add(aSet);
         }
 
+        //parse trailer separately due to different xml format
         NodeList trailer = rootNode.getElementsByTagName("trailer");
         String setName1 = "Trailer";
         List<IArea> blankAreas1= new ArrayList<>();
         List<String> neighborStrings1 = new ArrayList<>();
-
-        System.out.println(trailer.getLength());
         Node trailerNode = trailer.item(0);
         NodeList trailerChildren = trailerNode.getChildNodes();
         for (int i = 0; i < trailerChildren.getLength(); i++){
@@ -145,9 +141,10 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set aSet = new Set(setName1, null, area, blankAreas1, null, null, null, neighborStrings1);
-        setsList.add(aSet);
+        Set trailerSet = new Set(setName1, null, area, blankAreas1, null, null, null, neighborStrings1);
+        setsList.add(trailerSet);
 
+        //parse office separately due to different xml format
         NodeList office = rootNode.getElementsByTagName("office");
         String setName2 = "Office";
         List<IArea> blankAreas2= new ArrayList<>();
@@ -179,9 +176,10 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set aSet2 = new Set(setName2, null, area, blankAreas2, null, null, null, neighborStrings2);
-        setsList.add(aSet2);
+        Set officeSet = new Set(setName2, null, area, blankAreas2, null, null, null, neighborStrings2);
+        setsList.add(officeSet);
 
+        //iterate through sets and add references to neighbors
         for(int p = 0; p < setsList.size(); p++){
             List<String> nStrings = setsList.get(p).getNeighborStrings();
             List<ISet> neighbors = convertNeighbors(nStrings,setsList);
@@ -190,6 +188,7 @@ public class SetParser extends GameDataParser {
         return setsList;
     }
 
+    //helper function to convert list of strings to their respective ISet object
     public List<ISet> convertNeighbors(List<String> nStrings, List<ISet> sets){
         List<ISet> neighbors = new ArrayList<>();
         for (int i = 0; i < nStrings.size(); i++){
@@ -201,6 +200,8 @@ public class SetParser extends GameDataParser {
         }
         return neighbors;
     }
+
+    //helper function to get area of node
     public Area getArea(Node areaNode){
         int x = Integer.parseInt(areaNode.getAttributes().getNamedItem("x").getNodeValue());
         int y = Integer.parseInt(areaNode.getAttributes().getNamedItem("y").getNodeValue());
