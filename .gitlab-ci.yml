@@ -24,7 +24,7 @@ SetParser:
     - mkdir -p app/src/test/java/cs345/deadwood
     - cp /home/cs345/test/*.java app/src/test/java/cs345/deadwood/
     - ./gradlew clean
-    - ./gradlew test --tests SetParserTest
+    - ./gradlew test --tests SetParserTest --info
 
 CardParser:
   stage: test
@@ -32,4 +32,4 @@ CardParser:
     - mkdir -p app/src/test/java/cs345/deadwood
     - cp /home/cs345/test/*.java app/src/test/java/cs345/deadwood/
     - ./gradlew clean
-    - ./gradlew test --tests CardParserTest
+    - ./gradlew test --tests CardParserTest --info
