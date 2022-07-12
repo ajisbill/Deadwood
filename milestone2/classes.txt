@@ -1,0 +1,55 @@
+ - CardParser class
+	+ Parse cards.xml
+	+ Create a list of Card objects
+ - SetParser class
+	+ Parse board.xml
+	+ Create a list of Set objects
+ - Deadwood class
+	+ Main class that starts the game
+	+ Read number of players from command line, if given
+	+ Initialize view
+- Player class
+	+ Records player name, rank, credits, dollars, practice chips and points
+	+ Record current set, scene, role
+	+ Working status
+- Set class
+	+ Record set name, neighbors, area, blank areas, scene card, set roles, shot counter and take areas
+	+ List of sets from setParser Class
+- Role class
+	+ Get role name, level, line, area
+- Card class
+	+ Get scene name, image name, budget, scene number, list of roles
+	+ List of cards from card parser set
+- Area class
+	+ Get (x,y) coordinates height and width of a certain area
+	+ Used for certain pieces on board (sets, takes, blanks, roles)
+- BoardView class
+	+ Creates board view GUI using Java Swing
+- SetView class
+	+ Draw sets on board based on location and image
+- GameManager class
+	+ Log player actions
+	+ Log stats (points, rank, credits, dollars)
+	+ Record game record
+	+ Stores list of active players
+- Dice class
+	+ Randomly generate number from 1 to 6 (roll)
+	+ Output number
+- UserInterface class
+	+ Move
+	+ Take role
+	+ Rehearse
+	+ Upgrade rank
+- Display Class
+	+ Displays available options to player
+	+ Takes input from player
+	+ Display score
+	+ Disp
+- Board Class
+	+ Stores layout of board
+	+ Stores list of sets
+
+
+
+
+
