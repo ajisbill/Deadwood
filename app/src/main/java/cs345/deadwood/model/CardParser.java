@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CardParser extends GameDataParser {
     
-    private final CardBuilder builder = new CardBuilder();
+
     public CardParser() {
         super("cards.xml");
     }
@@ -21,7 +21,7 @@ public class CardParser extends GameDataParser {
          */
 
     public List<ICard> getCards() {
-
+        final CardBuilder builder = new CardBuilder();
         List<ICard> cardsList = new ArrayList<>();
         Element rootNode = getRootNode();
         NodeList cards = rootNode.getElementsByTagName("card");
