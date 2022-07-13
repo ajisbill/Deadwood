@@ -1,12 +1,13 @@
 package cs345.deadwood.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardBuilder {
 
     String sceneName, imageName;
     int budget, sceneNumber;
-    List<IRole> roleList;
+    List<IRole> roleList = new ArrayList<>();
 
     public CardBuilder addSceneName(String sceneName){
         this.sceneName = sceneName;
@@ -28,8 +29,8 @@ public class CardBuilder {
         return this;
     }
 
-    public CardBuilder addRoleList(List<IRole> roleList){
-        this.roleList = roleList;
+    public CardBuilder addRole(IRole role){
+        roleList.add(role);
         return this;
     }
 

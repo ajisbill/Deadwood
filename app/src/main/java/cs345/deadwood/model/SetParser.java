@@ -105,7 +105,7 @@ public class SetParser extends GameDataParser {
                 }
             }
 
-            Set aSet = new Set(setName, null, area, blankAreas, null, rolesList, takeAreas, neighborStrings);
+            Set aSet = new SetScene(setName, null, area, blankAreas, takeAreas, rolesList, null, neighborStrings);
             setsList.add(aSet);
         }
 
@@ -141,7 +141,7 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set trailerSet = new Set(setName1, null, area, blankAreas1, null, null, null, neighborStrings1);
+        Set trailerSet = new Set(setName1, null, area, blankAreas1, neighborStrings1);
         setsList.add(trailerSet);
 
         //parse office separately due to different xml format
@@ -176,7 +176,7 @@ public class SetParser extends GameDataParser {
             }
         }
 
-        Set officeSet = new Set(setName2, null, area, blankAreas2, null, null, null, neighborStrings2);
+        Set officeSet = new Set(setName2, null, area, blankAreas2, neighborStrings2);
         setsList.add(officeSet);
 
         //iterate through sets and add references to neighbors

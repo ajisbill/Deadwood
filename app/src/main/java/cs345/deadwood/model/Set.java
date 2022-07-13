@@ -2,27 +2,20 @@ package cs345.deadwood.model;
 
 import java.util.List;
 
-public class Set implements ISetScene{
+public class Set implements ISet{
 
     String name;
     List<ISet> neighbors;
     Area area;
     List<IArea> blankAreas;
-    ICard sceneCard;
-    List<IRole> setRoles;
-    List<IArea> takeAreas;
-
     List<String> neighborStrings;
 
 
-    public Set(String name, List<ISet> neighbors, Area area, List<IArea> blankAreas, ICard sceneCard, List<IRole> setRoles, List<IArea> takeAreas, List<String> neighborStrings){
+    public Set(String name, List<ISet> neighbors, Area area, List<IArea> blankAreas, List<String> neighborStrings){
         this.name = name;
         this.neighbors = neighbors;
         this.area = area;
         this.blankAreas = blankAreas;
-        this.sceneCard = sceneCard;
-        this.setRoles = setRoles;
-        this.takeAreas = takeAreas;
         this.neighborStrings = neighborStrings;
     }
 
@@ -92,15 +85,14 @@ public class Set implements ISetScene{
         return this.blankAreas;
     }
 
-    @Override
-    public List<IArea> getTakes() {
-        return this.takeAreas;
-    }
-
-    @Override
-    public List<IRole> getRoles() {
-        return this.setRoles;
-    }
+//    public List<IArea> getTakes() {
+//        return this.takeAreas;
+//    }
+//
+//    @Override
+//    public List<IRole> getRoles() {
+//        return this.setRoles;
+//    }
 
     @Override
     public List<String> getNeighborStrings() {
@@ -112,8 +104,8 @@ public class Set implements ISetScene{
         this.neighbors = neighbors;
     }
 
-    @Override
-    public ICard getSceneCard() {
-        return this.sceneCard;
-    }
+//    @Override
+//    public ICard getSceneCard() {
+//        return this.sceneCard;
+//    }
 }

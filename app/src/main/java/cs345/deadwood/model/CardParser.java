@@ -36,7 +36,6 @@ public class CardParser extends GameDataParser {
 
             NodeList children = card.getChildNodes();
             int sceneNumber = 0;
-            List<IRole> rolesList = new ArrayList<>();
 
             for (int j = 0; j < children.getLength(); j++) {
                 Node sub = children.item(j);
@@ -62,10 +61,9 @@ public class CardParser extends GameDataParser {
 
                     Area area = new Area(x,y,h,w);
                     Role role = new Role(roleName, roleLevel, line, area);
-                    rolesList.add(role);
+                    builder.addRole(role);
                 }
             }
-            builder.addRoleList(rolesList);
             Card aCard = builder.getCard();
             cardsList.add(aCard);
             System.out.println("\n");

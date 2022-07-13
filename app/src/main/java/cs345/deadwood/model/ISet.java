@@ -28,10 +28,6 @@ public interface ISet {
     List<IArea> getBlankAreas();
 
 
-    List<IArea> getTakes();
-
-    List<IRole> getRoles();
-
     List<String> getNeighborStrings();
 
     void setNeighbors(List<ISet> neighbors);
