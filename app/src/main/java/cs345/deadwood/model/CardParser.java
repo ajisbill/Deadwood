@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardParser extends GameDataParser {
-
-    public static void main(String[] args){
-
-    }
+    
+    private final CardBuilder builder = new CardBuilder();
     public CardParser() {
         super("cards.xml");
     }
@@ -32,9 +30,9 @@ public class CardParser extends GameDataParser {
         for (int i = 0; i < cards.getLength(); i++) {
             Node card = cards.item(i);
 
-            String sceneName = card.getAttributes().getNamedItem("name").getNodeValue();
-            String imageName = card.getAttributes().getNamedItem("img").getNodeValue();
-            int budget = Integer.parseInt(card.getAttributes().getNamedItem("budget").getNodeValue());
+            builder.addSceneName(card.getAttributes().getNamedItem("name").getNodeValue());
+            builder.addImageName(card.getAttributes().getNamedItem("img").getNodeValue());
+            builder.addBudget(Integer.parseInt(card.getAttributes().getNamedItem("budget").getNodeValue()));
 
             NodeList children = card.getChildNodes();
             int sceneNumber = 0;
@@ -44,7 +42,7 @@ public class CardParser extends GameDataParser {
                 Node sub = children.item(j);
 
                 if ("scene".equals(sub.getNodeName())) {
-                    sceneNumber = Integer.parseInt(sub.getAttributes().getNamedItem("number").getNodeValue());
+                    builder.addSceneNumber(Integer.parseInt(sub.getAttributes().getNamedItem("number").getNodeValue()));
                     System.out.println("scene number: " + sceneNumber);
                 }
                 if ("part".equals(sub.getNodeName())) {
@@ -67,7 +65,8 @@ public class CardParser extends GameDataParser {
                     rolesList.add(role);
                 }
             }
-            Card aCard = new Card(sceneName, imageName, budget, sceneNumber, rolesList);
+            builder.addRoleList(rolesList);
+            Card aCard = builder.getCard();
             cardsList.add(aCard);
             System.out.println("\n");
         }
