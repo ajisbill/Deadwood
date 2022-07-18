@@ -3,7 +3,9 @@
  */
 package cs345.deadwood;
 
-import cs345.deadwood.model.SetParser;
+
+import cs345.deadwood.controller.GameController;
+import cs345.deadwood.model.GameEngine;
 import cs345.deadwood.view.BoardView;
 
 public class Deadwood {
@@ -27,6 +29,10 @@ public class Deadwood {
         }
 
         BoardView view = new BoardView();
+        GameEngine model = new GameEngine(numberOfPlayers, null, null); // TODO: Replace the null parameters with valid values
+        GameController controller = new GameController(model);
+        BoardView view = new BoardView(model, controller);
+
         view.init();
     }
 }

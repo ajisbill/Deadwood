@@ -1,5 +1,8 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.controller.GameController;
+import cs345.deadwood.model.GameEngine;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -9,9 +12,16 @@ import java.net.URL;
 
 public class BoardView implements MouseListener {
 
+    private final GameController controller;
+    private final GameEngine model;
     private JFrame frame;
     private final int VERTICAL_PADDING = 5;
     private final int HORIZONTAL_PADDING = 5;
+
+    public BoardView(GameEngine model, GameController controller) {
+        this.model = model;
+        this.controller = controller;
+    }
 
     public void init() {
         frame = new JFrame();
@@ -23,7 +33,7 @@ public class BoardView implements MouseListener {
         // Set layout to null, so we can place widgets based on x-y coordinates.
         frame.setLayout(null);
 
-        SetView trainStation = new SetView(frame);
+        SetSceneView trainStation = new SetSceneView(frame);
         trainStation.drawSet();
 
 
@@ -96,7 +106,7 @@ public class BoardView implements MouseListener {
     }
 
     private JPanel showPlayerInfo(int i, String area, int cash, int credit, String dice) {
-        
+
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 50));
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
