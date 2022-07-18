@@ -13,4 +13,13 @@ public class GameEngine {
         this.cardList = cardList;
     }
 
+
+    public List<ISet> getSets(){
+        return setList;
+    }
+
+    public List<ICard> getCards(){
+        return cardList;
+    }
+
 }

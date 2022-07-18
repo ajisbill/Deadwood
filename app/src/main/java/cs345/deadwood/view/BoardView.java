@@ -2,6 +2,8 @@ package cs345.deadwood.view;
 
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.GameEngine;
+import cs345.deadwood.model.ISet;
+import cs345.deadwood.model.ISetScene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,8 +35,22 @@ public class BoardView implements MouseListener {
         // Set layout to null, so we can place widgets based on x-y coordinates.
         frame.setLayout(null);
 
-        SetSceneView trainStation = new SetSceneView(frame);
-        trainStation.drawSet();
+        // SetSceneView trainStation = new SetSceneView(frame);
+        // trainStation.drawSet();
+        for (ISet set: model.getSets()) {
+            if (set instanceof ISetScene) {
+                SetSceneView setView = new SetSceneView(frame, (ISetScene) set);
+                setView.drawSet();
+            } else if ("Trailer".equals(set.getName())) {
+                SetTrailerView setView = new SetTrailerView(frame, set);
+                //setView.drawSet();
+            } else if ("Office".equals(set.getName())) {
+                SetCastingOfficeView setView = new SetCastingOfficeView(frame, set);
+                //setView.drawSet();
+            } else {
+                throw new RuntimeException("Found unexpected set name");
+            }
+        }
 
 
         URL boardImg = getClass().getClassLoader().getResource("img/board.png");

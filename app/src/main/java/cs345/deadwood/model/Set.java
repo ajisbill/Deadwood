@@ -85,15 +85,6 @@ public class Set implements ISet{
         return this.blankAreas;
     }
 
-//    public List<IArea> getTakes() {
-//        return this.takeAreas;
-//    }
-//
-//    @Override
-//    public List<IRole> getRoles() {
-//        return this.setRoles;
-//    }
-
     @Override
     public List<String> getNeighborStrings() {
         return this.neighborStrings;

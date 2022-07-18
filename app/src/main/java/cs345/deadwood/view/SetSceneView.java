@@ -10,13 +10,15 @@ public class SetSceneView {
 
     private final JFrame board;
     private JLabel card;
+    private ISetScene setScene;
     private JLabel role1;
     private JLabel shotIcon;
     private JPanel cardPanel;
     private JLabel cardLabel;
 
-    public SetSceneView(JFrame parentContainer) {
+    public SetSceneView(JFrame parentContainer, ISetScene aSet) {
         board = parentContainer;
+        this.setScene = aSet;
     }
 
     public void drawSet() {
@@ -24,9 +26,15 @@ public class SetSceneView {
         /*
          * Create a JPanel to render things on the card.
          */
+
+        int x = this.setScene.getArea().getX();
+        int y = this.setScene.getArea().getY();
+        int h = this.setScene.getArea().getH();
+        int w = this.setScene.getArea().getW();
+
         cardPanel = new JPanel();
-        cardPanel.setLocation(21, 69);
-        cardPanel.setSize(205, 115); // height and width from board.xml, set name "Train Station", area element
+        cardPanel.setLocation(x,y);
+        cardPanel.setSize(w,h); // height and width from board.xml
         cardPanel.setLayout(null); // set layout to null so we can render roles on the card (x-y values in roles in cards.xml). The x-y values for roles in cards.xml are relative to the card.
         cardPanel.setOpaque(false);
         board.add(cardPanel);
@@ -35,8 +43,10 @@ public class SetSceneView {
 
 
         cardLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/cardback.png").getPath()));
+
+        //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
         cardLabel.setLocation(0, 0);
-        cardLabel.setSize(205, 115); // height and width from board.xml, set name "Train Station", area element
+        cardLabel.setSize(w, h); // height and width from board.xml
         cardPanel.add(cardLabel);
 
 

@@ -44,13 +44,10 @@ public class CardParser extends GameDataParser {
 
                 if ("scene".equals(sub.getNodeName())) {
                     builder.addSceneNumber(Integer.parseInt(sub.getAttributes().getNamedItem("number").getNodeValue()));
-                    System.out.println("scene number: " + sceneNumber);
                 }
                 if ("part".equals(sub.getNodeName())) {
                     String roleName = sub.getAttributes().getNamedItem("name").getNodeValue();
                     int roleLevel = Integer.parseInt(sub.getAttributes().getNamedItem("level").getNodeValue());
-                    System.out.println("roleName: " + roleName);
-                    System.out.println("roleLevel: " + roleLevel);
 
                     NodeList partChildren = sub.getChildNodes();
                     int x = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("x").getNodeValue());
@@ -58,8 +55,6 @@ public class CardParser extends GameDataParser {
                     int h = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("h").getNodeValue());
                     int w = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("w").getNodeValue());
                     String line = partChildren.item(3).getTextContent();
-                    System.out.println("x: "+ x +", y: "+ y+ ", h: "+ h+ ", w: "+ w);
-                    System.out.println("line: " + line);
 
                     Area area = new Area(x,y,h,w);
                     Role role = new Role(roleName, roleLevel, line, area);
@@ -68,7 +63,6 @@ public class CardParser extends GameDataParser {
             }
             Card aCard = builder.getCard();
             cardsList.add(aCard);
-            System.out.println("\n");
         }
         return cardsList;
     }

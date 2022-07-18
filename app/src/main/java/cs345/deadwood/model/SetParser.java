@@ -104,13 +104,7 @@ public class SetParser extends GameDataParser {
                     }
                 }
             }
-            List<IArea> blanks = blankAreas;
-            for(int j =0; j < blanks.size(); j++){
-                System.out.println("Blank Area: x: " + blanks.get(j).getX() + ", y: "
-                        + blanks.get(j).getY() + ", h: "
-                        + blanks.get(j).getH() + ", w: "
-                        + blanks.get(j).getW());
-            }
+
             builder.setBlankAreas(blankAreas);
             builder.setTakeAreas(takeAreas);
             builder.setNeighborStrings(neighborStrings);
