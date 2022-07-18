@@ -3,6 +3,7 @@
  */
 package cs345.deadwood;
 
+import cs345.deadwood.model.SetParser;
 import cs345.deadwood.view.BoardView;
 
 public class Deadwood {
@@ -24,7 +25,6 @@ public class Deadwood {
                 return;
             }
         }
-
 
         BoardView view = new BoardView();
         view.init();

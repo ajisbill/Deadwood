@@ -28,8 +28,8 @@ public class SetSceneBuilder {
         return this;
     }
 
-    public SetSceneBuilder setBlankAreas(List<IArea> areas){
-        blankAreas = blankAreas;
+    public SetSceneBuilder setBlankAreas(List<IArea> blankAreas){
+        this.blankAreas = blankAreas;
         return this;
     }
 
