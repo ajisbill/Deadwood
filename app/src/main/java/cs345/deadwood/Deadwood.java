@@ -28,7 +28,6 @@ public class Deadwood {
             }
         }
 
-        BoardView view = new BoardView();
         GameEngine model = new GameEngine(numberOfPlayers, null, null); // TODO: Replace the null parameters with valid values
         GameController controller = new GameController(model);
         BoardView view = new BoardView(model, controller);
