@@ -6,12 +6,12 @@ public class Set implements ISet{
 
     String name;
     List<ISet> neighbors;
-    Area area;
+    IArea area;
     List<IArea> blankAreas;
     List<String> neighborStrings;
 
 
-    public Set(String name, List<ISet> neighbors, Area area, List<IArea> blankAreas, List<String> neighborStrings){
+    public Set(String name, List<ISet> neighbors, IArea area, List<IArea> blankAreas, List<String> neighborStrings){
         this.name = name;
         this.neighbors = neighbors;
         this.area = area;

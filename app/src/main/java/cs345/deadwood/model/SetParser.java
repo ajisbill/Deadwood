@@ -30,10 +30,10 @@ public class SetParser extends GameDataParser {
 
         // iterate through sets and parse necessary information to store into Set object
         for (int i = 0; i < sets.getLength(); i++) {
-
+            SetSceneBuilder builder = new SetSceneBuilder();
             //get name of set
             Node set = sets.item(i);
-            String setName = set.getAttributes().getNamedItem("name").getNodeValue();
+            builder.setName(set.getAttributes().getNamedItem("name").getNodeValue());
 
             //lists to store set attributes
             List<IArea> blankAreas= new ArrayList<>();
@@ -48,7 +48,7 @@ public class SetParser extends GameDataParser {
 
                 //get set area
                 if ("area".equals(child.getNodeName())) {
-                    area = getArea(child);
+                    builder.setArea(getArea(child));
                 }
 
                 //get areas of blank spaces
@@ -105,7 +105,13 @@ public class SetParser extends GameDataParser {
                 }
             }
 
-            Set aSet = new SetScene(setName, null, area, blankAreas, takeAreas, rolesList, null, neighborStrings);
+            builder.setBlankAreas(blankAreas);
+            builder.setTakeAreas(takeAreas);
+            builder.setNeighborStrings(neighborStrings);
+            builder.setRoleList(rolesList);
+
+
+            Set aSet = builder.getSetScene();
             setsList.add(aSet);
         }
 
