@@ -21,13 +21,15 @@ public class CardParser extends GameDataParser {
          */
 
     public List<ICard> getCards() {
-        final CardBuilder builder = new CardBuilder();
+
         List<ICard> cardsList = new ArrayList<>();
         Element rootNode = getRootNode();
         NodeList cards = rootNode.getElementsByTagName("card");
 
         //iterate through cards to parse attributes and add to ICard object
         for (int i = 0; i < cards.getLength(); i++) {
+            CardBuilder builder = new CardBuilder();
+
             Node card = cards.item(i);
 
             builder.addSceneName(card.getAttributes().getNamedItem("name").getNodeValue());

@@ -30,8 +30,11 @@ public class CardBuilder {
     }
 
     public CardBuilder addRole(IRole role){
-        roleList.add(role);
+        if (role != null) {
+            roleList.add(role);
+        }
         return this;
+
     }
 
     public Card getCard(){
