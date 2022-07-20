@@ -43,7 +43,7 @@ public class BoardView implements MouseListener {
                 setView.drawSet();
             } else if ("Trailer".equals(set.getName())) {
                 SetTrailerView setView = new SetTrailerView(frame, set);
-                //setView.drawSet();
+                setView.drawSet();
             } else if ("Office".equals(set.getName())) {
                 SetCastingOfficeView setView = new SetCastingOfficeView(frame, set);
                 //setView.drawSet();
