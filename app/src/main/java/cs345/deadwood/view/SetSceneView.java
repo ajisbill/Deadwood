@@ -37,6 +37,7 @@ public class SetSceneView {
         cardPanel.setSize(w,h); // height and width from board.xml
         cardPanel.setLayout(null); // set layout to null so we can render roles on the card (x-y values in roles in cards.xml). The x-y values for roles in cards.xml are relative to the card.
         cardPanel.setOpaque(false);
+        cardPanel.addMouseListener(new mouseListener());
         board.add(cardPanel);
 
 //        cardPanel.addMouseListener(this); // uncomment this to list to clicks on this set
@@ -63,5 +64,33 @@ public class SetSceneView {
         shotIcon.setSize(47, 47); // height and width from board.xml, set name "Train Station", take 1
         board.add(shotIcon);
 
+    }
+
+    public class mouseListener implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("Set " + setScene.getName() + " clicked.");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 }
