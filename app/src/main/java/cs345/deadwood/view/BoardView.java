@@ -2,6 +2,7 @@ package cs345.deadwood.view;
 
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.GameEngine;
+import cs345.deadwood.model.IRole;
 import cs345.deadwood.model.ISet;
 import cs345.deadwood.model.ISetScene;
 
@@ -51,6 +52,8 @@ public class BoardView implements MouseListener {
                 throw new RuntimeException("Found unexpected set name");
             }
         }
+
+
 
 
         URL boardImg = getClass().getClassLoader().getResource("img/board.png");

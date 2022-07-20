@@ -1,5 +1,9 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.controller.GameController;
+import cs345.deadwood.controller.IController;
+import cs345.deadwood.model.IArea;
+import cs345.deadwood.model.IRole;
 import cs345.deadwood.model.ISetScene;
 
 import javax.swing.*;
@@ -50,6 +54,22 @@ public class SetSceneView {
         cardLabel.setSize(w, h); // height and width from board.xml
         cardPanel.add(cardLabel);
 
+        for (IRole role : setScene.getRoles()) {
+            RoleView rView = new RoleView(role);
+            board.add(rView);
+        }
+
+        for (IArea area : setScene.getTakes()){
+            shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
+            int x1 = area.getX();
+            int y1 = area.getY();
+            int h1 = area.getH();
+            int w1 = area.getW();
+            shotIcon.setLocation(x1, y1); // x,y values from board.xml, set name "Train Station", take 1
+            shotIcon.setSize(w1, h1); // height and width from board.xml, set name "Train Station", take 1
+            board.add(shotIcon);
+        }
+
 
         // sample code showing how to place player dice on a role
         // Role 1 is Crusty Prospector
@@ -59,10 +79,10 @@ public class SetSceneView {
         board.add(role1);
 
         // sample code showing how to place the shot icon on a take
-        shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
-        shotIcon.setLocation(141, 11); // x,y values from board.xml, set name "Train Station", take 1
-        shotIcon.setSize(47, 47); // height and width from board.xml, set name "Train Station", take 1
-        board.add(shotIcon);
+//        shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
+//        shotIcon.setLocation(141, 11); // x,y values from board.xml, set name "Train Station", take 1
+//        shotIcon.setSize(47, 47); // height and width from board.xml, set name "Train Station", take 1
+//        board.add(shotIcon);
 
     }
 
