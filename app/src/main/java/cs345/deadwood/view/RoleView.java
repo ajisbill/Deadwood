@@ -20,7 +20,8 @@ public class RoleView extends JLabel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Role " + model.getName() + " clicked.");
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.log("Role " + model.getName() + " clicked.");
     }
 
     @Override

@@ -17,13 +17,18 @@ public class BoardView implements MouseListener {
 
     private final GameController controller;
     private final GameEngine model;
+    private final GameLog gameLog;
     private JFrame frame;
+    private JPanel gameLogPanel;
+    private JTextArea gameLogText;
     private final int VERTICAL_PADDING = 5;
     private final int HORIZONTAL_PADDING = 5;
 
     public BoardView(GameEngine model, GameController controller) {
         this.model = model;
         this.controller = controller;
+        this.gameLog = GameLog.getInstance();
+        gameLog.registerObservers(this);
     }
 
     public void init() {
@@ -73,6 +78,12 @@ public class BoardView implements MouseListener {
         frame.setVisible(true);
     }
 
+    public void logUpdated(){
+        String message = gameLog.getMessage();
+        System.out.println(message);
+        gameLogText.append(message + "\n");
+    }
+
     private JPanel createControlPanel() {
         JPanel controlPanel = new JPanel();
         controlPanel.setPreferredSize(new Dimension(300, 900));
@@ -118,7 +129,9 @@ public class BoardView implements MouseListener {
         controlPanel.add(new JSeparator());
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
-        controlPanel.add(miscInteraction());
+        JPanel gameLogPanel = miscInteraction();
+        controlPanel.add(gameLogPanel);
+        this.gameLogPanel = gameLogPanel;
 
 
         return controlPanel;
@@ -171,11 +184,12 @@ public class BoardView implements MouseListener {
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 250));
 
-        JLabel panelTitle = new JLabel("Free space");
+        JLabel panelTitle = new JLabel("Game Log");
         panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 18));
         panel.add(panelTitle);
 
-        JTextArea comment = new JTextArea("free space to use for comments or any game related stuff. E.g., show rolling die or show game log.");
+        JTextArea comment = new JTextArea("Game setup complete \n");
+        gameLogText = comment;
         comment.setLineWrap(true);
         comment.setPreferredSize(panel.getPreferredSize());
         panel.add(comment);
