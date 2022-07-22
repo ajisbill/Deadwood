@@ -11,6 +11,8 @@ public class Player implements IPlayer{
     int credits;
     int practiceChips;
     int score;
+    String color;
+    int rank;
     PlayerView playerView;
 
     @Override
@@ -21,12 +23,21 @@ public class Player implements IPlayer{
     public Player(int number, ISet location, int money, int credits, int practiceChips, int score){
         this.number = number;
         this.location = location;
+        takeBlankArea();
         this.money = money;
         this.credits = credits;
         this.practiceChips = practiceChips;
         this.score = score;
     }
 
+    public void takeBlankArea(){
+        for (BlankArea blank : location.getBlankSpots()){
+            if(!(blank.isOccupied())){
+                blank.setOccupied(this);
+                break;
+            }
+        }
+    }
     public void notifyObserver(){
         playerView.playerUpdated();
     }

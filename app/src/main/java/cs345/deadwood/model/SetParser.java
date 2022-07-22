@@ -191,6 +191,14 @@ public class SetParser extends GameDataParser {
             List<ISet> neighbors = convertNeighbors(nStrings,setsList);
             setsList.get(p).setNeighbors(neighbors);
         }
+
+        for(ISet set : setsList){
+            List<BlankArea> blanks = new ArrayList<>();
+            for(IArea area3 : set.getBlankAreas()){
+                blanks.add(new BlankArea(null, area3.getX(), area3.getY(), area3.getH(), area3.getW()));
+            }
+            set.setBlankSpots(blanks);
+        }
         return setsList;
     }
 

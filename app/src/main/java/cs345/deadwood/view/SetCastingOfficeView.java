@@ -1,5 +1,7 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.model.BlankArea;
+import cs345.deadwood.model.IArea;
 import cs345.deadwood.model.ISet;
 
 import javax.swing.*;
@@ -30,6 +32,12 @@ public class SetCastingOfficeView implements MouseListener {
         cardPanel.setOpaque(false);
         cardPanel.addMouseListener(this);
         board.add(cardPanel);
+
+        for (BlankArea blank : officeSet.getBlankSpots()){
+            BlankAreaView blankAreaView = new BlankAreaView(blank);
+            board.add(blankAreaView);
+            blank.notifyView();
+        }
     }
 
     @Override

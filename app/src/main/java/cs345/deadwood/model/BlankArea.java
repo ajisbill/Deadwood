@@ -44,7 +44,9 @@ public class BlankArea {
 
     public void setOccupied(Player player){
         this.player = player;
-        notifyView();
+        if(view != null){
+            notifyView();
+        }
     }
 
     public void notifyView(){
@@ -52,10 +54,10 @@ public class BlankArea {
     }
 
     public boolean isOccupied(){
-        if(player != null){
-            return true;
-        }else{
+        if(player == null){
             return false;
+        }else{
+            return true;
         }
     }
 

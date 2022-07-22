@@ -71,14 +71,10 @@ public class SetSceneView implements MouseListener {
             board.add(shotIcon);
         }
 
-        for (IArea area : setScene.getBlankAreas()){
-            int x2 = area.getX();
-            int y2 = area.getY();
-            int h2 = area.getH();
-            int w2 = area.getW();
-            BlankArea blankArea = new BlankArea(null, x2,y2,h2,w2);
-            BlankAreaView blankAreaView = new BlankAreaView(blankArea);
+        for (BlankArea blank : setScene.getBlankSpots()){
+            BlankAreaView blankAreaView = new BlankAreaView(blank);
             board.add(blankAreaView);
+            blank.notifyView();
         }
 
 

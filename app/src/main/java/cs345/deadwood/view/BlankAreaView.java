@@ -23,7 +23,10 @@ public class BlankAreaView extends JLabel implements MouseListener {
 
     public void areaUpdated(){
         if(model.isOccupied()){
-
+            //System.out.println("yay");
+            setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/dice_b1.png").getPath()));
+        }else{
+            setIcon(null);
         }
     }
 

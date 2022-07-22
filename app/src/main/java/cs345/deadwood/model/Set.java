@@ -9,6 +9,7 @@ public class Set implements ISet{
     IArea area;
     List<IArea> blankAreas;
     List<String> neighborStrings;
+    List<BlankArea> blankSpots;
 
 
     public Set(String name, List<ISet> neighbors, IArea area, List<IArea> blankAreas, List<String> neighborStrings){
@@ -95,8 +96,11 @@ public class Set implements ISet{
         this.neighbors = neighbors;
     }
 
-//    @Override
-//    public ICard getSceneCard() {
-//        return this.sceneCard;
-//    }
+    public void setBlankSpots(List<BlankArea> blankSpots){
+        this.blankSpots = blankSpots;
+    }
+
+    public List<BlankArea> getBlankSpots(){
+        return this.blankSpots;
+    }
 }

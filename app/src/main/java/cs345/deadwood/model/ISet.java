@@ -31,4 +31,7 @@ public interface ISet {
     List<String> getNeighborStrings();
 
     void setNeighbors(List<ISet> neighbors);
+
+    void setBlankSpots(List<BlankArea> blanks);
+    List<BlankArea> getBlankSpots();
 }
