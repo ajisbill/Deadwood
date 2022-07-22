@@ -52,7 +52,7 @@ public class BoardView implements MouseListener {
                 setView.drawSet();
             } else if ("Office".equals(set.getName())) {
                 SetCastingOfficeView setView = new SetCastingOfficeView(frame, set);
-                //setView.drawSet();
+                setView.drawSet();
             } else {
                 throw new RuntimeException("Found unexpected set name");
             }

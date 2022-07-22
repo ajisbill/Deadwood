@@ -3,8 +3,10 @@ package cs345.deadwood.view;
 import cs345.deadwood.model.ISet;
 
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class SetTrailerView {
+public class SetTrailerView implements MouseListener {
 
     private final JFrame board;
     private ISet trailerSet;
@@ -27,7 +29,33 @@ public class SetTrailerView {
         cardPanel.setSize(w,h); // height and width from board.xml
         cardPanel.setLayout(null); // set layout to null so we can render roles on the card (x-y values in roles in cards.xml). The x-y values for roles in cards.xml are relative to the card.
         cardPanel.setOpaque(false);
+        cardPanel.addMouseListener(this);
         board.add(cardPanel);
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.log("Set " + trailerSet.getName() + " clicked.");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
