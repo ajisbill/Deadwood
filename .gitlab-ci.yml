@@ -2,34 +2,13 @@ image: java:11-jdk
 
 stages:
   - compile
-  - test
 
 before_script:
   - export GRADLE_USER_HOME=$HOME/.gradle
 
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
 
 compile:
   stage: compile
   script:
     - ./gradlew clean
     - ./gradlew compileJava
-
-SetParser:
-  stage: test
-  script:
-    - mkdir -p app/src/test/java/cs345/deadwood
-    - cp /home/cs345/test/*.java app/src/test/java/cs345/deadwood/
-    - ./gradlew clean
-    - ./gradlew test --tests SetParserTest --info
-
-CardParser:
-  stage: test
-  script:
-    - mkdir -p app/src/test/java/cs345/deadwood
-    - cp /home/cs345/test/*.java app/src/test/java/cs345/deadwood/
-    - ./gradlew clean
-    - ./gradlew test --tests CardParserTest --info
