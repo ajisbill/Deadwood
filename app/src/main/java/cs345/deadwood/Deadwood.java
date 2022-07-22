@@ -5,12 +5,14 @@ package cs345.deadwood;
 
 
 import cs345.deadwood.controller.GameController;
-import cs345.deadwood.model.CardParser;
-import cs345.deadwood.model.GameEngine;
-import cs345.deadwood.model.SetParser;
+import cs345.deadwood.model.*;
 import cs345.deadwood.view.BoardView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Deadwood {
+
 
     public static void main(String[] args) {
         /* Get number of players from command line arg
@@ -30,10 +32,27 @@ public class Deadwood {
             }
         }
 
+
+
         SetParser setParser  = new SetParser();
         CardParser cardParser = new CardParser();
 
-        GameEngine model = new GameEngine(numberOfPlayers, setParser.getSets(), cardParser.getCards());
+        List<ISet> setsList = setParser.getSets();
+        List<ICard> cardsList = cardParser.getCards();
+        ISet trailer = null;
+
+        for (ISet set: setsList){
+            if (set.getName().equals("Trailer")){
+                trailer = set;
+            }
+        }
+
+        List<IPlayer> playerList = new ArrayList<>();
+        for(int i = 1; i <= numberOfPlayers; i++){
+            playerList.add(new Player(i, trailer, 0,0,0,10));
+        }
+
+        GameEngine model = new GameEngine(numberOfPlayers, setsList, cardsList, playerList);
         GameController controller = new GameController(model);
         BoardView view = new BoardView(model, controller);
 

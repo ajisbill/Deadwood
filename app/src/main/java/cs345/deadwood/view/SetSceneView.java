@@ -2,6 +2,7 @@ package cs345.deadwood.view;
 
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.controller.IController;
+import cs345.deadwood.model.BlankArea;
 import cs345.deadwood.model.IArea;
 import cs345.deadwood.model.IRole;
 import cs345.deadwood.model.ISetScene;
@@ -68,6 +69,16 @@ public class SetSceneView implements MouseListener {
             shotIcon.setLocation(x1, y1); // x,y values from board.xml, set name "Train Station", take 1
             shotIcon.setSize(w1, h1); // height and width from board.xml, set name "Train Station", take 1
             board.add(shotIcon);
+        }
+
+        for (IArea area : setScene.getBlankAreas()){
+            int x2 = area.getX();
+            int y2 = area.getY();
+            int h2 = area.getH();
+            int w2 = area.getW();
+            BlankArea blankArea = new BlankArea(null, x2,y2,h2,w2);
+            BlankAreaView blankAreaView = new BlankAreaView(blankArea);
+            board.add(blankAreaView);
         }
 
 
