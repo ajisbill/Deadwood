@@ -23,7 +23,12 @@ public class PlayerView extends JPanel {
     public PlayerView(IPlayer player, String dice){
         this.player = player;
         player.registerObservers(this);
-        this.playerUpdated();
+        this.number = player.getNumber();
+        this.location = player.getLocation();
+        this.money = player.getMoney();
+        this.credits = player.getCredits();
+        this.practiceChips = player.getPracticeChips();
+        this.score = player.getScore();
 
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
@@ -43,6 +48,7 @@ public class PlayerView extends JPanel {
         this.credits = player.getCredits();
         this.practiceChips = player.getPracticeChips();
         this.score = player.getScore();
+        this.playerString.setText("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
     }
 
     public void drawDice(int x, int y, int h, int w){
