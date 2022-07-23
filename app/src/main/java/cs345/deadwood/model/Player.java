@@ -21,16 +21,16 @@ public class Player implements IPlayer{
         this.playerView = playerView;
     }
 
-    public Player(int number, ISet location, int money, int credits, int practiceChips, int score, String color, int rank){
+    public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank){
         this.number = number;
         this.location = location;
         takeBlankArea();
         this.money = money;
         this.credits = credits;
         this.practiceChips = practiceChips;
-        this.score = score;
-        this.color = color;
         this.rank = rank;
+        this.color = color;
+        setScore();
         setDice();
     }
 
@@ -118,8 +118,11 @@ public class Player implements IPlayer{
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-        notifyObserver();
+    public void setScore() {
+        this.score = 5*this.rank + this.credits + this.money;
+        if(playerView != null){
+            notifyObserver();
+        }
+
     }
 }

@@ -33,8 +33,7 @@ public class Deadwood {
             }
         }
 
-        numberOfPlayers = 7;
-
+        numberOfPlayers = 2;
         SetParser setParser  = new SetParser();
         CardParser cardParser = new CardParser();
 
@@ -52,16 +51,16 @@ public class Deadwood {
         for(int i = 0; i < numberOfPlayers; i++){
             if(numberOfPlayers == 5){
                 int credits = 2;
-                playerList.add(new Player(i+1, trailer, 0,credits,0,7, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1));
             }else if(numberOfPlayers == 6){
                 int credits = 4;
-                playerList.add(new Player(i+1, trailer, 0,credits,0,9, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1));
             }else if (numberOfPlayers >= 7){
                 int credits = 0;
                 int rank = 2;
-                playerList.add(new Player(i+1, trailer, 0,credits,0,10, colors.get(i), rank));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), rank));
             }else{
-                playerList.add(new Player(i+1, trailer, 0,0,0,5, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,0,0, colors.get(i), 1));
             }
 
         }
