@@ -128,10 +128,10 @@ public class BoardView implements MouseListener {
 //        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         List<IPlayer> playerList= model.getPlayers();
-        List<String> diceImages = Arrays.asList("dice_b1.png", "dice_c1.png", "dice_r1.png", "dice_p1.png", "dice_y1.png", "dice_w1.png");
+        //List<String> diceImages = Arrays.asList("dice_b1.png", "dice_c1.png", "dice_r1.png", "dice_p1.png", "dice_y1.png", "dice_w1.png");
 
         for(int i = 0; i< playerList.size();i++){
-            PlayerView pView = new PlayerView(playerList.get(i), diceImages.get(i));
+            PlayerView pView = new PlayerView(playerList.get(i));
             controlPanel.add(pView);
             controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
         }

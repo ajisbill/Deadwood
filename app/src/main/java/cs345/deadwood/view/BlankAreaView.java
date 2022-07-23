@@ -23,8 +23,8 @@ public class BlankAreaView extends JLabel implements MouseListener {
 
     public void areaUpdated(){
         if(model.isOccupied()){
-            //System.out.println("yay");
-            setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/dice_b1.png").getPath()));
+            String dice = model.getPlayer().getDice();
+            setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/" + dice).getPath()));
         }else{
             setIcon(null);
         }
@@ -32,8 +32,8 @@ public class BlankAreaView extends JLabel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        GameLog gameLog = GameLog.getInstance();
-        gameLog.log("Blank Area clicked.");
+//        GameLog gameLog = GameLog.getInstance();
+//        gameLog.log("Blank Area clicked.");
 
     }
 

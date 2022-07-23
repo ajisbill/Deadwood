@@ -13,6 +13,7 @@ public class Player implements IPlayer{
     int score;
     String color;
     int rank;
+    String dice;
     PlayerView playerView;
 
     @Override
@@ -20,7 +21,7 @@ public class Player implements IPlayer{
         this.playerView = playerView;
     }
 
-    public Player(int number, ISet location, int money, int credits, int practiceChips, int score){
+    public Player(int number, ISet location, int money, int credits, int practiceChips, int score, String color, int rank){
         this.number = number;
         this.location = location;
         takeBlankArea();
@@ -28,6 +29,32 @@ public class Player implements IPlayer{
         this.credits = credits;
         this.practiceChips = practiceChips;
         this.score = score;
+        this.color = color;
+        this.rank = rank;
+        setDice();
+    }
+
+    public void setColor(String Color){
+        this.color = color;
+    }
+
+    public void setRank(int rank){
+        this.rank = rank;
+    }
+
+    public int getRank(){
+        return this.rank;
+    }
+
+    public void setDice() {
+        this.dice = "dice_" + this.color + this.rank + ".png";
+        if(playerView != null){
+            notifyObserver();
+        }
+    }
+
+    public String getDice(){
+        return this.dice;
     }
 
     public void takeBlankArea(){

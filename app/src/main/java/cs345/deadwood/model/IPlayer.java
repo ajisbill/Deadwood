@@ -17,6 +17,9 @@ public interface IPlayer {
     public void setMoney(int money);
     public void setCredits(int Credits);
     public void setPracticeChips(int practiceChips);
+    public String getDice();
+    public int getRank();
+    public void setRank(int rank);
 
 
 }

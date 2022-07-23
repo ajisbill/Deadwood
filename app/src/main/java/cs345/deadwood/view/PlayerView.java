@@ -15,12 +15,14 @@ public class PlayerView extends JPanel {
     private int credits;
     private int practiceChips;
     private int score;
+    private String dice;
+    private int rank;
     private JLabel playerDice;
     private JLabel playerString;
 
     //todo: active player has yellow highlight
 
-    public PlayerView(IPlayer player, String dice){
+    public PlayerView(IPlayer player){
         this.player = player;
         player.registerObservers(this);
         this.number = player.getNumber();
@@ -29,9 +31,9 @@ public class PlayerView extends JPanel {
         this.credits = player.getCredits();
         this.practiceChips = player.getPracticeChips();
         this.score = player.getScore();
+        this.dice = player.getDice();
 
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-
         JLabel playerDice= new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/" + dice).getPath())); //todo: different dice colors for diff players
         this.playerDice = playerDice;
         this.add(playerDice);

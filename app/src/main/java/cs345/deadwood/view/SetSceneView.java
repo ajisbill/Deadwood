@@ -80,10 +80,10 @@ public class SetSceneView implements MouseListener {
 
         // sample code showing how to place player dice on a role
         // Role 1 is Crusty Prospector
-        role1 = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/dice_b1.png").getPath()));
-        role1.setLocation(114, 227); // x,y values from board.xml, set name "Train Station", part Crusty Prospector
-        role1.setSize(46, 46); // height and width from board.xml, set name "Train Station", part Crusty Prospector
-        board.add(role1);
+//        role1 = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/dice_b1.png").getPath()));
+//        role1.setLocation(114, 227); // x,y values from board.xml, set name "Train Station", part Crusty Prospector
+//        role1.setSize(46, 46); // height and width from board.xml, set name "Train Station", part Crusty Prospector
+//        board.add(role1);
 
         // sample code showing how to place the shot icon on a take
 //        shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
