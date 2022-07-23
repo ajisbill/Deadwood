@@ -20,6 +20,8 @@ public interface IPlayer {
     public String getDice();
     public int getRank();
     public void setRank(int rank);
+    public boolean isActive();
+    public void setActive(boolean isActive);
 
 
 }

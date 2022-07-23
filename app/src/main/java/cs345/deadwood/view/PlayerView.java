@@ -5,6 +5,7 @@ import cs345.deadwood.model.ISet;
 import cs345.deadwood.model.Player;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PlayerView extends JPanel {
 
@@ -17,6 +18,7 @@ public class PlayerView extends JPanel {
     private int score;
     private String dice;
     private int rank;
+    private boolean isActive;
     private JLabel playerDice;
     private JLabel playerString;
 
@@ -32,6 +34,7 @@ public class PlayerView extends JPanel {
         this.practiceChips = player.getPracticeChips();
         this.score = player.getScore();
         this.dice = player.getDice();
+        this.isActive = player.isActive();
 
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
         JLabel playerDice= new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/" + dice).getPath())); //todo: different dice colors for diff players
@@ -40,6 +43,11 @@ public class PlayerView extends JPanel {
 
         JLabel playerString = new JLabel("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
         this.playerString = playerString;
+        if(isActive){
+            this.setBackground(Color.YELLOW);
+        }else{
+            this.setBackground(null);
+        }
         this.add(playerString);
     }
 
@@ -50,6 +58,12 @@ public class PlayerView extends JPanel {
         this.credits = player.getCredits();
         this.practiceChips = player.getPracticeChips();
         this.score = player.getScore();
+        this.isActive = player.isActive();
+        if(isActive){
+            this.setBackground(Color.YELLOW);
+        }else{
+            this.setBackground(null);
+        }
         this.playerString.setText("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
     }
 

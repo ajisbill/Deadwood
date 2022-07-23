@@ -15,13 +15,14 @@ public class Player implements IPlayer{
     int rank;
     String dice;
     PlayerView playerView;
+    private boolean isActive;
 
     @Override
     public void registerObservers(PlayerView playerView) {
         this.playerView = playerView;
     }
 
-    public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank){
+    public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
         this.number = number;
         this.location = location;
         takeBlankArea();
@@ -30,6 +31,7 @@ public class Player implements IPlayer{
         this.practiceChips = practiceChips;
         this.rank = rank;
         this.color = color;
+        this.isActive = isActive;
         setScore();
         setDice();
     }
@@ -119,10 +121,19 @@ public class Player implements IPlayer{
     }
 
     public void setScore() {
-        this.score = 5*this.rank + this.credits + this.money;
-        if(playerView != null){
+        this.score = 5 * this.rank + this.credits + this.money;
+        if (playerView != null) {
             notifyObserver();
         }
-
     }
+
+    public boolean isActive(){
+        return this.isActive;
+    }
+
+    public void setActive(boolean isActive){
+        this.isActive = isActive;
+    }
+
+
 }

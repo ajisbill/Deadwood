@@ -48,19 +48,25 @@ public class Deadwood {
         }
         List<String> colors = Arrays.asList("b", "c", "g", "o", "p", "r", "v", "y");
         List<IPlayer> playerList = new ArrayList<>();
+        boolean isActive = false;
         for(int i = 0; i < numberOfPlayers; i++){
+            if(i == 0){
+                isActive = true;
+            }else{
+                isActive = false;
+            }
             if(numberOfPlayers == 5){
                 int credits = 2;
-                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1, isActive));
             }else if(numberOfPlayers == 6){
                 int credits = 4;
-                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), 1, isActive));
             }else if (numberOfPlayers >= 7){
                 int credits = 0;
                 int rank = 2;
-                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), rank));
+                playerList.add(new Player(i+1, trailer, 0,credits,0, colors.get(i), rank, isActive));
             }else{
-                playerList.add(new Player(i+1, trailer, 0,0,0, colors.get(i), 1));
+                playerList.add(new Player(i+1, trailer, 0,0,0, colors.get(i), 1, isActive));
             }
 
         }
