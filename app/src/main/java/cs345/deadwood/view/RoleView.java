@@ -1,5 +1,6 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.IRole;
 
 import javax.swing.*;
@@ -8,9 +9,12 @@ import java.awt.event.MouseListener;
 
 public class RoleView extends JLabel implements MouseListener {
     private final IRole model;
+    private final GameController controller;
 
-    public RoleView(IRole model) {
+    public RoleView(IRole model, GameController controller) {
         this.model = model;
+        model.registerObservers(this);
+        this.controller = controller;
 
 
         setLocation(model.getArea().getX(), model.getArea().getY());
@@ -18,10 +22,21 @@ public class RoleView extends JLabel implements MouseListener {
         addMouseListener(this);
     }
 
+    public void modelUpdated(){
+        if(model.isOccupied()){
+            String dice = model.getPlayer().getDice();
+            setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/" + dice).getPath()));
+        }else{
+            setIcon(null);
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         GameLog gameLog = GameLog.getInstance();
         gameLog.log("Role " + model.getName() + " clicked.");
+        controller.clicked(model);
+
     }
 
     @Override

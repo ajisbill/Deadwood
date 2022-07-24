@@ -1,16 +1,44 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.RoleView;
+
 public class Role implements IRole {
 
     String name, line;
     int level;
     Area area;
+    private RoleView view;
+    private boolean isOccupied = false;
+    private Player player;
 
     public Role(String name, int level, String line, Area area){
         this.name = name;
         this.level = level;
         this.line = line;
         this.area = area;
+    }
+
+    public void registerObservers(RoleView view){
+        this.view = view;
+    }
+
+    public void notifyObservers(){
+        view.modelUpdated();
+    }
+
+    public void setOccupied(boolean isOccupied, Player player){
+        this.isOccupied = isOccupied;
+        this.player = player;
+        notifyObservers();
+    }
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    @Override
+    public Player getPlayer() {
+        return player;
     }
 
     @Override

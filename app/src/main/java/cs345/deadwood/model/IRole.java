@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.RoleView;
+
 public interface IRole {
 
     /**
@@ -21,4 +23,9 @@ public interface IRole {
      * @return Area of the role
      */
     IArea getArea();
+
+    void registerObservers(RoleView view);
+    public void setOccupied(boolean isOccupied, Player player);
+    public boolean isOccupied();
+    public Player getPlayer();
 }

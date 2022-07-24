@@ -58,7 +58,7 @@ public class SetSceneView implements MouseListener {
         cardPanel.add(cardLabel);
 
         for (IRole role : setScene.getRoles()) {
-            RoleView rView = new RoleView(role);
+            RoleView rView = new RoleView(role, controller);
             board.add(rView);
         }
 

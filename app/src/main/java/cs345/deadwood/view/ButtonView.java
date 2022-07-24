@@ -9,6 +9,8 @@ import java.awt.event.MouseListener;
 
 public class ButtonView extends JButton implements MouseListener {
 
+
+
     private String label;
     private Button buttonModel;
     private GameController controller;
@@ -22,9 +24,12 @@ public class ButtonView extends JButton implements MouseListener {
         buttonModel.registerObservers(this);
     }
 
+
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(this.label + " button clicked");
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.log(label + " button" + " clicked.");
         controller.clicked(this.buttonModel);
     }
 

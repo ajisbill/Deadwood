@@ -4,6 +4,8 @@ import cs345.deadwood.view.ButtonView;
 
 public class Button {
 
+
+
     private String label;
     private ButtonView buttonView;
 
@@ -13,5 +15,8 @@ public class Button {
 
     public void registerObservers(ButtonView buttonView){
         this.buttonView = buttonView;
+    }
+    public String getLabel() {
+        return label;
     }
 }

@@ -18,12 +18,17 @@ public class GameController implements IController {
 
     @Override
     public void clicked(IRole role) {
-        // TODO: Implement
+        //if Take Role button clicked, draw player dice on role and set player role
+        if(activePlayer.canTakeRole()){
+            activePlayer.takeRole(role);
+            activePlayer.setCanTakeRole(false);
+        }
     }
 
     @Override
     public void clicked(ISet set) {
-        if(activePlayer.canMove()){
+        //if move button clicked and player not working, allow them to move to set clicked on
+        if(activePlayer.canMove() && !activePlayer.isWorkingOffCard() && !activePlayer.isWorkingOffCard()){
             activePlayer.move(set);
             activePlayer.setCanMove(false);
         }
@@ -32,7 +37,11 @@ public class GameController implements IController {
     @Override
     public void clicked(Button button) {
         //move player to the next location that is clicked
-        activePlayer.setCanMove(true);
+        if(button.getLabel().equals("Move")){
+            activePlayer.setCanMove(true);
+        }else if(button.getLabel().equals("Take Role")){
+            activePlayer.setCanTakeRole(true);
+        }
     }
 
 }

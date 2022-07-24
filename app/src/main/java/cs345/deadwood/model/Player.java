@@ -18,7 +18,54 @@ public class Player{
     PlayerView playerView;
     private boolean isActive;
     private boolean canMove;
-    private Role role;
+
+    private boolean canTakeRole;
+
+    private IRole role;
+
+    private boolean workingOnCard = false;
+    private boolean workingOffCard = false;
+    public IRole getRole() {
+        return role;
+    }
+
+    public void setRole(IRole role) {
+        this.role = role;
+    }
+
+    public void takeRole(IRole role){
+        if(this.role != null){
+            this.role.setOccupied(false, null);
+        }
+        this.setRole(role);
+        role.setOccupied(true, this);
+    }
+
+    public boolean canTakeRole() {
+        return canTakeRole;
+    }
+
+    public void setCanTakeRole(boolean canTakeRole) {
+        this.canTakeRole = canTakeRole;
+    }
+
+    public boolean isWorkingOnCard() {
+        return workingOnCard;
+    }
+
+    public void setWorkingOnCard(boolean workingOnCard) {
+        this.workingOnCard = workingOnCard;
+    }
+
+    public boolean isWorkingOffCard() {
+        return workingOffCard;
+    }
+
+    public void setWorkingOffCard(boolean workingOffCard) {
+        this.workingOffCard = workingOffCard;
+    }
+
+
 
 
     public void registerObservers(PlayerView playerView) {
