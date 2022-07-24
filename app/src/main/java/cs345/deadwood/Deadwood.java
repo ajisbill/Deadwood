@@ -47,7 +47,7 @@ public class Deadwood {
             }
         }
         List<String> colors = Arrays.asList("b", "c", "g", "o", "p", "r", "v", "y");
-        List<IPlayer> playerList = new ArrayList<>();
+        List<Player> playerList = new ArrayList<>();
         boolean isActive = false;
         for(int i = 0; i < numberOfPlayers; i++){
             if(i == 0){

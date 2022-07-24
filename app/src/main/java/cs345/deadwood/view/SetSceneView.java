@@ -20,10 +20,12 @@ public class SetSceneView implements MouseListener {
     private JLabel shotIcon;
     private JPanel cardPanel;
     private JLabel cardLabel;
+    private GameController controller;
 
-    public SetSceneView(JFrame parentContainer, ISetScene aSet) {
+    public SetSceneView(JFrame parentContainer, ISetScene aSet, GameController controller) {
         board = parentContainer;
         this.setScene = aSet;
+        this.controller = controller;
     }
 
     public void drawSet() {
@@ -97,6 +99,7 @@ public class SetSceneView implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         GameLog gameLog = GameLog.getInstance();
         gameLog.log("Set " + setScene.getName() + " clicked.");
+        controller.clicked(this.setScene);
     }
 
     @Override

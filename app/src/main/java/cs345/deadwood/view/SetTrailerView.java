@@ -1,5 +1,6 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.BlankArea;
 import cs345.deadwood.model.IArea;
 import cs345.deadwood.model.ISet;
@@ -13,10 +14,12 @@ public class SetTrailerView implements MouseListener {
     private final JFrame board;
     private ISet trailerSet;
     private JPanel cardPanel;
+    private GameController controller;
 
-    public SetTrailerView(JFrame parentContainer, ISet tSet) {
+    public SetTrailerView(JFrame parentContainer, ISet tSet, GameController controller) {
         board = parentContainer;
         trailerSet = tSet;
+        this.controller = controller;
 
     }
 
@@ -45,6 +48,7 @@ public class SetTrailerView implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         GameLog gameLog = GameLog.getInstance();
         gameLog.log("Set " + trailerSet.getName() + " clicked.");
+        controller.clicked(this.trailerSet);
     }
 
     @Override

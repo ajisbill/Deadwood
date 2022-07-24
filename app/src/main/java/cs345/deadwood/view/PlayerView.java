@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class PlayerView extends JPanel {
 
-    private final IPlayer player;
+    private final Player player;
     private int number;
     private ISet location;
     private int money;
@@ -24,7 +24,7 @@ public class PlayerView extends JPanel {
 
     //todo: active player has yellow highlight
 
-    public PlayerView(IPlayer player){
+    public PlayerView(Player player){
         this.player = player;
         player.registerObservers(this);
         this.number = player.getNumber();

@@ -4,11 +4,11 @@ import java.util.List;
 
 public class GameEngine {
     private final int numberOfPlayers;
-    private final List<IPlayer> playerList;
+    private final List<Player> playerList;
     private final List<ISet> setList;
     private final List<ICard> cardList;
 
-    public GameEngine(int numberOfPlayers, List<ISet> setList, List<ICard> cardList, List<IPlayer> playerList) {
+    public GameEngine(int numberOfPlayers, List<ISet> setList, List<ICard> cardList, List<Player> playerList) {
         this.numberOfPlayers = numberOfPlayers;
         this.setList = setList;
         this.cardList = cardList;
@@ -24,7 +24,7 @@ public class GameEngine {
         return cardList;
     }
 
-    public List<IPlayer> getPlayers(){
+    public List<Player> getPlayers(){
         return playerList;
     }
 

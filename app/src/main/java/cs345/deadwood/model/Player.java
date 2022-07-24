@@ -2,11 +2,12 @@ package cs345.deadwood.model;
 
 import cs345.deadwood.view.PlayerView;
 
-public class Player implements IPlayer{
+public class Player{
 
 
     int number;
     ISet location;
+    BlankArea blankArea;
     int money;
     int credits;
     int practiceChips;
@@ -16,8 +17,10 @@ public class Player implements IPlayer{
     String dice;
     PlayerView playerView;
     private boolean isActive;
+    private boolean canMove;
+    private Role role;
 
-    @Override
+
     public void registerObservers(PlayerView playerView) {
         this.playerView = playerView;
     }
@@ -34,6 +37,11 @@ public class Player implements IPlayer{
         this.isActive = isActive;
         setScore();
         setDice();
+    }
+
+    public void move(ISet newSet){
+        this.blankArea.setOccupied(null);
+        this.setLocation(newSet);
     }
 
     public void setColor(String Color){
@@ -63,6 +71,7 @@ public class Player implements IPlayer{
         for (BlankArea blank : location.getBlankSpots()){
             if(!(blank.isOccupied())){
                 blank.setOccupied(this);
+                this.blankArea = blank;
                 break;
             }
         }
@@ -86,6 +95,7 @@ public class Player implements IPlayer{
 
     public void setLocation(ISet location) {
         this.location = location;
+        takeBlankArea();
         notifyObserver();
     }
 
@@ -133,6 +143,14 @@ public class Player implements IPlayer{
 
     public void setActive(boolean isActive){
         this.isActive = isActive;
+    }
+
+    public void setCanMove(boolean canMove){
+        this.canMove = canMove;
+    }
+
+    public boolean canMove(){
+        return this.canMove;
     }
 
 

@@ -1,14 +1,19 @@
 package cs345.deadwood.controller;
 
-import cs345.deadwood.model.GameEngine;
-import cs345.deadwood.model.IRole;
-import cs345.deadwood.model.ISet;
+import cs345.deadwood.model.*;
 
 public class GameController implements IController {
     private final GameEngine model;
+    private Player activePlayer;
 
     public GameController(GameEngine model) {
         this.model = model;
+        for(Player player : model.getPlayers()){
+            if(player.isActive()){
+                this.activePlayer = player;
+                break;
+            }
+        }
     }
 
     @Override
@@ -18,12 +23,16 @@ public class GameController implements IController {
 
     @Override
     public void clicked(ISet set) {
-        // TODO: Implement
+        if(activePlayer.canMove()){
+            activePlayer.move(set);
+            activePlayer.setCanMove(false);
+        }
     }
 
     @Override
-    public void clickedMove(String action) {
-        // TODO: Implement
+    public void clicked(Button button) {
+        //move player to the next location that is clicked
+        activePlayer.setCanMove(true);
     }
 
 }

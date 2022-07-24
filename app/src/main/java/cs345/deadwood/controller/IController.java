@@ -1,5 +1,6 @@
 package cs345.deadwood.controller;
 
+import cs345.deadwood.model.Button;
 import cs345.deadwood.model.IRole;
 import cs345.deadwood.model.ISet;
 
@@ -9,5 +10,5 @@ public interface IController {
 
     void clicked(ISet set);
 
-    void clickedMove(String action);
+    void clicked(Button button);
 }

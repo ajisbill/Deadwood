@@ -1,5 +1,6 @@
 package cs345.deadwood.view;
 
+import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.BlankArea;
 import cs345.deadwood.model.IArea;
 import cs345.deadwood.model.ISet;
@@ -13,10 +14,12 @@ public class SetCastingOfficeView implements MouseListener {
     private final JFrame board;
     private ISet officeSet;
     private JPanel cardPanel;
+    private GameController controller;
 
-    public SetCastingOfficeView(JFrame parentContainer, ISet oSet) {
+    public SetCastingOfficeView(JFrame parentContainer, ISet oSet, GameController controller) {
         board = parentContainer;
         officeSet = oSet;
+        this.controller = controller;
     }
 
     public void drawSet(){
@@ -44,6 +47,7 @@ public class SetCastingOfficeView implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         GameLog gameLog = GameLog.getInstance();
         gameLog.log("Set " + officeSet.getName() + " clicked.");
+        controller.clicked(this.officeSet);
     }
 
     @Override

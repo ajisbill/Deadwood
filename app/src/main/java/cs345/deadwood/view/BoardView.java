@@ -2,6 +2,7 @@ package cs345.deadwood.view;
 
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.*;
+import cs345.deadwood.model.Button;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,13 +46,13 @@ public class BoardView implements MouseListener {
         // trainStation.drawSet();
         for (ISet set: model.getSets()) {
             if (set instanceof ISetScene) {
-                SetSceneView setView = new SetSceneView(frame, (ISetScene) set);
+                SetSceneView setView = new SetSceneView(frame, (ISetScene) set, controller);
                 setView.drawSet();
             } else if ("Trailer".equals(set.getName())) {
-                SetTrailerView setView = new SetTrailerView(frame, set);
+                SetTrailerView setView = new SetTrailerView(frame, set, controller);
                 setView.drawSet();
             } else if ("Office".equals(set.getName())) {
-                SetCastingOfficeView setView = new SetCastingOfficeView(frame, set);
+                SetCastingOfficeView setView = new SetCastingOfficeView(frame, set, controller);
                 setView.drawSet();
             } else {
                 throw new RuntimeException("Found unexpected set name");
@@ -127,11 +128,12 @@ public class BoardView implements MouseListener {
 //        controlPanel.add(p2View);
 //        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
-        List<IPlayer> playerList= model.getPlayers();
+        List<Player> playerList= model.getPlayers();
         //List<String> diceImages = Arrays.asList("dice_b1.png", "dice_c1.png", "dice_r1.png", "dice_p1.png", "dice_y1.png", "dice_w1.png");
 
         for(int i = 0; i< playerList.size();i++){
             PlayerView pView = new PlayerView(playerList.get(i));
+            System.out.println("Player" + String.valueOf(i+1) + playerList.get(i).isActive());
             controlPanel.add(pView);
             controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
         }
@@ -185,15 +187,26 @@ public class BoardView implements MouseListener {
     private JPanel getMovePanel() {
         JPanel movePanel = new JPanel();
         movePanel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 200));
-
-        JLabel panelTitle = new JLabel("Move options");
-        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 18));
+        JLabel panelTitle = new JLabel("Move Options");
+        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
         movePanel.add(panelTitle);
 
-        JTextArea comment = new JTextArea("Player interaction space. E.g., Ask what the player wants to do, show valid moves");
-        comment.setLineWrap(true);
-        comment.setPreferredSize(movePanel.getPreferredSize());
-        movePanel.add(comment);
+        JPanel buttonGrid = new JPanel();
+        int x = 2;
+        int y = 3;
+        buttonGrid.setLayout(new GridLayout(x, y));
+        List<String> buttonNames = Arrays.asList("Move", "Take Role", "Act", "Rehearse", "Upgrade", "End Turn");
+        for (int i = 0; i < x * y; i++) {
+            ButtonView buttonView = new ButtonView(new Button(buttonNames.get(i)),buttonNames.get(i), this.controller);
+            buttonView.setPreferredSize(new Dimension(140, 60));
+            movePanel.add(buttonView);
+        }
+        movePanel.add(buttonGrid);
+
+//        JTextArea comment = new JTextArea("Player interaction space. E.g., Ask what the player wants to do, show valid moves");
+//        comment.setLineWrap(true);
+//        comment.setPreferredSize(movePanel.getPreferredSize());
+//        movePanel.add(comment);
 
         return movePanel;
     }
@@ -208,6 +221,8 @@ public class BoardView implements MouseListener {
         JLabel panelTitle = new JLabel("Game Log");
         panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 18));
         panel.add(panelTitle);
+
+
 
         JTextArea comment = new JTextArea("Game setup complete \n");
         gameLogText = comment;
