@@ -18,8 +18,8 @@ public class GameController implements IController {
 
     @Override
     public void clicked(IRole role) {
-        //if Take Role button clicked, draw player dice on role and set player role
-        if(activePlayer.canTakeRole()){
+        //if Take Role button clicked and player rank >= role level, draw player dice on role and set player role
+        if(activePlayer.canTakeRole() && activePlayer.getRank() >= role.getLevel()){
             activePlayer.takeRole(role);
             activePlayer.setCanTakeRole(false);
         }
