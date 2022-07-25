@@ -25,10 +25,10 @@ public class RoleView extends JLabel implements MouseListener {
     public void modelUpdated(){
         if(model.isOccupied()){
             String dice = model.getPlayer().getDice();
-            System.out.println("here");
+            System.out.println("Dice icon added to roll");
             setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/" + dice).getPath()));
         }else{
-            System.out.println("is here");
+            System.out.println("Dice icon removed from roll");
             setIcon(null);
         }
     }

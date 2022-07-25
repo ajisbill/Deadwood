@@ -22,6 +22,7 @@ public class SetSceneView implements MouseListener {
     private GameController controller;
     private GameEngine model;
     private List<ICard> cards;
+    private ICard randCard;
     private int x;
     private int y;
     private int h;
@@ -58,10 +59,20 @@ public class SetSceneView implements MouseListener {
 
 //        cardPanel.addMouseListener(this); // uncomment this to list to clicks on this set
         cardLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/cardback.png").getPath()));
+        Random rand = new Random();
+        int randInt = rand.nextInt(cards.size());
+        randCard = cards.get(randInt);
+        cards.remove(randInt);
+        for(IRole role : randCard.getRoles()){
+            role.setOnCard(true);
+            RoleView rView = new RoleView(role, controller);
+            cardPanel.add(rView);
+        }
+
         //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
         cardLabel.setLocation(0, 0);
         cardLabel.setSize(w, h); // height and width from board.xml
-        cardPanel.add(cardLabel,0);
+        cardPanel.add(cardLabel);
 
 
 
@@ -105,18 +116,8 @@ public class SetSceneView implements MouseListener {
 
     public void modelUpdated(){
         if(setScene.isEntered() == true){
-            Random rand = new Random();
-            int randInt = rand.nextInt(cards.size());
-            ICard randCard = cards.get(randInt);
-            cards.remove(randInt);
             setScene.setSceneCard(randCard);
-
             cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ randCard.getImageName()).getPath()));
-            for(IRole role : randCard.getRoles()){
-                role.setOnCard(true);
-                RoleView rView = new RoleView(role, controller);
-                cardPanel.add(rView);
-            }
         }
     }
 
