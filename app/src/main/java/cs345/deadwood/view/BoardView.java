@@ -46,7 +46,7 @@ public class BoardView implements MouseListener {
         // trainStation.drawSet();
         for (ISet set: model.getSets()) {
             if (set instanceof ISetScene) {
-                SetSceneView setView = new SetSceneView(frame, (ISetScene) set, controller);
+                SetSceneView setView = new SetSceneView(frame, (ISetScene) set, controller, model);
                 setView.drawSet();
             } else if ("Trailer".equals(set.getName())) {
                 SetTrailerView setView = new SetTrailerView(frame, set, controller);
@@ -133,7 +133,7 @@ public class BoardView implements MouseListener {
 
         for(int i = 0; i< playerList.size();i++){
             PlayerView pView = new PlayerView(playerList.get(i));
-            System.out.println("Player" + String.valueOf(i+1) + playerList.get(i).isActive());
+            //System.out.println("Player" + String.valueOf(i+1) + playerList.get(i).isActive());
             controlPanel.add(pView);
             controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
         }

@@ -11,11 +11,21 @@ public class Role implements IRole {
     private boolean isOccupied = false;
     private Player player;
 
+    private boolean onCard = false;
+
     public Role(String name, int level, String line, Area area){
         this.name = name;
         this.level = level;
         this.line = line;
         this.area = area;
+    }
+
+    public boolean isOnCard() {
+        return onCard;
+    }
+
+    public void setOnCard(boolean onCard) {
+        this.onCard = onCard;
     }
 
     public void registerObservers(RoleView view){

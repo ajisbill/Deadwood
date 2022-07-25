@@ -37,6 +37,7 @@ public class Player{
         if(this.role != null){
             this.role.setOccupied(false, null);
         }
+        this.blankArea.setOccupied(null);
         this.setRole(role);
         role.setOccupied(true, this);
     }
@@ -87,6 +88,9 @@ public class Player{
     }
 
     public void move(ISet newSet){
+        if(this.role != null){
+            this.role.setOccupied(false, null);
+        }
         this.blankArea.setOccupied(null);
         this.setLocation(newSet);
     }

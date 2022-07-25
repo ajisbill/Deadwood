@@ -28,4 +28,6 @@ public interface IRole {
     public void setOccupied(boolean isOccupied, Player player);
     public boolean isOccupied();
     public Player getPlayer();
+    public boolean isOnCard();
+    public void setOnCard(boolean onCard);
 }

@@ -16,9 +16,9 @@ public class RoleView extends JLabel implements MouseListener {
         model.registerObservers(this);
         this.controller = controller;
 
-
         setLocation(model.getArea().getX(), model.getArea().getY());
         setSize(model.getArea().getW(), model.getArea().getH());
+
         addMouseListener(this);
     }
 

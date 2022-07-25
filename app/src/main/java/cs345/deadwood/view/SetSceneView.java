@@ -2,14 +2,13 @@ package cs345.deadwood.view;
 
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.controller.IController;
-import cs345.deadwood.model.BlankArea;
-import cs345.deadwood.model.IArea;
-import cs345.deadwood.model.IRole;
-import cs345.deadwood.model.ISetScene;
+import cs345.deadwood.model.*;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
+import java.util.Random;
 
 public class SetSceneView implements MouseListener {
 
@@ -21,11 +20,13 @@ public class SetSceneView implements MouseListener {
     private JPanel cardPanel;
     private JLabel cardLabel;
     private GameController controller;
+    private GameEngine model;
 
-    public SetSceneView(JFrame parentContainer, ISetScene aSet, GameController controller) {
+    public SetSceneView(JFrame parentContainer, ISetScene aSet, GameController controller, GameEngine model) {
         board = parentContainer;
         this.setScene = aSet;
         this.controller = controller;
+        this.model = model;
     }
 
     public void drawSet() {
@@ -50,12 +51,19 @@ public class SetSceneView implements MouseListener {
 //        cardPanel.addMouseListener(this); // uncomment this to list to clicks on this set
 
 
-        cardLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/cardback.png").getPath()));
+        List<ICard> cards = model.getCards();
+        Random rand = new Random();
+        int randInt = rand.nextInt(cards.size());
+        ICard randCard = cards.get(randInt);
+        cards.remove(randInt);
 
+        CardView cardView = new CardView(randCard, controller, board, cardPanel);
         //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
-        cardLabel.setLocation(0, 0);
-        cardLabel.setSize(w, h); // height and width from board.xml
-        cardPanel.add(cardLabel);
+        cardView.setLocation(0, 0);
+        cardView.setSize(w, h); // height and width from board.xml
+        cardPanel.add(cardView);
+
+
 
         for (IRole role : setScene.getRoles()) {
             RoleView rView = new RoleView(role, controller);
