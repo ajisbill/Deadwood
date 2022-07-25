@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.SetSceneView;
+
 import java.util.List;
 
 /**
@@ -21,5 +23,10 @@ public interface ISetScene extends ISet {
      * @return Return the scene card for this set or null if no card has been assigned yet.
      */
     ICard getSceneCard();
+
+    void registerObservers(SetSceneView setSceneView);
+
+    public void setSceneCard(ICard card);
+    public void notifyObservers();
 
 }

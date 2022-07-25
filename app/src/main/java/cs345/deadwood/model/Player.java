@@ -91,6 +91,9 @@ public class Player{
         if(this.role != null){
             this.role.setOccupied(false, null);
         }
+        if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
+            newSet.setIsEntered(true);
+        }
         this.blankArea.setOccupied(null);
         this.setLocation(newSet);
     }

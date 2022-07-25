@@ -21,12 +21,20 @@ public class SetSceneView implements MouseListener {
     private JLabel cardLabel;
     private GameController controller;
     private GameEngine model;
+    private List<ICard> cards;
+    private int x;
+    private int y;
+    private int h;
+    private int w;
+
 
     public SetSceneView(JFrame parentContainer, ISetScene aSet, GameController controller, GameEngine model) {
         board = parentContainer;
         this.setScene = aSet;
+        setScene.registerObservers(this);
         this.controller = controller;
         this.model = model;
+        this.cards = model.getCards();
     }
 
     public void drawSet() {
@@ -35,10 +43,10 @@ public class SetSceneView implements MouseListener {
          * Create a JPanel to render things on the card.
          */
 
-        int x = this.setScene.getArea().getX();
-        int y = this.setScene.getArea().getY();
-        int h = this.setScene.getArea().getH();
-        int w = this.setScene.getArea().getW();
+        x = this.setScene.getArea().getX();
+        y = this.setScene.getArea().getY();
+        h = this.setScene.getArea().getH();
+        w = this.setScene.getArea().getW();
 
         cardPanel = new JPanel();
         cardPanel.setLocation(x,y);
@@ -49,19 +57,11 @@ public class SetSceneView implements MouseListener {
         board.add(cardPanel);
 
 //        cardPanel.addMouseListener(this); // uncomment this to list to clicks on this set
-
-
-        List<ICard> cards = model.getCards();
-        Random rand = new Random();
-        int randInt = rand.nextInt(cards.size());
-        ICard randCard = cards.get(randInt);
-        cards.remove(randInt);
-
-        CardView cardView = new CardView(randCard, controller, board, cardPanel);
+        cardLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/cardback.png").getPath()));
         //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
-        cardView.setLocation(0, 0);
-        cardView.setSize(w, h); // height and width from board.xml
-        cardPanel.add(cardView);
+        cardLabel.setLocation(0, 0);
+        cardLabel.setSize(w, h); // height and width from board.xml
+        cardPanel.add(cardLabel,0);
 
 
 
@@ -101,6 +101,23 @@ public class SetSceneView implements MouseListener {
 //        shotIcon.setSize(47, 47); // height and width from board.xml, set name "Train Station", take 1
 //        board.add(shotIcon);
 
+    }
+
+    public void modelUpdated(){
+        if(setScene.isEntered() == true){
+            System.out.println("made it");
+            Random rand = new Random();
+            int randInt = rand.nextInt(cards.size());
+            ICard randCard = cards.get(randInt);
+            cards.remove(randInt);
+            setScene.setSceneCard(randCard);
+
+            CardView cardView = new CardView(randCard, controller, board, cardPanel);
+            //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
+            cardView.setLocation(0, 0);
+            cardView.setSize(w, h); // height and width from board.xml
+            cardPanel.add(cardView,1);
+        }
     }
 
     @Override

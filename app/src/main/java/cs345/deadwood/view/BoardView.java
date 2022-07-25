@@ -82,7 +82,7 @@ public class BoardView implements MouseListener {
     public void logUpdated(){
         String message = gameLog.getMessage();
         System.out.println(message);
-        gameLogText.append(message + "\n");
+        gameLogText.setText(message + "\n" + gameLogText.getText());
     }
 
     private JPanel createControlPanel() {

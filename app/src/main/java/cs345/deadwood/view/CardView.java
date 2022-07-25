@@ -7,7 +7,7 @@ import cs345.deadwood.model.IRole;
 
 import javax.swing.*;
 
-public class CardView  extends JLabel {
+public class CardView extends JLabel {
 
     private ICard card;
     private GameController controller;
@@ -26,6 +26,8 @@ public class CardView  extends JLabel {
             RoleView rView = new RoleView(role, controller);
             cardPanel.add(rView);
         }
+
+
     }
 
 }

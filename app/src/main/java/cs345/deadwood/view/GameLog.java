@@ -6,7 +6,6 @@ public class GameLog implements IGameLog {
 
     private static GameLog uniqueInstance = new GameLog();
     private String message;
-
     private BoardView board;
     private GameLog() {
     }

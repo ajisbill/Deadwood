@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.SetSceneView;
+
 import java.util.List;
 
 public class Set implements ISet{
@@ -10,6 +12,10 @@ public class Set implements ISet{
     List<IArea> blankAreas;
     List<String> neighborStrings;
     List<BlankArea> blankSpots;
+    private ICard sceneCard;
+    private boolean isEntered = false;
+    private SetSceneView setSceneView;
+
 
 
     public Set(String name, List<ISet> neighbors, IArea area, List<IArea> blankAreas, List<String> neighborStrings){
@@ -18,6 +24,26 @@ public class Set implements ISet{
         this.area = area;
         this.blankAreas = blankAreas;
         this.neighborStrings = neighborStrings;
+    }
+    public void registerObservers(SetSceneView setSceneView){
+        this.setSceneView = setSceneView;
+    }
+    public void notifyObservers(){
+        setSceneView.modelUpdated();
+    }
+    public ICard getSceneCard() {
+        return this.sceneCard;
+    }
+
+    public void setSceneCard(ICard card){
+        this.sceneCard = card;
+    }
+    public boolean isEntered(){
+        return this.isEntered;
+    }
+    public void setIsEntered(boolean isEntered){
+        this.isEntered = isEntered;
+        notifyObservers();
     }
 
     // function to view parsed info from board.xml

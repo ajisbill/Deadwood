@@ -31,7 +31,10 @@ public interface ISet {
     List<String> getNeighborStrings();
 
     void setNeighbors(List<ISet> neighbors);
-
+    public ICard getSceneCard();
+    void setSceneCard(ICard card);
     void setBlankSpots(List<BlankArea> blanks);
     List<BlankArea> getBlankSpots();
+    public boolean isEntered();
+    public void setIsEntered(boolean isEntered);
 }
