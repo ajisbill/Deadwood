@@ -33,6 +33,14 @@ public class Player{
         this.role = role;
     }
 
+    public boolean canTakeRole() {
+        return canTakeRole;
+    }
+
+    public void setCanTakeRole(boolean canTakeRole) {
+        this.canTakeRole = canTakeRole;
+    }
+
     public void takeRole(IRole role){
         if(this.role != null){
             this.role.setOccupied(false, null);
@@ -40,14 +48,6 @@ public class Player{
         this.blankArea.setOccupied(null);
         this.setRole(role);
         role.setOccupied(true, this);
-    }
-
-    public boolean canTakeRole() {
-        return canTakeRole;
-    }
-
-    public void setCanTakeRole(boolean canTakeRole) {
-        this.canTakeRole = canTakeRole;
     }
 
     public boolean isWorkingOnCard() {

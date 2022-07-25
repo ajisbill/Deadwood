@@ -21,11 +21,7 @@ public class CardView extends JLabel {
         this.cardPanel = cardPanel;
         setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ card.getImageName()).getPath()));
 
-        for(IRole role : card.getRoles()){
-            role.setOnCard(true);
-            RoleView rView = new RoleView(role, controller);
-            cardPanel.add(rView);
-        }
+
 
 
     }

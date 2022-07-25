@@ -105,18 +105,18 @@ public class SetSceneView implements MouseListener {
 
     public void modelUpdated(){
         if(setScene.isEntered() == true){
-            System.out.println("made it");
             Random rand = new Random();
             int randInt = rand.nextInt(cards.size());
             ICard randCard = cards.get(randInt);
             cards.remove(randInt);
             setScene.setSceneCard(randCard);
 
-            CardView cardView = new CardView(randCard, controller, board, cardPanel);
-            //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
-            cardView.setLocation(0, 0);
-            cardView.setSize(w, h); // height and width from board.xml
-            cardPanel.add(cardView,1);
+            cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ randCard.getImageName()).getPath()));
+            for(IRole role : randCard.getRoles()){
+                role.setOnCard(true);
+                RoleView rView = new RoleView(role, controller);
+                cardPanel.add(rView);
+            }
         }
     }
 
