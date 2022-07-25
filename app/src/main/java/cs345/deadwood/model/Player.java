@@ -1,6 +1,10 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.GameLog;
 import cs345.deadwood.view.PlayerView;
+
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Player{
 
@@ -50,6 +54,44 @@ public class Player{
         role.setOccupied(true, this);
     }
 
+    public void move(ISet newSet){
+        if(this.role != null){
+            this.role.setOccupied(false, null);
+        }
+        if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
+            newSet.setIsEntered(true);
+        }
+        this.blankArea.setOccupied(null);
+        this.setLocation(newSet);
+    }
+
+    public void act(){
+        Random rand = new Random();
+        int randNum = ThreadLocalRandom.current().nextInt(1,7);
+        GameLog gameLog = GameLog.getInstance();
+        gameLog.log("Player" + number + " rolled a " + randNum +".");
+        //success
+        if(randNum >= location.getSceneCard().getBudget()){
+            gameLog.log("Acting is successful!");
+            if(role.isOnCard()){
+                gameLog.log("Player" + number + " receives 2 credits.");
+                setCredits(credits + 2);
+            }else{
+                gameLog.log("Player" + number + " receives 1 credit and 1 dollar.");
+                setCredits(credits + 1);
+                setMoney(money +1 );
+            }
+        }else{
+            gameLog.log("Acting is unsuccessful!");
+            if(role.isOnCard()){
+                gameLog.log("Player" + number + " receives nothing.");
+            }else {
+                gameLog.log("Player" + number + " receives 1 dollar.");
+                setMoney(money + 1);
+            }
+        }
+    }
+
     public boolean isWorkingOnCard() {
         return workingOnCard;
     }
@@ -85,17 +127,6 @@ public class Player{
         this.isActive = isActive;
         setScore();
         setDice();
-    }
-
-    public void move(ISet newSet){
-        if(this.role != null){
-            this.role.setOccupied(false, null);
-        }
-        if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
-            newSet.setIsEntered(true);
-        }
-        this.blankArea.setOccupied(null);
-        this.setLocation(newSet);
     }
 
     public void setColor(String Color){

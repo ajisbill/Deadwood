@@ -41,6 +41,8 @@ public class GameController implements IController {
             activePlayer.setCanMove(true);
         }else if(button.getLabel().equals("Take Role")){
             activePlayer.setCanTakeRole(true);
+        }else if(button.getLabel().equals("Act")){
+            activePlayer.act();
         }
     }
 
