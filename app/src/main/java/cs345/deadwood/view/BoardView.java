@@ -134,6 +134,7 @@ public class BoardView implements MouseListener {
         //List<String> diceImages = Arrays.asList("dice_b1.png", "dice_c1.png", "dice_r1.png", "dice_p1.png", "dice_y1.png", "dice_w1.png");
 
         for(int i = 0; i< playerList.size();i++){
+            playerList.get(i).setModel(model);
             PlayerView pView = new PlayerView(playerList.get(i));
             //System.out.println("Player" + String.valueOf(i+1) + playerList.get(i).isActive());
             controlPanel.add(pView);

@@ -3,6 +3,9 @@ package cs345.deadwood.model;
 import cs345.deadwood.view.GameLog;
 import cs345.deadwood.view.PlayerView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -30,6 +33,11 @@ public class Player{
     //remove redundant attributes
     private boolean workingOnCard = false;
     private boolean workingOffCard = false;
+    private GameEngine model;
+
+    public void setModel(GameEngine model){
+        this.model = model;
+    }
     public IRole getRole() {
         return role;
     }
@@ -101,6 +109,18 @@ public class Player{
                 setMoney(money + 1);
             }
         }
+    }
+
+    public void wrapScene(){
+        List<Integer> diceVals = new ArrayList<>();
+        int randNum =0;
+        for (int i = 1; i <= 6; i++){
+            randNum = ThreadLocalRandom.current().nextInt(1,7);
+            diceVals.add(randNum);
+        }
+        Collections.sort(diceVals);
+
+
     }
 
     public boolean isWorkingOnCard() {
