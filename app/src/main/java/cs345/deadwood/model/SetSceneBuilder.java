@@ -9,7 +9,7 @@ public class SetSceneBuilder {
     private List<IArea> blankAreas;
     private List<String> neighborStrings;
     private List<ISet> neighbors;
-    private List<IArea> takeAreas;
+    private List<TakeArea> takeAreas;
     private List<IRole> roleList;
     private ICard sceneCard;
 
@@ -43,7 +43,7 @@ public class SetSceneBuilder {
         return this;
     }
 
-    public SetSceneBuilder setTakeAreas(List<IArea> takeAreas){
+    public SetSceneBuilder setTakeAreas(List<TakeArea> takeAreas){
         this.takeAreas = takeAreas;
         return this;
     }

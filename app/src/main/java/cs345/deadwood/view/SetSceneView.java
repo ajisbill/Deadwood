@@ -49,6 +49,12 @@ public class SetSceneView implements MouseListener {
         h = this.setScene.getArea().getH();
         w = this.setScene.getArea().getW();
 
+        for (BlankArea blank : setScene.getBlankSpots()){
+            BlankAreaView blankAreaView = new BlankAreaView(blank);
+            board.add(blankAreaView);
+            blank.notifyView();
+        }
+
         cardPanel = new JPanel();
         cardPanel.setLocation(x,y);
         cardPanel.setSize(w,h); // height and width from board.xml
@@ -73,22 +79,21 @@ public class SetSceneView implements MouseListener {
             board.add(rView);
         }
 
-        for (IArea area : setScene.getTakes()){
-            shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
-            int x1 = area.getX();
-            int y1 = area.getY();
-            int h1 = area.getH();
-            int w1 = area.getW();
-            shotIcon.setLocation(x1, y1); // x,y values from board.xml, set name "Train Station", take 1
-            shotIcon.setSize(w1, h1); // height and width from board.xml, set name "Train Station", take 1
-            board.add(shotIcon);
+        for (TakeArea takeArea : setScene.getTakes()){
+            TakeAreaView takeAreaView = new TakeAreaView(takeArea);
+//            shotIcon = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
+            int x1 = takeArea.getX();
+            int y1 = takeArea.getY();
+            int h1 = takeArea.getH();
+            int w1 = takeArea.getW();
+//            shotIcon.setLocation(x1, y1); // x,y values from board.xml, set name "Train Station", take 1
+//            shotIcon.setSize(w1, h1); // height and width from board.xml, set name "Train Station", take 1
+            takeAreaView.setLocation(x1,y1);
+            takeAreaView.setSize(w1,h1);
+            board.add(takeAreaView);
         }
 
-        for (BlankArea blank : setScene.getBlankSpots()){
-            BlankAreaView blankAreaView = new BlankAreaView(blank);
-            board.add(blankAreaView);
-            blank.notifyView();
-        }
+
 
 
         // sample code showing how to place player dice on a role
@@ -131,6 +136,7 @@ public class SetSceneView implements MouseListener {
             // add cardLabel with icon
 
         }
+
     }
 
     @Override

@@ -12,7 +12,7 @@ public interface ISetScene extends ISet {
     /**
      * @return List of takes for this set.
      */
-    List<IArea> getTakes();
+    List<TakeArea> getTakes();
 
     /**
      * @return List of roles on this set. These would be off-card roles.

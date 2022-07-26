@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SetScene extends Set implements ISetScene{
 
-    List<IArea> takeAreas;
+    List<TakeArea> takeAreas;
 
     List<IRole> roleList;
 
@@ -15,7 +15,7 @@ public class SetScene extends Set implements ISetScene{
 
 
     public SetScene(String name, List<ISet> neighbors, IArea area, List<IArea> blankAreas,
-                    List<IArea> takeAreas, List<IRole> roleList, ICard sceneCard, List<String> neighborStrings) {
+                    List<TakeArea> takeAreas, List<IRole> roleList, ICard sceneCard, List<String> neighborStrings) {
         super(name, neighbors, area, blankAreas, neighborStrings);
         this.takeAreas = takeAreas;
         this.roleList = roleList;
@@ -26,7 +26,7 @@ public class SetScene extends Set implements ISetScene{
 
 
     @Override
-    public List<IArea> getTakes() {
+    public List<TakeArea> getTakes() {
         return this.takeAreas;
     }
 

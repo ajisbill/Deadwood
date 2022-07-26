@@ -37,7 +37,7 @@ public class SetParser extends GameDataParser {
 
             //lists to store set attributes
             List<IArea> blankAreas= new ArrayList<>();
-            List<IArea> takeAreas= new ArrayList<>();
+            List<TakeArea> takeAreas= new ArrayList<>();
             List<String> neighborStrings = new ArrayList<>();
             List<IRole> rolesList = new ArrayList<>();
 
@@ -70,7 +70,11 @@ public class SetParser extends GameDataParser {
                         Node aBlank1 = blankSpaces1.item(l);
                         if("take".equals(aBlank1.getNodeName())){
                             area1 = getArea(aBlank1.getFirstChild());
-                            takeAreas.add(area1);
+                            int x = area1.getX();
+                            int y = area1.getY();
+                            int w = area1.getW();
+                            int h = area1.getH();
+                            takeAreas.add(new TakeArea(x,y,w,h,true));
                         }
                     }
                 }
@@ -194,6 +198,7 @@ public class SetParser extends GameDataParser {
 
         for(ISet set : setsList){
             List<BlankArea> blanks = new ArrayList<>();
+            List<TakeArea> takes = new ArrayList<>();
             for(IArea area3 : set.getBlankAreas()){
                 blanks.add(new BlankArea(null, area3.getX(), area3.getY(), area3.getH(), area3.getW()));
             }

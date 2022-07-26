@@ -12,9 +12,11 @@ public class Set implements ISet{
     List<IArea> blankAreas;
     List<String> neighborStrings;
     List<BlankArea> blankSpots;
+    List<TakeArea> takeAreas;
     private ICard sceneCard;
     private boolean isEntered = false;
     private SetSceneView setSceneView;
+
 
 
 
@@ -111,6 +113,7 @@ public class Set implements ISet{
     public List<IArea> getBlankAreas(){
         return this.blankAreas;
     }
+    public List<TakeArea> getTakes(){ return this.takeAreas;}
 
     @Override
     public List<String> getNeighborStrings() {

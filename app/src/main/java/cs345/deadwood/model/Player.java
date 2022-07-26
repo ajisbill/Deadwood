@@ -77,10 +77,20 @@ public class Player{
             if(role.isOnCard()){
                 gameLog.log("Player" + number + " receives 2 credits.");
                 setCredits(credits + 2);
+                location.getTakes().get(0).setActive(false);
+                location.getTakes().remove(0);
+                if(location.getTakes() == null){
+                    //wrap scene
+                }
             }else{
                 gameLog.log("Player" + number + " receives 1 credit and 1 dollar.");
                 setCredits(credits + 1);
                 setMoney(money +1 );
+                location.getTakes().get(0).setActive(false);
+                location.getTakes().remove(0);
+                if(location.getTakes() == null){
+                    //wrap scene
+                }
             }
         }else{
             gameLog.log("Acting is unsuccessful!");

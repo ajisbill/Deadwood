@@ -37,4 +37,8 @@ public interface ISet {
     List<BlankArea> getBlankSpots();
     public boolean isEntered();
     public void setIsEntered(boolean isEntered);
+
+    public List<TakeArea> getTakes();
+
+
 }
