@@ -7,7 +7,7 @@ import cs345.deadwood.model.Player;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+// remove mouseListener
 public class BlankAreaView extends JLabel implements MouseListener {
     private final BlankArea model;
     private boolean occupied;

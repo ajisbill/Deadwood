@@ -27,6 +27,7 @@ public class Player{
 
     private IRole role;
 
+    //remove redundant attributes
     private boolean workingOnCard = false;
     private boolean workingOffCard = false;
     public IRole getRole() {

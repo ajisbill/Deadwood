@@ -5,6 +5,7 @@ import cs345.deadwood.model.*;
 import cs345.deadwood.model.Button;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -82,7 +83,8 @@ public class BoardView implements MouseListener {
     public void logUpdated(){
         String message = gameLog.getMessage();
         System.out.println(message);
-        gameLogText.setText(message + "\n" + gameLogText.getText());
+        gameLogText.append(message + "\n");
+        //gameLogText.setText(message + "\n" + gameLogText.getText());
     }
 
     private JPanel createControlPanel() {
@@ -224,11 +226,15 @@ public class BoardView implements MouseListener {
 
 
 
-        JTextArea comment = new JTextArea("Game setup complete \n");
-        gameLogText = comment;
-        comment.setLineWrap(true);
-        comment.setPreferredSize(panel.getPreferredSize());
-        panel.add(comment);
+        gameLogText = new JTextArea("Game setup complete \n");
+        gameLogText.setLineWrap(true);
+        //panel.add(gameLogText);
+
+        JScrollPane sp = new JScrollPane(gameLogText);
+        sp.setAutoscrolls(true);
+        sp.setPreferredSize(panel.getPreferredSize());
+
+        panel.add(sp);
         return panel;
     }
 

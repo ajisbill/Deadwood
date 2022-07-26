@@ -22,8 +22,8 @@ public class PlayerView extends JPanel {
     private JLabel playerDice;
     private JLabel playerString;
 
-    //todo: active player has yellow highlight
-
+    // remove necessary attributes
+    // get string from player
     public PlayerView(Player player){
         this.player = player;
         player.registerObservers(this);

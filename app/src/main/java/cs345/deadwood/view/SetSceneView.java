@@ -59,15 +59,7 @@ public class SetSceneView implements MouseListener {
 
 //        cardPanel.addMouseListener(this); // uncomment this to list to clicks on this set
         cardLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("img/cardback.png").getPath()));
-        Random rand = new Random();
-        int randInt = rand.nextInt(cards.size());
-        randCard = cards.get(randInt);
-        cards.remove(randInt);
-        for(IRole role : randCard.getRoles()){
-            role.setOnCard(true);
-            RoleView rView = new RoleView(role, controller);
-            cardPanel.add(rView);
-        }
+
 
         //System.out.println(this.setScene.getName() + ", x: " + x + ", y: " + y + ", h: "+  h + ", w: " + w);
         cardLabel.setLocation(0, 0);
@@ -116,8 +108,28 @@ public class SetSceneView implements MouseListener {
 
     public void modelUpdated(){
         if(setScene.isEntered() == true){
+
+            cardPanel.remove(cardLabel);
+
+            Random rand = new Random();
+            int randInt = rand.nextInt(cards.size());
+            randCard = cards.get(randInt);
+            cards.remove(randInt);
+
+            for(IRole role : randCard.getRoles()){
+                role.setOnCard(true);
+                RoleView rView = new RoleView(role, controller);
+                cardPanel.add(rView);
+            }
+            System.out.println("setScene entered");
             setScene.setSceneCard(randCard);
+            cardPanel.add(cardLabel);
             cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ randCard.getImageName()).getPath()));
+            board.revalidate();
+            // remove cardLabel from panel
+            // add roles
+            // add cardLabel with icon
+
         }
     }
 
