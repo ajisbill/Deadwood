@@ -33,7 +33,7 @@ public class Deadwood {
             }
         }
 
-        numberOfPlayers = 3;
+        numberOfPlayers = 2;
         SetParser setParser  = new SetParser();
         CardParser cardParser = new CardParser();
 

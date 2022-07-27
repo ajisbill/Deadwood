@@ -33,6 +33,8 @@ public class Player{
     private GameEngine model;
     private GameLog gameLog;
 
+    private boolean takingTurn;
+
     public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
         this.number = number;
         this.location = location;
@@ -47,6 +49,14 @@ public class Player{
         this.gameLog = gameLog;
         setScore();
         setDice();
+    }
+
+    public boolean isTakingTurn() {
+        return takingTurn;
+    }
+
+    public void setTakingTurn(boolean takingTurn) {
+        this.takingTurn = takingTurn;
     }
     public void setModel(GameEngine model){
         this.model = model;

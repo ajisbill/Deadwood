@@ -16,6 +16,7 @@ public class GameController implements IController {
         for(Player player : players){
             if(player.isActive()){
                 this.activePlayer = player;
+                activePlayer.setTakingTurn(true);
                 break;
             }
         }
@@ -28,6 +29,7 @@ public class GameController implements IController {
         if(activePlayer.canTakeRole() && activePlayer.getRank() >= role.getLevel() && activePlayer.getLocation().isCardActive() == true){
             activePlayer.takeRole(role);
             activePlayer.setCanTakeRole(false);
+            activePlayer.setTakingTurn(false);
         }else if(activePlayer.getLocation().isCardActive() == false){
             GameLog.getInstance().log("Cannot take role because scene is not active.");
         }else if(activePlayer.getRank() < role.getLevel()){
@@ -47,17 +49,21 @@ public class GameController implements IController {
     @Override
     public void clicked(Button button) {
         //move player to the next location that is clicked
-        if(button.getLabel().equals("Move")){
+        if(button.getLabel().equals("Move") && activePlayer.isTakingTurn()){
             activePlayer.setCanMove(true);
-        }else if(button.getLabel().equals("Take Role")){
+        }else if(button.getLabel().equals("Take Role") && activePlayer.isTakingTurn()){
             activePlayer.setCanTakeRole(true);
-        }else if(button.getLabel().equals("Act")){
+        }else if(button.getLabel().equals("Act") && activePlayer.isTakingTurn()){
             activePlayer.act();
+            activePlayer.setTakingTurn(false);
         }else if(button.getLabel().equals("End Turn")){
             activePlayer.setActive(false);
             activePlayer = model.getNextPlayer();
             activePlayer.setActive(true);
+            activePlayer.setTakingTurn(true);
 
+        }else if(!activePlayer.isTakingTurn()){
+            GameLog.getInstance().log("Please end turn.");
         }
     }
 
