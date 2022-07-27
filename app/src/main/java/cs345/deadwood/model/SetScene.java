@@ -55,7 +55,8 @@ public class SetScene extends Set implements ISetScene{
     }
 
     public void wrapScene(){
-        List<Player> playersOnCard = getSceneCard().getPlayersOnCard();
+        List<Player> playersOnCard = getPlayersOnCard();
+        List<Player> playersOffCard = getPlayersOffCard();
         GameLog.getInstance().log("Scene Wrapped");
         if(playersOnCard != null){
             for (Player player : playersOnCard){
@@ -89,6 +90,14 @@ public class SetScene extends Set implements ISetScene{
 
         GameLog.getInstance().log(Arrays.toString(payout));
 
+        for(Player player : playersOnCard){
+            //add payout based on role priority
+        }
+
+        for(Player player : playersOffCard){
+            int bonus = player.getRole().getLevel();
+            player.setMoney(player.getMoney() + bonus);
+        }
 
 
 
