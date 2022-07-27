@@ -1,8 +1,12 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.GameLog;
 import cs345.deadwood.view.SetSceneView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SetScene extends Set implements ISetScene{
 
@@ -33,6 +37,61 @@ public class SetScene extends Set implements ISetScene{
     @Override
     public List<IRole> getRoles() {
         return this.roleList;
+    }
+
+    public List<Player> getPlayersOnCard(){
+        return getSceneCard().getPlayersOnCard();
+
+    }
+
+    public List<Player> getPlayersOffCard(){
+        List<Player> playersOffCard = new ArrayList<>();
+        for(IRole role : getRoles()){
+            if (role.getPlayer() != null){
+                playersOffCard.add(role.getPlayer());
+            }
+        }
+        return playersOffCard;
+    }
+
+    public void wrapScene(){
+        List<Player> playersOnCard = getSceneCard().getPlayersOnCard();
+        GameLog.getInstance().log("Scene Wrapped");
+        if(playersOnCard != null){
+            for (Player player : playersOnCard){
+                player.move(this);
+            }
+        }
+        this.setCardActive(false);
+
+        int randNum =0 ;
+        ICard card = this.getSceneCard();
+        int budget = card.getBudget();
+        int numOnCardRolls = card.getRoles().size();
+        int[] diceVals = new int[budget];
+        int[] payout = new int[numOnCardRolls];
+
+        // roll number of dice equal to budget and sort them
+        for (int i = 0; i < budget; i++){
+            randNum = ThreadLocalRandom.current().nextInt(1,7);
+            diceVals[i] = randNum;
+        }
+        Arrays.sort(diceVals);
+        int ind = 0;
+
+        for(int i = budget - 1; i>=0; i--){
+            payout[ind] += diceVals[i];
+            ind++;
+            if(ind == numOnCardRolls){
+                ind = 0;
+            }
+        }
+
+        GameLog.getInstance().log(Arrays.toString(payout));
+
+
+
+
     }
 
 

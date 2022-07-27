@@ -219,7 +219,7 @@ public class BoardView implements MouseListener {
         // free space to use for comments or any game related stuff. E.g., show rolling die or show game log.
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 250));
+        panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 200));
 
         JLabel panelTitle = new JLabel("Game Log");
         panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 18));
@@ -227,7 +227,7 @@ public class BoardView implements MouseListener {
 
 
 
-        gameLogText = new JTextArea("Game setup complete \n");
+        gameLogText = new JTextArea();
         gameLogText.setLineWrap(true);
         //panel.add(gameLogText);
 

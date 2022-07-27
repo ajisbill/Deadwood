@@ -37,8 +37,11 @@ public class Role implements IRole {
     }
 
     public void setOccupied(boolean isOccupied, Player player){
+        //name: assign
         this.isOccupied = isOccupied;
         this.player = player;
+        // check if player can be assigned
+        // player.takeRole(this);
         notifyObservers();
     }
 
@@ -69,5 +72,9 @@ public class Role implements IRole {
     @Override
     public IArea getArea() {
         return this.area;
+    }
+
+    public RoleView getView(){
+        return this.view;
     }
 }

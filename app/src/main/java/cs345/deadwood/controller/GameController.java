@@ -1,6 +1,7 @@
 package cs345.deadwood.controller;
 
 import cs345.deadwood.model.*;
+import cs345.deadwood.view.GameLog;
 
 public class GameController implements IController {
     private final GameEngine model;
@@ -18,10 +19,15 @@ public class GameController implements IController {
 
     @Override
     public void clicked(IRole role) {
+        // role.assign(activePlayer);
         //if Take Role button clicked and player rank >= role level, draw player dice on role and set player role
-        if(activePlayer.canTakeRole() && activePlayer.getRank() >= role.getLevel()){
+        if(activePlayer.canTakeRole() && activePlayer.getRank() >= role.getLevel() && activePlayer.getLocation().isCardActive() == true){
             activePlayer.takeRole(role);
             activePlayer.setCanTakeRole(false);
+        }else if(activePlayer.getLocation().isCardActive() == false){
+            GameLog.getInstance().log("Cannot take role because scene is not active.");
+        }else if(activePlayer.getRank() < role.getLevel()){
+            GameLog.getInstance().log("Cannot take role rank is less than role level.");
         }
     }
 

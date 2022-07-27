@@ -3,10 +3,7 @@ package cs345.deadwood.model;
 import cs345.deadwood.view.GameLog;
 import cs345.deadwood.view.PlayerView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Player{
@@ -91,7 +88,7 @@ public class Player{
             this.role.setOccupied(false, null);
         }
         if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
-            newSet.setIsEntered(true);
+            newSet.setCardActive(true);
         }
         this.blankArea.setOccupied(null);
         this.setLocation(newSet);
@@ -111,7 +108,7 @@ public class Player{
                 location.getTakes().get(0).setActive(false);
                 location.getTakes().remove(0);
                 if(location.getTakes().size() == 0){
-                    wrapScene();
+                    location.wrapScene();
                 }
             }else{
                 gameLog.log("Player" + number + " receives 1 credit and 1 dollar.");
@@ -120,7 +117,7 @@ public class Player{
                 location.getTakes().get(0).setActive(false);
                 location.getTakes().remove(0);
                 if(location.getTakes().size() == 0){
-                    wrapScene();
+                    location.wrapScene();
                 }
             }
         }else{
@@ -134,55 +131,6 @@ public class Player{
         }
     }
 
-    public void wrapScene(){
-        List<Player> playersOnCard = this.location.getSceneCard().getPlayersOnCard();
-        gameLog.log("Scene Wrapped");
-        if(playersOnCard != null){
-            for (Player player : playersOnCard){
-                player.move(location);
-            }
-        }
-//        List<Integer> diceVals = new ArrayList<>();
-//        List<Player> players = new ArrayList<>();
-//        int randNum =0 ;
-//        ICard card = location.getSceneCard();
-//        int budget = card.getBudget();
-//        int numOnCardRolls = card.getRoles().size();
-//
-//        // roll number of dice equal to budget and sort them
-//        for (int i = 1; i <= budget; i++){
-//            randNum = ThreadLocalRandom.current().nextInt(1,7);
-//            diceVals.add(randNum);
-//        }
-//        Collections.sort(diceVals);
-//
-//        switch(numOnCardRolls){
-//            case 1:
-//                if(card.getRoles().get(0).getPlayer() != null){
-//                    Player topPlayer = card.getRoles().get(0).getPlayer();
-//                    topPlayer.setMoney(topPlayer.getMoney() + diceVals.get(0));
-//                }
-//            case 2:
-//                int highestLevel = 0;
-//                Player topPlayer = null;
-//                Player secondPlayer = null;
-//                for(IRole role : card.getRoles()){
-//                    if(role.getPlayer() != null){
-//                        if(role.getLevel() > highestLevel){
-//                            highestLevel = role.getLevel();
-//                            secondPlayer = topPlayer;
-//                            topPlayer = role.getPlayer();
-//                        }
-//                    }
-//                }
-//                if(topPlayer != null){
-//                    topPlayer.setMoney(topPlayer.getMoney()+diceVals.get(0));
-//                }
-//        }
-
-
-
-    }
 
     public boolean isWorkingOnCard() {
         return workingOnCard;

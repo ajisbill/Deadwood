@@ -14,9 +14,8 @@ public class Set implements ISet{
     List<BlankArea> blankSpots;
     List<TakeArea> takeAreas;
     private ICard sceneCard;
-    private boolean isEntered = false;
+    private boolean cardActive = false;
     private SetSceneView setSceneView;
-
 
 
 
@@ -27,6 +26,8 @@ public class Set implements ISet{
         this.blankAreas = blankAreas;
         this.neighborStrings = neighborStrings;
     }
+
+    public void wrapScene(){};
     public void registerObservers(SetSceneView setSceneView){
         this.setSceneView = setSceneView;
     }
@@ -40,11 +41,11 @@ public class Set implements ISet{
     public void setSceneCard(ICard card){
         this.sceneCard = card;
     }
-    public boolean isEntered(){
-        return this.isEntered;
+    public boolean isCardActive(){
+        return this.cardActive;
     }
-    public void setIsEntered(boolean isEntered){
-        this.isEntered = isEntered;
+    public void setCardActive(boolean cardActive){
+        this.cardActive = cardActive;
         notifyObservers();
     }
 

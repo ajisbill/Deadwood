@@ -112,7 +112,7 @@ public class SetSceneView implements MouseListener {
     }
 
     public void modelUpdated(){
-        if(setScene.isEntered() == true){
+        if(setScene.isCardActive() == true){
 
             cardPanel.remove(cardLabel);
 

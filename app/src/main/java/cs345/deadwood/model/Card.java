@@ -79,10 +79,6 @@ public class Card implements ICard{
     }
 
     public void removePlayerFromCard(Player player){
-        for (Player aPlayer : playersOnCard){
-            if (aPlayer == player){
-                playersOnCard.remove(aPlayer);
-            }
-        }
+        playersOnCard.remove(player);
     }
 }

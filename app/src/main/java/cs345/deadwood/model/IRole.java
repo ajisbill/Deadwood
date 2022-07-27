@@ -30,4 +30,5 @@ public interface IRole {
     public Player getPlayer();
     public boolean isOnCard();
     public void setOnCard(boolean onCard);
+    public RoleView getView();
 }

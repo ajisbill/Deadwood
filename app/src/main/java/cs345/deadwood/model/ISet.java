@@ -35,10 +35,11 @@ public interface ISet {
     void setSceneCard(ICard card);
     void setBlankSpots(List<BlankArea> blanks);
     List<BlankArea> getBlankSpots();
-    public boolean isEntered();
-    public void setIsEntered(boolean isEntered);
+    public boolean isCardActive();
+    public void setCardActive(boolean cardActive);
 
     public List<TakeArea> getTakes();
+    public void wrapScene();
 
 
 }
