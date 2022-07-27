@@ -10,14 +10,20 @@ public class Role implements IRole {
     private RoleView view;
     private boolean isOccupied = false;
     private Player player;
+    private int priority;
 
     private boolean onCard = false;
 
-    public Role(String name, int level, String line, Area area){
+    public Role(String name, int level, String line, Area area, int priority){
         this.name = name;
         this.level = level;
         this.line = line;
         this.area = area;
+        this.priority = priority;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 
     public boolean isOnCard() {

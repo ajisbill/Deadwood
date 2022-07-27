@@ -31,4 +31,6 @@ public interface IRole {
     public boolean isOnCard();
     public void setOnCard(boolean onCard);
     public RoleView getView();
+
+    public int getPriority();
 }

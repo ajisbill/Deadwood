@@ -102,7 +102,7 @@ public class SetParser extends GameDataParser {
                             NodeList partChildren1 = aPart.getChildNodes();
                             String line = partChildren1.item(3).getTextContent();
                             Area area2 = getArea(partChildren1.item(1));
-                            Role role = new Role(roleName, roleLevel, line, area2);
+                            Role role = new Role(roleName, roleLevel, line, area2, 0);
                             rolesList.add(role);
                         }
                     }

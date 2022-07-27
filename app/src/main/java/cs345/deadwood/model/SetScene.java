@@ -88,15 +88,29 @@ public class SetScene extends Set implements ISetScene{
             }
         }
 
+        GameLog.getInstance().log("Dice rolled are: " + Arrays.toString(diceVals));
         GameLog.getInstance().log(Arrays.toString(payout));
 
         for(Player player : playersOnCard){
-            //add payout based on role priority
+            if(player.getRole().getPriority() == 1){
+                int bonus = payout[0];
+                player.setMoney(player.getMoney() + bonus);
+                GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+            }else if(player.getRole().getPriority() == 2){
+                int bonus = payout[1];
+                player.setMoney(player.getMoney() + bonus);
+                GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+            }else if(player.getRole().getPriority() == 3){
+                int bonus = payout[2];
+                player.setMoney(player.getMoney() + bonus);
+                GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+            }
         }
 
         for(Player player : playersOffCard){
             int bonus = player.getRole().getLevel();
             player.setMoney(player.getMoney() + bonus);
+            GameLog.getInstance().log("Player" + player.getNumber() + " received off card bonus of $" + bonus);
         }
 
 

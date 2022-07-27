@@ -55,10 +55,11 @@ public class CardParser extends GameDataParser {
                     int h = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("h").getNodeValue());
                     int w = Integer.parseInt(partChildren.item(1).getAttributes().getNamedItem("w").getNodeValue());
                     String line = partChildren.item(3).getTextContent();
-
+                    int priority = 1;
                     Area area = new Area(x,y,h,w);
-                    Role role = new Role(roleName, roleLevel, line, area);
+                    Role role = new Role(roleName, roleLevel, line, area,priority);
                     builder.addRole(role);
+                    priority ++;
                 }
             }
             Card aCard = builder.getCard();
