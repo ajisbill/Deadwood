@@ -1,5 +1,6 @@
 package cs345.deadwood.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Card implements ICard{
@@ -8,6 +9,7 @@ public class Card implements ICard{
     int budget, sceneNumber;
 
     List<IRole> roleList;
+    List<Player> playersOnCard = new ArrayList<>();
 
     public Card(String scName, String imgName, int budg, int scNum, List<IRole> roles){
         this.sceneName = scName;
@@ -66,5 +68,21 @@ public class Card implements ICard{
      */
     public List<IRole> getRoles(){
         return this.roleList;
+    }
+
+    public List<Player> getPlayersOnCard(){
+        return this.playersOnCard;
+    }
+
+    public void addPlayerToCard(Player player){
+        playersOnCard.add(player);
+    }
+
+    public void removePlayerFromCard(Player player){
+        for (Player aPlayer : playersOnCard){
+            if (aPlayer == player){
+                playersOnCard.remove(aPlayer);
+            }
+        }
     }
 }

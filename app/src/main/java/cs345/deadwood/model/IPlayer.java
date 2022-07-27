@@ -2,6 +2,8 @@ package cs345.deadwood.model;
 
 import cs345.deadwood.view.PlayerView;
 
+import java.util.List;
+
 public interface IPlayer {
 
     public void registerObservers(PlayerView playerView);
@@ -22,6 +24,7 @@ public interface IPlayer {
     public void setRank(int rank);
     public boolean isActive();
     public void setActive(boolean isActive);
+
 
 
 }

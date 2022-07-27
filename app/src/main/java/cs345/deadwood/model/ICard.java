@@ -31,4 +31,10 @@ public interface ICard {
      * @return List of roles on the card. Null if there are no roles.
      */
     List<IRole> getRoles();
+
+    public List<Player> getPlayersOnCard();
+
+    public void addPlayerToCard(Player player);
+
+    public void removePlayerFromCard(Player player);
 }

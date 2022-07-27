@@ -18,7 +18,6 @@ public class TakeAreaView extends JLabel {
         if(takeArea.isActive()){
             setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/shot.png").getPath()));
         }else{
-            System.out.println("made it");
             setIcon(null);
         }
     }

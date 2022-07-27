@@ -34,10 +34,27 @@ public class Player{
     private boolean workingOnCard = false;
     private boolean workingOffCard = false;
     private GameEngine model;
+    private GameLog gameLog;
 
+    public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
+        this.number = number;
+        this.location = location;
+        takeBlankArea();
+        this.money = money;
+        this.credits = credits;
+        this.practiceChips = practiceChips;
+        this.rank = rank;
+        this.color = color;
+        this.isActive = isActive;
+        GameLog gameLog = GameLog.getInstance();
+        this.gameLog = gameLog;
+        setScore();
+        setDice();
+    }
     public void setModel(GameEngine model){
         this.model = model;
     }
+
     public IRole getRole() {
         return role;
     }
@@ -57,10 +74,16 @@ public class Player{
     public void takeRole(IRole role){
         if(this.role != null){
             this.role.setOccupied(false, null);
+            if(this.role.isOnCard()){
+                location.getSceneCard().removePlayerFromCard(this);
+            }
         }
         this.blankArea.setOccupied(null);
         this.setRole(role);
         role.setOccupied(true, this);
+        if(role.isOnCard()){
+            location.getSceneCard().addPlayerToCard(this);
+        }
     }
 
     public void move(ISet newSet){
@@ -87,8 +110,8 @@ public class Player{
                 setCredits(credits + 2);
                 location.getTakes().get(0).setActive(false);
                 location.getTakes().remove(0);
-                if(location.getTakes() == null){
-                    //wrap scene
+                if(location.getTakes().size() == 0){
+                    wrapScene();
                 }
             }else{
                 gameLog.log("Player" + number + " receives 1 credit and 1 dollar.");
@@ -96,8 +119,8 @@ public class Player{
                 setMoney(money +1 );
                 location.getTakes().get(0).setActive(false);
                 location.getTakes().remove(0);
-                if(location.getTakes() == null){
-                    //wrap scene
+                if(location.getTakes().size() == 0){
+                    wrapScene();
                 }
             }
         }else{
@@ -112,13 +135,51 @@ public class Player{
     }
 
     public void wrapScene(){
-        List<Integer> diceVals = new ArrayList<>();
-        int randNum =0;
-        for (int i = 1; i <= 6; i++){
-            randNum = ThreadLocalRandom.current().nextInt(1,7);
-            diceVals.add(randNum);
+        List<Player> playersOnCard = this.location.getSceneCard().getPlayersOnCard();
+        gameLog.log("Scene Wrapped");
+        if(playersOnCard != null){
+            for (Player player : playersOnCard){
+                player.move(location);
+            }
         }
-        Collections.sort(diceVals);
+//        List<Integer> diceVals = new ArrayList<>();
+//        List<Player> players = new ArrayList<>();
+//        int randNum =0 ;
+//        ICard card = location.getSceneCard();
+//        int budget = card.getBudget();
+//        int numOnCardRolls = card.getRoles().size();
+//
+//        // roll number of dice equal to budget and sort them
+//        for (int i = 1; i <= budget; i++){
+//            randNum = ThreadLocalRandom.current().nextInt(1,7);
+//            diceVals.add(randNum);
+//        }
+//        Collections.sort(diceVals);
+//
+//        switch(numOnCardRolls){
+//            case 1:
+//                if(card.getRoles().get(0).getPlayer() != null){
+//                    Player topPlayer = card.getRoles().get(0).getPlayer();
+//                    topPlayer.setMoney(topPlayer.getMoney() + diceVals.get(0));
+//                }
+//            case 2:
+//                int highestLevel = 0;
+//                Player topPlayer = null;
+//                Player secondPlayer = null;
+//                for(IRole role : card.getRoles()){
+//                    if(role.getPlayer() != null){
+//                        if(role.getLevel() > highestLevel){
+//                            highestLevel = role.getLevel();
+//                            secondPlayer = topPlayer;
+//                            topPlayer = role.getPlayer();
+//                        }
+//                    }
+//                }
+//                if(topPlayer != null){
+//                    topPlayer.setMoney(topPlayer.getMoney()+diceVals.get(0));
+//                }
+//        }
+
 
 
     }
@@ -144,20 +205,6 @@ public class Player{
 
     public void registerObservers(PlayerView playerView) {
         this.playerView = playerView;
-    }
-
-    public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
-        this.number = number;
-        this.location = location;
-        takeBlankArea();
-        this.money = money;
-        this.credits = credits;
-        this.practiceChips = practiceChips;
-        this.rank = rank;
-        this.color = color;
-        this.isActive = isActive;
-        setScore();
-        setDice();
     }
 
     public void setColor(String Color){
