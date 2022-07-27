@@ -254,6 +254,7 @@ public class Player{
 
     public void setActive(boolean isActive){
         this.isActive = isActive;
+        notifyObserver();
     }
 
     public void setCanMove(boolean canMove){

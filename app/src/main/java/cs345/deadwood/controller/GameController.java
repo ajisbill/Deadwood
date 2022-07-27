@@ -3,13 +3,17 @@ package cs345.deadwood.controller;
 import cs345.deadwood.model.*;
 import cs345.deadwood.view.GameLog;
 
+import java.util.List;
+
 public class GameController implements IController {
     private final GameEngine model;
     private Player activePlayer;
+    private List<Player> players;
 
     public GameController(GameEngine model) {
         this.model = model;
-        for(Player player : model.getPlayers()){
+        this.players = model.getPlayers();
+        for(Player player : players){
             if(player.isActive()){
                 this.activePlayer = player;
                 break;
@@ -49,7 +53,18 @@ public class GameController implements IController {
             activePlayer.setCanTakeRole(true);
         }else if(button.getLabel().equals("Act")){
             activePlayer.act();
+        }else if(button.getLabel().equals("End Turn")){
+            activePlayer.setActive(false);
+            activePlayer = model.getNextPlayer();
+            activePlayer.setActive(true);
+
         }
     }
+
+//    public void setActivePlayer(){
+//        activePlayer.setActive(false);
+//        activePlayer = model.getNextPlayer();
+//        activePlayer.setActive();
+//    }
 
 }
