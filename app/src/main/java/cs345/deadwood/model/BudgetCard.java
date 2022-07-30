@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.GameLog;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -17,6 +19,7 @@ public class BudgetCard implements CardStrategy{
                 return o1.getBudget() - o2.getBudget();
             }
         });
+
     }
     @Override
     public ICard getNextCard(List<ICard> cards) {

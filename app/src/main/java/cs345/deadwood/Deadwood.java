@@ -77,7 +77,6 @@ public class Deadwood {
         int sortMethod;
         if(randInt == 0){
             sortMethod = 0;
-
         }else{
             sortMethod = 1;
         }
@@ -86,5 +85,11 @@ public class Deadwood {
         BoardView view = new BoardView(model, controller);
 
         view.init();
+
+        if(model.getSortMethod() == 0){
+            System.out.println("Assigning cards randomly.");
+        }else{
+            System.out.println("Assigning cards by budget.");
+        }
     }
 }

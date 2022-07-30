@@ -74,16 +74,13 @@ public class BoardView implements MouseListener {
         controlPanel.setLocation(1200, 0);
         controlPanel.setSize(300, 900);
         frame.add(controlPanel);
-        if(model.getSortMethod() == 0){
-            GameLog.getInstance().log("Assigning cards randomly.");
-        }else{
-            GameLog.getInstance().log("Assigning cards by budget.");
-        }
+
 
         frame.addMouseListener(this);
 
         frame.pack();
         frame.setVisible(true);
+
     }
 
     public void logUpdated(){
@@ -101,43 +98,14 @@ public class BoardView implements MouseListener {
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.PAGE_AXIS));
         controlPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0)); // Add padding around edges
 
-//        JLabel team = new JLabel("Team Name");
-//        team.setFont(new Font("TimesRoman", Font.BOLD, 20));
-//        controlPanel.add(team);
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//
-//        controlPanel.add(new JSeparator());
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         JLabel playerInfoLabel = new JLabel("Players");
         playerInfoLabel.setFont(new Font("TimesRoman", Font.BOLD, 18));
         controlPanel.add(playerInfoLabel);
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
-        // Show players
-//        controlPanel.add(showPlayerInfo(1, "Train Station", 2, 3, "dice_b1.png"));
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//        controlPanel.add(showPlayerInfo(2, "Trailer", 2, 3, "dice_r1.png"));
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//        controlPanel.add(showPlayerInfo(3, "Trailer", 2, 3, "dice_p1.png"));
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//        controlPanel.add(showPlayerInfo(4, "Trailer", 2, 3, "dice_y1.png"));
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//        controlPanel.add(showPlayerInfo(5, "Trailer", 2, 3, "dice_w1.png"));
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-
-        // add players with PlayerView class
-//        Player p1 = new Player(1, "Trailer", 0, 0,0,10);
-//        Player p2 = new Player(2, "Trailer", 0, 0,0,10);
-//        PlayerView p1View = new PlayerView(p1, "dice_b2.png");
-//        PlayerView p2View = new PlayerView(p2, "dice_c2.png");
-//        controlPanel.add(p1View);
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-//        controlPanel.add(p2View);
-//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         List<Player> playerList= model.getPlayers();
-        //List<String> diceImages = Arrays.asList("dice_b1.png", "dice_c1.png", "dice_r1.png", "dice_p1.png", "dice_y1.png", "dice_w1.png");
 
         for(int i = 0; i< playerList.size();i++){
             playerList.get(i).setModel(model);
@@ -212,10 +180,6 @@ public class BoardView implements MouseListener {
         }
         movePanel.add(buttonGrid);
 
-//        JTextArea comment = new JTextArea("Player interaction space. E.g., Ask what the player wants to do, show valid moves");
-//        comment.setLineWrap(true);
-//        comment.setPreferredSize(movePanel.getPreferredSize());
-//        movePanel.add(comment);
 
         return movePanel;
     }
@@ -242,6 +206,7 @@ public class BoardView implements MouseListener {
         sp.setPreferredSize(panel.getPreferredSize());
 
         panel.add(sp);
+
         return panel;
     }
 

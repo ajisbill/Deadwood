@@ -10,20 +10,10 @@ import java.awt.*;
 public class PlayerView extends JPanel {
 
     private final Player player;
-    private int number;
-    private ISet location;
-    private int money;
-    private int credits;
-    private int practiceChips;
-    private int score;
-    private String dice;
-    private int rank;
-    private boolean isActive;
     private JLabel playerDice;
     private JLabel playerString;
 
-    // remove necessary attributes
-    // get string from player
+
     public PlayerView(Player player){
         this.player = player;
         player.registerObservers(this);

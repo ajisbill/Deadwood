@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.GameLog;
+
 import java.util.List;
 import java.util.Random;
 
