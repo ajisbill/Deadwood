@@ -95,13 +95,13 @@ public class BoardView implements MouseListener {
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.PAGE_AXIS));
         controlPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0)); // Add padding around edges
 
-        JLabel team = new JLabel("Team Name");
-        team.setFont(new Font("TimesRoman", Font.BOLD, 20));
-        controlPanel.add(team);
-        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
-
-        controlPanel.add(new JSeparator());
-        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
+//        JLabel team = new JLabel("Team Name");
+//        team.setFont(new Font("TimesRoman", Font.BOLD, 20));
+//        controlPanel.add(team);
+//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
+//
+//        controlPanel.add(new JSeparator());
+//        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         JLabel playerInfoLabel = new JLabel("Players");
         playerInfoLabel.setFont(new Font("TimesRoman", Font.BOLD, 18));
@@ -189,7 +189,7 @@ public class BoardView implements MouseListener {
 
     private JPanel getMovePanel() {
         JPanel movePanel = new JPanel();
-        movePanel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 200));
+        movePanel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 150));
         JLabel panelTitle = new JLabel("Move Options");
         panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
         movePanel.add(panelTitle);
@@ -201,7 +201,7 @@ public class BoardView implements MouseListener {
         List<String> buttonNames = Arrays.asList("Move", "Take Role", "Act", "Rehearse", "Upgrade", "End Turn");
         for (int i = 0; i < x * y; i++) {
             ButtonView buttonView = new ButtonView(new Button(buttonNames.get(i)),buttonNames.get(i), this.controller);
-            buttonView.setPreferredSize(new Dimension(140, 60));
+            buttonView.setPreferredSize(new Dimension(140, 40));
             movePanel.add(buttonView);
         }
         movePanel.add(buttonGrid);
@@ -219,7 +219,7 @@ public class BoardView implements MouseListener {
         // free space to use for comments or any game related stuff. E.g., show rolling die or show game log.
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 200));
+        panel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 250));
 
         JLabel panelTitle = new JLabel("Game Log");
         panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 18));
