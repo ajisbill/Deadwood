@@ -119,11 +119,10 @@ public class SetSceneView implements MouseListener {
             cardPanel.add(cardLabel);
             cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ assignedCard.getImageName()).getPath()));
             board.revalidate();
-            // remove cardLabel from panel
-            // add roles
-            // add cardLabel with icon
 
         }
+
+
 
     }
 

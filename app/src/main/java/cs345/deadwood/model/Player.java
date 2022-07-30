@@ -11,9 +11,7 @@ public class Player{
 
     int number;
     ISet location;
-
     BlankArea blankArea;
-
     int money;
     int credits;
     int practiceChips;
@@ -25,12 +23,11 @@ public class Player{
     private boolean isActive;
     private boolean canMove;
     private boolean canTakeRole;
-
     private IRole role;
     private GameEngine model;
     private GameLog gameLog;
     private boolean takingTurn;
-
+    private boolean hasMoved = false;
     String playerString;
 
     public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
@@ -48,6 +45,14 @@ public class Player{
         setScore();
         setDice();
         this.playerString = ("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
+    }
+
+    public boolean hasMoved() {
+        return hasMoved;
+    }
+
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
     }
 
     public String getPlayerString() {
@@ -92,88 +97,6 @@ public class Player{
     public void setCanTakeRole(boolean canTakeRole) {
         this.canTakeRole = canTakeRole;
     }
-
-    public boolean rehearse(){
-        if(this.role == null){
-            GameLog.getInstance().log("Cannot rehearse if not on role.");
-            return false;
-        }else{
-            setPracticeChips(practiceChips + 1);
-            GameLog.getInstance().log("Player" + number + "received 1 practice chip");
-            return true;
-        }
-    }
-    public void takeRole(IRole role){
-        if(this.role != null){
-            this.role.setOccupied(false, null);
-            if(this.role.isOnCard()){
-                location.getSceneCard().removePlayerFromCard(this);
-            }
-        }
-        this.blankArea.setOccupied(null);
-        this.setRole(role);
-        role.setOccupied(true, this);
-        if(role.isOnCard()){
-            location.getSceneCard().addPlayerToCard(this);
-        }
-    }
-
-    public void move(ISet newSet){
-        if(canMove && role == null && location.isAdjacent(newSet)){
-            if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
-                newSet.setCardActive(true);
-            }
-            this.blankArea.setOccupied(null);
-            this.setLocation(newSet);
-            setCanMove(false);
-        }else if(role != null){
-            GameLog.getInstance().log("Cannot move to new set while working on role.");
-        }else if(!location.isAdjacent(newSet)){
-            GameLog.getInstance().log("Cannot move to non-adjacent set");
-        }else if(!canMove){
-            GameLog.getInstance().log("Please click move button to move to new set");
-        }
-
-    }
-
-    public void act(){
-        Random rand = new Random();
-        int randNum = ThreadLocalRandom.current().nextInt(1,7);
-        GameLog gameLog = GameLog.getInstance();
-        gameLog.log("Player" + number + " rolled a " + randNum +".");
-        //success
-        if(randNum + practiceChips >= location.getSceneCard().getBudget()){
-            gameLog.log("Acting is successful!");
-            if(role.isOnCard()){
-                gameLog.log("Player" + number + " receives 2 credits.");
-                setCredits(credits + 2);
-                location.getTakes().get(0).setActive(false);
-                location.getTakes().remove(0);
-                if(location.getTakes().size() == 0){
-                    location.wrapScene();
-                }
-            }else{
-                gameLog.log("Player" + number + " receives 1 credit and 1 dollar.");
-                setCredits(credits + 1);
-                setMoney(money +1 );
-                location.getTakes().get(0).setActive(false);
-                location.getTakes().remove(0);
-                if(location.getTakes().size() == 0){
-                    location.wrapScene();
-                }
-            }
-        }else{
-            gameLog.log("Acting is unsuccessful!");
-            if(role.isOnCard()){
-                gameLog.log("Player" + number + " receives nothing.");
-            }else {
-                gameLog.log("Player" + number + " receives 1 dollar.");
-                setMoney(money + 1);
-            }
-        }
-    }
-
-
 
     public void registerObservers(PlayerView playerView) {
         this.playerView = playerView;

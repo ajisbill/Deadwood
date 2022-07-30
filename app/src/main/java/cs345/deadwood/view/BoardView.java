@@ -86,7 +86,7 @@ public class BoardView implements MouseListener {
     public void logUpdated(){
         String message = gameLog.getMessage();
         System.out.println(message);
-        gameLogText.append("\n" + message + "\n");
+        gameLogText.append(message + "\n");
         //gameLogText.setText(message + "\n" + gameLogText.getText());
     }
 
@@ -174,7 +174,7 @@ public class BoardView implements MouseListener {
         int y = 2;
         buttonGrid.setLayout(new GridLayout(x, y));
         List<String> buttonNames = Arrays.asList("Move", "Take Role", "Act", "Rehearse", "Upgrade", "End Turn");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             ButtonView buttonView = new ButtonView(new Button(buttonNames.get(i)),buttonNames.get(i), this.controller);
             buttonView.setPreferredSize(new Dimension(140, 40));
             buttonGrid.add(buttonView);

@@ -97,7 +97,7 @@ public class SetScene extends Set implements ISetScene{
         }
 
         GameLog.getInstance().log("Dice rolled are: " + Arrays.toString(diceVals));
-        GameLog.getInstance().log(Arrays.toString(payout));
+        GameLog.getInstance().log("Payouts are: " + Arrays.toString(payout));
 
         for(Player player : playersOnCard){
             if(player.getRole().getPriority() == 1){
@@ -121,9 +121,6 @@ public class SetScene extends Set implements ISetScene{
                 player.setMoney(player.getMoney() + bonus);
                 GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
                 player.setPracticeChips(0);
-                player.setLocation(this);
-                player.getRole().setOccupied(false,null);
-                player.setRole(null);
             }
         }
 
@@ -133,6 +130,9 @@ public class SetScene extends Set implements ISetScene{
                 player.setMoney(player.getMoney() + bonus);
                 GameLog.getInstance().log("Player" + player.getNumber() + " received off card bonus of $" + bonus);
                 player.setPracticeChips(0);
+                player.setLocation(this);
+                player.getRole().setOccupied(false,null);
+                player.setRole(null);
             }
 
         }
