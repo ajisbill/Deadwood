@@ -31,6 +31,8 @@ public class Player{
     private GameLog gameLog;
     private boolean takingTurn;
 
+    String playerString;
+
     public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
         this.number = number;
         this.location = location;
@@ -45,6 +47,15 @@ public class Player{
         this.gameLog = gameLog;
         setScore();
         setDice();
+        this.playerString = ("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
+    }
+
+    public String getPlayerString() {
+        return playerString;
+    }
+
+    public void setPlayerString() {
+        this.playerString = ("P" + number + " " + location.getName() + ": $" + money + " C" + credits + " Pc" + practiceChips + "; S=" + score);
     }
 
     public BlankArea getBlankArea() {
@@ -210,6 +221,7 @@ public class Player{
 
     public void setNumber(int number) {
         this.number = number;
+        setPlayerString();
         notifyObserver();
     }
 
@@ -220,6 +232,7 @@ public class Player{
     public void setLocation(ISet location) {
         this.location = location;
         takeBlankArea();
+        setPlayerString();
         notifyObserver();
     }
 
@@ -229,6 +242,7 @@ public class Player{
 
     public void setMoney(int money) {
         this.money = money;
+        setPlayerString();
         notifyObserver();
     }
 
@@ -238,6 +252,7 @@ public class Player{
 
     public void setCredits(int credits) {
         this.credits = credits;
+        setPlayerString();
         notifyObserver();
     }
 
@@ -247,6 +262,7 @@ public class Player{
 
     public void setPracticeChips(int practiceChips) {
         this.practiceChips = practiceChips;
+        setPlayerString();
         notifyObserver();
     }
 
@@ -256,6 +272,7 @@ public class Player{
 
     public void setScore() {
         this.score = 5 * this.rank + this.credits + this.money;
+        setPlayerString();
         if (playerView != null) {
             notifyObserver();
         }
