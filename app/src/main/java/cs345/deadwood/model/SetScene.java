@@ -28,8 +28,13 @@ public class SetScene extends Set implements ISetScene{
 
 
     public boolean hasRole(IRole newRole){
-        for (IRole role : roleList){
-            if(role.getName().equals(newRole.getName())){
+        List<IRole> cardRoles = getSceneCard().getRoles();
+        List<IRole> allRoles = roleList;
+        for(IRole role : cardRoles){
+            allRoles.add(role);
+        }
+        for (IRole role1 : allRoles){
+            if(role1.getName().equals(newRole.getName())){
                 return true;
             }
         }
@@ -123,10 +128,13 @@ public class SetScene extends Set implements ISetScene{
         }
 
         for(Player player : playersOffCard){
-            int bonus = player.getRole().getLevel();
-            player.setMoney(player.getMoney() + bonus);
-            GameLog.getInstance().log("Player" + player.getNumber() + " received off card bonus of $" + bonus);
-            player.setPracticeChips(0);
+            if(player.getRole() != null){
+                int bonus = player.getRole().getLevel();
+                player.setMoney(player.getMoney() + bonus);
+                GameLog.getInstance().log("Player" + player.getNumber() + " received off card bonus of $" + bonus);
+                player.setPracticeChips(0);
+            }
+
         }
 
 

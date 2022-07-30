@@ -7,10 +7,12 @@ package cs345.deadwood;
 import cs345.deadwood.controller.GameController;
 import cs345.deadwood.model.*;
 import cs345.deadwood.view.BoardView;
+import cs345.deadwood.view.GameLog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Deadwood {
 
@@ -33,7 +35,7 @@ public class Deadwood {
             }
         }
 
-        numberOfPlayers = 2;
+        numberOfPlayers = 8;
         SetParser setParser  = new SetParser();
         CardParser cardParser = new CardParser();
 
@@ -70,8 +72,16 @@ public class Deadwood {
             }
 
         }
+        Random rand = new Random();
+        int randInt = rand.nextInt(2);
+        int sortMethod;
+        if(randInt == 0){
+            sortMethod = 0;
 
-        GameEngine model = new GameEngine(numberOfPlayers, setsList, cardsList, playerList);
+        }else{
+            sortMethod = 1;
+        }
+        GameEngine model = new GameEngine(numberOfPlayers, setsList, cardsList, playerList, sortMethod);
         GameController controller = new GameController(model);
         BoardView view = new BoardView(model, controller);
 

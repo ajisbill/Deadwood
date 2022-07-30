@@ -11,12 +11,19 @@ public class GameEngine {
     private final List<ICard> cardList;
     private int curPlayerIndex;
 
-    public GameEngine(int numberOfPlayers, List<ISet> setList, List<ICard> cardList, List<Player> playerList) {
+    private int sortMethod;
+
+    public GameEngine(int numberOfPlayers, List<ISet> setList, List<ICard> cardList, List<Player> playerList, int sortMethod) {
         this.numberOfPlayers = numberOfPlayers;
         this.setList = setList;
         this.cardList = cardList;
         this.playerList = playerList;
         this.curPlayerIndex = 1;
+        this.sortMethod = sortMethod;
+    }
+
+    public int getSortMethod() {
+        return sortMethod;
     }
 
 
@@ -42,7 +49,7 @@ public class GameEngine {
     }
 
     public void takeRole(Player player, IRole role){
-        if(player.canTakeRole() && player.getRank() >= role.getLevel()  && player.location.hasRole(role) && player.getRole() == null){
+        if(player.canTakeRole() && player.getRank() >= role.getLevel()  && player.getLocation().hasRole(role) && player.getRole() == null){
             player.getBlankArea().setOccupied(null);
             player.setRole(role);
             role.setOccupied(true, player);
@@ -53,7 +60,7 @@ public class GameEngine {
             player.setTakingTurn(false);
         }else if (player.getRole() != null){
             GameLog.getInstance().log("Cannot take new role while working on role.");
-        }else if(!player.location.hasRole(role)){
+        }else if(!player.getLocation().hasRole(role)){
             GameLog.getInstance().log("Cannot take role not on player's set.");
         }else if(player.getRank() < role.getLevel()){
             GameLog.getInstance().log("Cannot take role because rank is less than role level.");

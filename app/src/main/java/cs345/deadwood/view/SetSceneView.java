@@ -22,7 +22,7 @@ public class SetSceneView implements MouseListener {
     private GameController controller;
     private GameEngine model;
     private List<ICard> cards;
-    private ICard randCard;
+    private ICard assignedCard;
     private int x;
     private int y;
     private int h;
@@ -36,6 +36,14 @@ public class SetSceneView implements MouseListener {
         this.controller = controller;
         this.model = model;
         this.cards = model.getCards();
+        if(model.getSortMethod() == 0){
+            RandomCard randomCard = new RandomCard();
+            this.assignedCard = randomCard.getNextCard(cards);
+        }else{
+            BudgetCard budgetCard = new BudgetCard(cards);
+            this.assignedCard = budgetCard.getNextCard(cards);
+        }
+
     }
 
     public void drawSet() {
@@ -116,20 +124,15 @@ public class SetSceneView implements MouseListener {
 
             cardPanel.remove(cardLabel);
 
-            Random rand = new Random();
-            int randInt = rand.nextInt(cards.size());
-            randCard = cards.get(randInt);
-            cards.remove(randInt);
-
-            for(IRole role : randCard.getRoles()){
+            for(IRole role : assignedCard.getRoles()){
                 role.setOnCard(true);
                 RoleView rView = new RoleView(role, controller);
                 cardPanel.add(rView);
             }
             System.out.println("setScene entered");
-            setScene.setSceneCard(randCard);
+            setScene.setSceneCard(assignedCard);
             cardPanel.add(cardLabel);
-            cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ randCard.getImageName()).getPath()));
+            cardLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/"+ assignedCard.getImageName()).getPath()));
             board.revalidate();
             // remove cardLabel from panel
             // add roles

@@ -27,11 +27,6 @@ public class Player{
     private boolean canTakeRole;
 
     private IRole role;
-
-    //remove redundant attributes
-
-    private boolean workingOnCard = false;
-    private boolean workingOffCard = false;
     private GameEngine model;
     private GameLog gameLog;
     private boolean takingTurn;
@@ -166,24 +161,6 @@ public class Player{
             }
         }
     }
-
-
-    public boolean isWorkingOnCard() {
-        return workingOnCard;
-    }
-
-    public void setWorkingOnCard(boolean workingOnCard) {
-        this.workingOnCard = workingOnCard;
-    }
-
-    public boolean isWorkingOffCard() {
-        return workingOffCard;
-    }
-
-    public void setWorkingOffCard(boolean workingOffCard) {
-        this.workingOffCard = workingOffCard;
-    }
-
 
 
 

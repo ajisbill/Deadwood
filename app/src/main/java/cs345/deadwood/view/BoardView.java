@@ -31,6 +31,7 @@ public class BoardView implements MouseListener {
         this.controller = controller;
         this.gameLog = GameLog.getInstance();
         gameLog.registerObservers(this);
+
     }
 
     public void init() {
@@ -73,6 +74,11 @@ public class BoardView implements MouseListener {
         controlPanel.setLocation(1200, 0);
         controlPanel.setSize(300, 900);
         frame.add(controlPanel);
+        if(model.getSortMethod() == 0){
+            GameLog.getInstance().log("Assigning cards randomly.");
+        }else{
+            GameLog.getInstance().log("Assigning cards by budget.");
+        }
 
         frame.addMouseListener(this);
 
