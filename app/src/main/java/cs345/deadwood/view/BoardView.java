@@ -74,11 +74,6 @@ public class BoardView implements MouseListener {
         controlPanel.setLocation(1200, 0);
         controlPanel.setSize(300, 900);
         frame.add(controlPanel);
-        if(model.getSortMethod() == 0){
-            GameLog.getInstance().log("Assigning cards randomly.");
-        }else{
-            GameLog.getInstance().log("Assigning cards by budget.");
-        }
 
         frame.addMouseListener(this);
 
@@ -89,7 +84,7 @@ public class BoardView implements MouseListener {
     public void logUpdated(){
         String message = gameLog.getMessage();
         System.out.println(message);
-        gameLogText.append(message + "\n");
+        gameLogText.append("\n" + message + "\n");
         //gameLogText.setText(message + "\n" + gameLogText.getText());
     }
 
@@ -155,6 +150,12 @@ public class BoardView implements MouseListener {
         controlPanel.add(new JSeparator());
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
+        JLabel panelTitle = new JLabel("Move Options");
+        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
+        panelTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        controlPanel.add(panelTitle);
+        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
+
         controlPanel.add(getMovePanel());
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
@@ -194,30 +195,19 @@ public class BoardView implements MouseListener {
     }
 
     private JPanel getMovePanel() {
-        JPanel movePanel = new JPanel();
-        movePanel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 150));
-        JLabel panelTitle = new JLabel("Move Options");
-        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
-        movePanel.add(panelTitle);
-
         JPanel buttonGrid = new JPanel();
-        int x = 2;
-        int y = 3;
+        buttonGrid.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 150));
+        int x = 0;
+        int y = 2;
         buttonGrid.setLayout(new GridLayout(x, y));
         List<String> buttonNames = Arrays.asList("Move", "Take Role", "Act", "Rehearse", "Upgrade", "End Turn");
-        for (int i = 0; i < x * y; i++) {
+        for (int i = 0; i < 5; i++) {
             ButtonView buttonView = new ButtonView(new Button(buttonNames.get(i)),buttonNames.get(i), this.controller);
             buttonView.setPreferredSize(new Dimension(140, 40));
-            movePanel.add(buttonView);
+            buttonGrid.add(buttonView);
         }
-        movePanel.add(buttonGrid);
 
-//        JTextArea comment = new JTextArea("Player interaction space. E.g., Ask what the player wants to do, show valid moves");
-//        comment.setLineWrap(true);
-//        comment.setPreferredSize(movePanel.getPreferredSize());
-//        movePanel.add(comment);
-
-        return movePanel;
+        return buttonGrid;
     }
 
 
