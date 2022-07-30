@@ -42,4 +42,7 @@ public interface ISet {
     public void wrapScene();
 
 
+    boolean isAdjacent(ISet newSet);
+
+    boolean hasRole(IRole role);
 }

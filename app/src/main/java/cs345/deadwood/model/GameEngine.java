@@ -1,5 +1,7 @@
 package cs345.deadwood.model;
 
+import cs345.deadwood.view.GameLog;
+
 import java.util.List;
 
 public class GameEngine {
@@ -37,6 +39,27 @@ public class GameEngine {
             curPlayerIndex++;
         }
         return playerList.get(curPlayerIndex-1);
+    }
+
+    public void takeRole(Player player, IRole role){
+        if(player.canTakeRole() && player.getRank() >= role.getLevel()  && player.location.hasRole(role) && player.getRole() == null){
+            player.getBlankArea().setOccupied(null);
+            player.setRole(role);
+            role.setOccupied(true, player);
+            if(role.isOnCard()){
+                player.getLocation().getSceneCard().addPlayerToCard(player);
+            }
+            player.setCanTakeRole(false);
+            player.setTakingTurn(false);
+        }else if (player.getRole() != null){
+            GameLog.getInstance().log("Cannot take new role while working on role.");
+        }else if(!player.location.hasRole(role)){
+            GameLog.getInstance().log("Cannot take role not on player's set.");
+        }else if(player.getRank() < role.getLevel()){
+            GameLog.getInstance().log("Cannot take role because rank is less than role level.");
+        }else{
+            GameLog.getInstance().log("Please click Take Role button");
+        }
     }
 
 }

@@ -27,7 +27,24 @@ public class Set implements ISet{
         this.neighborStrings = neighborStrings;
     }
 
-    public void wrapScene(){};
+    public void wrapScene(){}
+
+    @Override
+    public boolean isAdjacent(ISet newSet){
+        for (ISet neighbor : this.getNeighbors()){
+            if(neighbor.getName().equals(newSet.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean hasRole(IRole role) {
+        return false;
+    }
+
+    ;
     public void registerObservers(SetSceneView setSceneView){
         this.setSceneView = setSceneView;
     }

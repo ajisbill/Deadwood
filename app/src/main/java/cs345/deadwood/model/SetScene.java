@@ -27,7 +27,14 @@ public class SetScene extends Set implements ISetScene{
     }
 
 
-
+    public boolean hasRole(IRole newRole){
+        for (IRole role : roleList){
+            if(role.getName().equals(newRole.getName())){
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public List<TakeArea> getTakes() {
@@ -58,11 +65,7 @@ public class SetScene extends Set implements ISetScene{
         List<Player> playersOnCard = getPlayersOnCard();
         List<Player> playersOffCard = getPlayersOffCard();
         GameLog.getInstance().log("Scene Wrapped");
-        if(playersOnCard != null){
-            for (Player player : playersOnCard){
-                player.move(this);
-            }
-        }
+
         this.setCardActive(false);
 
         int randNum =0 ;
@@ -96,14 +99,26 @@ public class SetScene extends Set implements ISetScene{
                 int bonus = payout[0];
                 player.setMoney(player.getMoney() + bonus);
                 GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+                player.setPracticeChips(0);
+                player.setLocation(this);
+                player.getRole().setOccupied(false,null);
+                player.setRole(null);
             }else if(player.getRole().getPriority() == 2){
                 int bonus = payout[1];
                 player.setMoney(player.getMoney() + bonus);
                 GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+                player.setPracticeChips(0);
+                player.setLocation(this);
+                player.getRole().setOccupied(false,null);
+                player.setRole(null);
             }else if(player.getRole().getPriority() == 3){
                 int bonus = payout[2];
                 player.setMoney(player.getMoney() + bonus);
                 GameLog.getInstance().log("Player" + player.getNumber() + " received on card bonus of $" + bonus);
+                player.setPracticeChips(0);
+                player.setLocation(this);
+                player.getRole().setOccupied(false,null);
+                player.setRole(null);
             }
         }
 
@@ -111,7 +126,9 @@ public class SetScene extends Set implements ISetScene{
             int bonus = player.getRole().getLevel();
             player.setMoney(player.getMoney() + bonus);
             GameLog.getInstance().log("Player" + player.getNumber() + " received off card bonus of $" + bonus);
+            player.setPracticeChips(0);
         }
+
 
 
 

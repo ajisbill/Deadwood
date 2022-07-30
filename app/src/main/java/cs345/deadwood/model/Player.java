@@ -11,7 +11,9 @@ public class Player{
 
     int number;
     ISet location;
+
     BlankArea blankArea;
+
     int money;
     int credits;
     int practiceChips;
@@ -22,17 +24,16 @@ public class Player{
     PlayerView playerView;
     private boolean isActive;
     private boolean canMove;
-
     private boolean canTakeRole;
 
     private IRole role;
 
     //remove redundant attributes
+
     private boolean workingOnCard = false;
     private boolean workingOffCard = false;
     private GameEngine model;
     private GameLog gameLog;
-
     private boolean takingTurn;
 
     public Player(int number, ISet location, int money, int credits, int practiceChips, String color, int rank, boolean isActive){
@@ -49,6 +50,14 @@ public class Player{
         this.gameLog = gameLog;
         setScore();
         setDice();
+    }
+
+    public BlankArea getBlankArea() {
+        return blankArea;
+    }
+
+    public void setBlankArea(BlankArea blankArea) {
+        this.blankArea = blankArea;
     }
 
     public boolean isTakingTurn() {
@@ -78,6 +87,16 @@ public class Player{
         this.canTakeRole = canTakeRole;
     }
 
+    public boolean rehearse(){
+        if(this.role == null){
+            GameLog.getInstance().log("Cannot rehearse if not on role.");
+            return false;
+        }else{
+            setPracticeChips(practiceChips + 1);
+            GameLog.getInstance().log("Player" + number + "received 1 practice chip");
+            return true;
+        }
+    }
     public void takeRole(IRole role){
         if(this.role != null){
             this.role.setOccupied(false, null);
@@ -94,14 +113,21 @@ public class Player{
     }
 
     public void move(ISet newSet){
-        if(this.role != null){
-            this.role.setOccupied(false, null);
+        if(canMove && role == null && location.isAdjacent(newSet)){
+            if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
+                newSet.setCardActive(true);
+            }
+            this.blankArea.setOccupied(null);
+            this.setLocation(newSet);
+            setCanMove(false);
+        }else if(role != null){
+            GameLog.getInstance().log("Cannot move to new set while working on role.");
+        }else if(!location.isAdjacent(newSet)){
+            GameLog.getInstance().log("Cannot move to non-adjacent set");
+        }else if(!canMove){
+            GameLog.getInstance().log("Please click move button to move to new set");
         }
-        if(newSet.getSceneCard() == null && !newSet.getName().equals("Trailer") && !newSet.getName().equals("Office")){
-            newSet.setCardActive(true);
-        }
-        this.blankArea.setOccupied(null);
-        this.setLocation(newSet);
+
     }
 
     public void act(){
@@ -110,7 +136,7 @@ public class Player{
         GameLog gameLog = GameLog.getInstance();
         gameLog.log("Player" + number + " rolled a " + randNum +".");
         //success
-        if(randNum >= location.getSceneCard().getBudget()){
+        if(randNum + practiceChips >= location.getSceneCard().getBudget()){
             gameLog.log("Acting is successful!");
             if(role.isOnCard()){
                 gameLog.log("Player" + number + " receives 2 credits.");
