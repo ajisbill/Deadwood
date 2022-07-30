@@ -86,7 +86,7 @@ public class BoardView implements MouseListener {
     public void logUpdated(){
         String message = gameLog.getMessage();
         System.out.println(message);
-        gameLogText.append(message + "\n");
+        gameLogText.append("\n" + message + "\n");
         //gameLogText.setText(message + "\n" + gameLogText.getText());
     }
 
@@ -121,6 +121,12 @@ public class BoardView implements MouseListener {
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         controlPanel.add(new JSeparator());
+        controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
+
+        JLabel panelTitle = new JLabel("Move Options");
+        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
+        panelTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        controlPanel.add(panelTitle);
         controlPanel.add(Box.createRigidArea(new Dimension(0,VERTICAL_PADDING))); // Add padding
 
         controlPanel.add(getMovePanel());
@@ -162,26 +168,20 @@ public class BoardView implements MouseListener {
     }
 
     private JPanel getMovePanel() {
-        JPanel movePanel = new JPanel();
-        movePanel.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 150));
-        JLabel panelTitle = new JLabel("Move Options");
-        panelTitle.setFont(new Font("TimesRoman", Font.BOLD, 22));
-        movePanel.add(panelTitle);
-
         JPanel buttonGrid = new JPanel();
-        int x = 2;
-        int y = 3;
+        buttonGrid.setPreferredSize(new Dimension(300 - HORIZONTAL_PADDING*2, 150));
+        int x = 0;
+        int y = 2;
         buttonGrid.setLayout(new GridLayout(x, y));
         List<String> buttonNames = Arrays.asList("Move", "Take Role", "Act", "Rehearse", "Upgrade", "End Turn");
-        for (int i = 0; i < x * y; i++) {
+        for (int i = 0; i < 5; i++) {
             ButtonView buttonView = new ButtonView(new Button(buttonNames.get(i)),buttonNames.get(i), this.controller);
             buttonView.setPreferredSize(new Dimension(140, 40));
-            movePanel.add(buttonView);
+            buttonGrid.add(buttonView);
         }
-        movePanel.add(buttonGrid);
 
 
-        return movePanel;
+        return buttonGrid;
     }
 
 
