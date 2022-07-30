@@ -120,8 +120,9 @@ public class SetParser extends GameDataParser {
         }
 
         //parse trailer separately due to different xml format
+        SetBuilder trailerBuilder = new SetBuilder();
         NodeList trailer = rootNode.getElementsByTagName("trailer");
-        String setName1 = "Trailer";
+        trailerBuilder.setName("Trailer");
         List<IArea> blankAreas1= new ArrayList<>();
         List<String> neighborStrings1 = new ArrayList<>();
         Node trailerNode = trailer.item(0);
@@ -129,14 +130,13 @@ public class SetParser extends GameDataParser {
         for (int i = 0; i < trailerChildren.getLength(); i++){
             Node child = trailerChildren.item(i);
             if ("area".equals(child.getNodeName())) {
-                area = getArea(child);
+                trailerBuilder.setArea(getArea(child));
             } else if ("blanks".equals(child.getNodeName())) {
                 NodeList blankSpaces = child.getChildNodes();
                 for (int k = 0; k < blankSpaces.getLength(); k++) {
                     Node aBlank = blankSpaces.item(k);
                     if ("blank".equals(aBlank.getNodeName())) {
-                        area1 = getArea(aBlank.getFirstChild());
-                        blankAreas1.add(area1);
+                        trailerBuilder.addBlankArea(getArea(aBlank.getFirstChild()));
                     }
                 }
             }else if("neighbors".equals(child.getNodeName())){
@@ -144,14 +144,13 @@ public class SetParser extends GameDataParser {
                 for(int n = 0; n<neighborChildren.getLength(); n++){
                     Node aNeighbor = neighborChildren.item(n);
                     if("neighbor".equals(aNeighbor.getNodeName())){
-                        String neighborName = aNeighbor.getAttributes().getNamedItem("name").getNodeValue();
-                        neighborStrings1.add(neighborName);
+                        trailerBuilder.addNeighborString(aNeighbor.getAttributes().getNamedItem("name").getNodeValue());
                     }
                 }
             }
         }
 
-        Set trailerSet = new Set(setName1, null, area, blankAreas1, neighborStrings1);
+        Set trailerSet = trailerBuilder.getSet();
         setsList.add(trailerSet);
 
         //parse office separately due to different xml format
